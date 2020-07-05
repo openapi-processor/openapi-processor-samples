@@ -1,64 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>io.openapiprocessor.samples</groupId>
-	<artifactId>spring-mvc-maven</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-mvc-maven</name>
-	<description>openapi-processor demo project for spring boot with maven</description>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>io.openapiprocessor.samples</groupId>
+    <artifactId>spring-mvc-maven</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-mvc-maven</name>
+    <description>openapi-processor demo project for spring boot with maven</description>
 
-	<properties>
-		<java.version>11</java.version>
-	</properties>
+    <properties>
+        <java.version>11</java.version>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 
-			<plugin>
-				<groupId>io.openapiprocessor</groupId>
-				<artifactId>openapi-processor-maven-plugin</artifactId>
-				<version>1.0.0-SNAPSHOT</version>
-				<configuration>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>oap</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <groupId>io.openapiprocessor</groupId>
+                <artifactId>openapi-processor-maven-plugin</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>io.openapiprocessor</groupId>
+                        <artifactId>openapi-processor-spring</artifactId>
+                        <version>1.0.0.M15</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.github.hauner.openapi</groupId>
+                        <artifactId>openapi-processor-json</artifactId>
+                        <version>1.0.0.M4</version>
+                    </dependency>
+                </dependencies>
+
+                <configuration>
+                    <apiPath>${project.basedir}/src/api/openapi.yaml</apiPath>
+                    <id/>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>spring</id>
+                        <phase>generate-sources</phase>
+
+                        <configuration>
+                            <id>spring</id>
+
+                            <options>
+                                <values>
+                                    <targetDir>${project.basedir}/target/generated-sources/openapi</targetDir>
+                                    <mapping>${project.basedir}/src/api/mapping.yaml</mapping>
+                                    <parser>OPENAPI4J</parser>
+                                    <showWarnings>true</showWarnings>
+                                </values>
+
+                                <nested>
+                                    <name>xxx</name>
+                                    <values>
+                                        <foobar>bar</foobar>
+                                    </values>
+                                </nested>
+
+                            </options>
+                        </configuration>
+
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>jsonX</id>
+                        <phase>generate-resources</phase>
+
+                        <configuration>
+                            <id>json</id>
+
+                            <options>
+                                <values>
+                                    <targetDir>${project.basedir}/target/generated-resources/json</targetDir>
+                                </values>
+                            </options>
+                        </configuration>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                    </execution>
+
+                </executions>
+
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>oap-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/openapi</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>oap-resources</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/generated-resources/json</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>
