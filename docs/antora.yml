@@ -1,0 +1,5 @@
+name: samples
+title: oap-samples
+version: master
+nav:
+- modules/ROOT/nav.adoc

@@ -1,0 +1,42 @@
+= Spring Boot MVC Sample
+:oap-samples-mvc: https://github.com/openapi-processor/openapi-processor-samples/samples/spring-mvc
+:oap-spring: https://docs.openapiprocessor.io/spring
+:oap-json: https://docs.openapiprocessor.io/json
+:oap-gradle: https://docs.openapiprocessor.io/gradle
+:oap-maven: https://docs.openapiprocessor.io/maven
+
+There is a very simple Spring Boot (gradle & maven) project that is using
+
+* xref:spring::index.adoc[openapi-processor-spring] to generate java interfaces for the api defined in an openapi.yaml file
+* xref:json::index.adoc[openapi-processor-json] to convert the openapi yaml to json format
+* xref:gradle::index.adoc[openapi-processor-maven] plugin to run both processors
+
+The purpose of the sample is to show the setup of the gradle, the maven plugin and the processors.
+
+
+== Running with gradle
+
+Clone the project from link:{oap-github}[GitHub], navigate into the project root folder and run
+
+----
+ ./gradlew bootRun
+----
+
+to start the sample application.
+
+== Running with maven
+
+todo
+
+== Sample Endpoints
+
+the sample has a few simple endpoints described with OpenAPI in `src/api`.
+
+=== ping
+
+    curl http://localhost:8080/ping
+
+=== echo
+
+    curl http://localhost:8080/echo?source=foo
+

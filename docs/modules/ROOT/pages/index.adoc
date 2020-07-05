@@ -1,0 +1,6 @@
+= openapi-processor samples
+:oap-github: https://github.com/openapi-processor/openapi-processor-spring-mvc-sample
+
+This project is a collection of sample project for openapi-processor.
+
+Each sample has a small section that describes it.
