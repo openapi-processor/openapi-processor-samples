@@ -1,0 +1,13 @@
+:oap-docs: https://docs.openapiprocessor.io/samples
+:oap-spring: https://docs.openapiprocessor.io/spring
+:oap-json: https://docs.openapiprocessor.io/json
+:oap-gradle: https://docs.openapiprocessor.io/gradle
+:oap-maven: https://docs.openapiprocessor.io/maven
+
+= openapi-processor sample projects
+
+this repository contains a couple of sample projects for openapi-processor.
+
+== documentation
+
+See link:{oap-docs}[oap-docs].
