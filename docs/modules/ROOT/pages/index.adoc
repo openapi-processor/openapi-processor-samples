@@ -1,6 +1,5 @@
 :page-title: openapi-processor samples
 :page-aliases: current@samples:ROOT:index.adoc, latest@samples:ROOT:index.adoc
-:oap-github: https://github.com/openapi-processor/openapi-processor-spring-mvc-sample
 
 = openapi-processor samples
 
