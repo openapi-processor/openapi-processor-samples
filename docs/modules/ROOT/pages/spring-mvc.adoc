@@ -17,7 +17,7 @@ The purpose of the sample is to show the setup of the gradle, the maven plugin a
 
 == Running with gradle
 
-Clone the project from link:{oap-github}[GitHub], navigate into the project root folder and run
+Clone the project from link:{oap-github}[GitHub], navigate into the project root folder `samples/spring-mvc` and run
 
 ----
  ./gradlew bootRun
@@ -27,7 +27,9 @@ to start the sample application.
 
 == Running with maven
 
-todo
+----
+./mvnw spring-boot:run
+----
 
 == Sample Endpoints
 
