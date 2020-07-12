@@ -1,4 +1,5 @@
 rootProject.name = 'openapi-processor-samples'
 
 include 'samples:spring-mvc'
+include 'samples:spring-webflux'
 
