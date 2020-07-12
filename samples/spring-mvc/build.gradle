@@ -10,7 +10,7 @@ plugins {
     id 'com.github.hauner.openapi-processor' version '1.0.0.M8'
 }
 
-group = 'io.openapiprocessor'
+group = 'io.openapiprocessor.samples'
 version = '1.0.0-SNAPSHOT'
 
 java {
