@@ -1,2 +1,3 @@
 * xref:index.adoc[Samples]
 ** xref:spring-mvc.adoc[Spring Boot MVC]
+** xref:spring-webflux.adoc[Spring Boot WebFlux]
