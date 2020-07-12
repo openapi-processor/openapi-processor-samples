@@ -10,9 +10,10 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>openapi-processor-sample-spring-mvc</artifactId>
+    <groupId>io.openapiprocessor.samples</groupId>
+    <artifactId>spring-mvc</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-mvc</name>
+    <name>spring-mvc sample project</name>
     <description>openapi-processor demo project for spring boot with maven</description>
 
     <properties>
@@ -165,7 +166,7 @@
                 </executions>
             </plugin>
 
-            <!-- tests -->
+            <!-- groovy tests -->
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
@@ -255,9 +256,9 @@
         </plugins>
     </build>
 
-    <!-- groovy tests -->
     <dependencyManagement>
       <dependencies>
+          <!-- spring -->
           <dependency>
               <groupId>org.springframework.boot</groupId>
               <artifactId>spring-boot-dependencies</artifactId>
@@ -266,13 +267,14 @@
               <scope>import</scope>
           </dependency>
 
+          <!-- groovy tests -->
           <dependency>
-          <groupId>org.spockframework</groupId>
-          <artifactId>spock-bom</artifactId>
-          <version>2.0-M1-groovy-2.5</version>
-          <type>pom</type>
-          <scope>import</scope>
-        </dependency>
+              <groupId>org.spockframework</groupId>
+              <artifactId>spock-bom</artifactId>
+              <version>2.0-M1-groovy-2.5</version>
+              <type>pom</type>
+              <scope>import</scope>
+          </dependency>
       </dependencies>
     </dependencyManagement>
 
