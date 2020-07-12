@@ -1,0 +1,22 @@
+openapi-processor-mapping: v1
+
+options:
+  # the root package of the generated interfaces/model. The package folder tree will be created
+  # inside {targetDir} configured in the build.gradle file. The generated interfaces and models
+  # will be placed into the "api" and "model" subpackages of packageName:
+  #  - interfaces => "${packageName}.api"
+  #  - models => "${packageName}.model"
+  package-name: io.openapiprocessor.openapi
+
+
+map:
+  result:
+    to: org.springframework.http.ResponseEntity
+
+  types:
+    - from: single
+      to: reactor.core.publisher.Mono
+
+    - from: multi
+      to: reactor.core.publisher.Flux
+

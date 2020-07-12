@@ -12,6 +12,7 @@
 
     <modules>
         <module>samples/spring-mvc</module>
+        <module>samples/spring-webflux</module>
     </modules>
 
 </project>
