@@ -10,12 +10,26 @@
     <packaging>pom</packaging>
     <name>openapi-processor - Sample Projects</name>
 
-    <repositories>
-        <repository>
-          <id>jcenter</id>
-          <url>https://jcenter.bintray.com/</url>
-        </repository>
-    </repositories>
+    <pluginRepositories>
+
+        <pluginRepository>
+            <id>jcenter</id>
+            <name>releases</name>
+            <url>https://jcenter.bintray.com/</url>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>artifactory</id>
+            <name>snapshots</name>
+            <url>https://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+        </pluginRepository>
+
+    </pluginRepositories>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
     <modules>
         <module>samples/spring-mvc</module>
