@@ -7,7 +7,7 @@ plugins {
     id "com.github.ben-manes.versions" version "0.28.0"
 
     // add processor-gradle plugin
-    id 'com.github.hauner.openapi-processor' version '1.0.0.M8'
+    id 'io.openapiprocessor.openapi-processor' version '1.0.0.M9'
 }
 
 println "Gradle version: " + project.gradle.gradleVersion
