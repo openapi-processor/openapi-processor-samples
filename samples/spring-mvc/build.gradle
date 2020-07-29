@@ -55,7 +55,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     spring {
         // the spring processor dependency
-        processor 'io.openapiprocessor:openapi-processor-spring:1.0.0.M15'
+        processor 'io.openapiprocessor:openapi-processor-spring:1.0.0.M16-SNAPSHOT'
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -79,7 +79,7 @@ openapiProcessor {
     // applying the rules described above the task to run this one is "processJson".
     json {
         // the json processor dependency
-        processor 'com.github.hauner.openapi:openapi-processor-json:1.0.0.M3'
+        processor 'io.openapiprocessor:openapi-processor-json:1.0.0.M5'
 
         targetDir "$buildDir/json"
     }
