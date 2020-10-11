@@ -55,7 +55,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     spring {
         // the spring processor dependency
-        processor 'io.openapiprocessor:openapi-processor-spring:1.0.0.M16'
+        processor 'io.openapiprocessor:openapi-processor-spring:1.0.0.M18'
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -73,7 +73,7 @@ openapiProcessor {
         parser 'OPENAPI4J'
 
         // show warnings from the open api parser.
-        showWarnings true
+        // showWarnings true
     }
 
     // applying the rules described above the task to run this one is "processJson".
