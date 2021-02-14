@@ -7,3 +7,6 @@ options:
   #  - interfaces => "${packageName}.api"
   #  - models => "${packageName}.model"
   package-name: io.openapiprocessor
+
+  # generate javadoc from OpenAPI description properties
+  javadoc: true

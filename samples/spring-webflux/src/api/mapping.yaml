@@ -8,6 +8,8 @@ options:
   #  - models => "${packageName}.model"
   package-name: io.openapiprocessor.openapi
 
+  # generate javadoc from OpenAPI description properties
+  javadoc: true
 
 map:
   result:
