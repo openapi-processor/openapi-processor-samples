@@ -66,18 +66,18 @@
             <plugin>
                 <groupId>io.openapiprocessor</groupId>
                 <artifactId>openapi-processor-maven-plugin</artifactId>
-                <version>1.0.0.M2-SNAPSHOT</version>
+                <version>2021.1-SNAPSHOT</version>
 
                 <dependencies>
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
                         <artifactId>openapi-processor-spring</artifactId>
-                        <version>1.0.0.M16-SNAPSHOT</version>
+                        <version>2021.2-SNAPSHOT</version>
                     </dependency>
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
                         <artifactId>openapi-processor-json</artifactId>
-                        <version>1.0.0.M5</version>
+                        <version>2021.2</version>
                     </dependency>
                 </dependencies>
 

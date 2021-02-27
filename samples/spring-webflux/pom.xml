@@ -83,7 +83,7 @@
             <plugin>
                 <groupId>io.openapiprocessor</groupId>
                 <artifactId>openapi-processor-maven-plugin</artifactId>
-                <version>1.0.0.M2-SNAPSHOT</version>
+                <version>2021.1-SNAPSHOT</version>
 
                 <dependencies>
                     <dependency>
