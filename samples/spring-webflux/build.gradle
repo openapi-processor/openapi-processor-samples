@@ -102,7 +102,7 @@ openapiProcessor {
     // applying the rules described above the task to run this one is "processJson".
     json {
         // the json processor dependency
-        processor 'io.openapiprocessor:openapi-processor-json:1.0.0.M6'
+        processor 'io.openapiprocessor:openapi-processor-json:2021.2'
 
         targetDir "$buildDir/json"
     }
