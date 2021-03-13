@@ -1,0 +1,45 @@
+= Micronaut Sample
+:oap-samples-mn: https://github.com/openapi-processor/openapi-processor-samples/samples/micronaut
+:oap-micronaut: https://docs.openapiprocessor.io/micronaut
+:oap-json: https://docs.openapiprocessor.io/json
+:oap-gradle: https://docs.openapiprocessor.io/gradle
+:oap-maven: https://docs.openapiprocessor.io/maven
+:oap-github: https://github.com/openapi-processor/openapi-processor-samples/samples/micronaut
+
+This is a very simple Micronaut (gradle) project that is using
+
+* xref:micronaut::index.adoc[openapi-processor-micronaut] to generate java interfaces for the api defined in an openapi.yaml file
+* xref:json::index.adoc[openapi-processor-json] to convert the openapi yaml to json format
+* xref:gradle::index.adoc[openapi-processor-maven] plugin to run both processors
+
+The purpose of the sample is to show the setup of the gradle plugin and the processors.
+
+
+== Running with gradle
+
+Clone the project from link:{oap-github}[GitHub], navigate into the project root folder `samples/micronaut` and run
+
+----
+ ../../gradlew bootRun
+----
+
+to start the sample application.
+
+//== Running with maven
+//
+//----
+//../../mvnw spring-boot:run
+//----
+
+== Sample Endpoints
+
+the sample has a few simple endpoints described with OpenAPI in `src/api`.
+
+=== ping
+
+    curl http://localhost:8080/ping
+
+=== echo
+
+    curl http://localhost:8080/echo?source=foo
+
