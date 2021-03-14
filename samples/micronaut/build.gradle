@@ -52,8 +52,8 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     micronaut {
         // the spring processor dependency
-        processor 'io.openapiprocessor:openapi-processor-core:2021.3-SNAPSHOT'
-        processor 'io.openapiprocessor:openapi-processor-micronaut:2021.1-SNAPSHOT'
+//        processor 'io.openapiprocessor:openapi-processor-core:2021.3'
+        processor 'io.openapiprocessor:openapi-processor-micronaut:2021.1'
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
