@@ -62,6 +62,8 @@ openapiProcessor {
         // {package-name} folder tree configured in the mapping file.
         targetDir "$projectDir/build/openapi"
 
+        // processor specific options, creates a key => value map that is passed to the processors
+
         // file name of the mapping yaml configuration file. Note that the yaml file name must end
         // with either {@code .yaml} or {@code .yml}.
         mapping "${projectDir}/src/api/mapping.yaml"
@@ -69,9 +71,6 @@ openapiProcessor {
         // sets the parser to SWAGGER or OPENAPI4J. if not set SWAGGER is used.
         // OPENAPI4J provides better validation.
         parser 'OPENAPI4J'
-
-        // show warnings from the open api parser.
-        // showWarnings true
     }
 
     // applying the rules described above the task to run this one is "processJson".
