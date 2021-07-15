@@ -13,23 +13,9 @@
     <pluginRepositories>
 
         <pluginRepository>
-            <id>snapshots</id>
-            <name>snapshots</name>
+            <id>openapi-processor-snapshots</id>
+            <name>openapi-processor-snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </pluginRepository>
-
-        <!-- obsolete -->
-        <pluginRepository>
-            <id>jcenter</id>
-            <name>releases</name>
-            <url>https://jcenter.bintray.com/</url>
-        </pluginRepository>
-
-        <!-- obsolete -->
-        <pluginRepository>
-            <id>artifactory</id>
-            <name>snapshots</name>
-            <url>https://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
         </pluginRepository>
 
     </pluginRepositories>
