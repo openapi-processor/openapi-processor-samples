@@ -1,4 +1,4 @@
-openapi-processor-mapping: v1
+openapi-processor-mapping: v2
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
@@ -12,13 +12,8 @@ options:
   javadoc: true
 
 map:
-  result:
-    to: org.springframework.http.ResponseEntity
+  result: org.springframework.http.ResponseEntity
 
   types:
-    - from: single
-      to: reactor.core.publisher.Mono
-
-    - from: multi
-      to: reactor.core.publisher.Flux
-
+    single: reactor.core.publisher.Mono
+    multi: reactor.core.publisher.Flux
