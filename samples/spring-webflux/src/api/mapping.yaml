@@ -14,6 +14,5 @@ options:
 map:
   result: org.springframework.http.ResponseEntity
 
-  types:
-    single: reactor.core.publisher.Mono
-    multi: reactor.core.publisher.Flux
+  single: reactor.core.publisher.Mono
+  multi: reactor.core.publisher.Flux
