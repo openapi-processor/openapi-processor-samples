@@ -7,7 +7,7 @@ plugins {
     id "com.github.ben-manes.versions" version "0.28.0"
 
     // add processor-gradle plugin
-    id "io.openapiprocessor.openapi-processor" version "2021.2"
+    id "io.openapiprocessor.openapi-processor" version "2021.3"
 }
 
 println "Gradle version: " + project.gradle.gradleVersion
@@ -78,7 +78,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     spring {
         // the spring processor dependency
-        processor 'io.openapiprocessor:openapi-processor-spring:2021.3'
+        processor 'io.openapiprocessor:openapi-processor-spring:2021.5'
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"

@@ -56,8 +56,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
-        processor("io.openapiprocessor:openapi-processor-spring:2021.3")
-        // processor("io.openapiprocessor:openapi-processor-core:2021.3-SNAPSHOT")
+        processor("io.openapiprocessor:openapi-processor-spring:2021.5")
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
