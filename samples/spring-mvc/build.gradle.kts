@@ -4,13 +4,13 @@
 plugins {
     id("java")
     id("groovy")
-    id("io.spring.dependency-management") version("1.0.9.RELEASE")
-    id("org.springframework.boot") version("2.3.1.RELEASE")
-    id("org.unbroken-dome.test-sets") version("3.0.1")
-    id("com.github.ben-manes.versions") version("0.28.0")
+    id("io.spring.dependency-management") version("1.0.11.RELEASE")
+    id("org.springframework.boot") version("2.6.3")
+    id("org.unbroken-dome.test-sets") version("4.0.0")
+    id("com.github.ben-manes.versions") version("0.42.0")
 
     // add processor-gradle plugin
-    id("io.openapiprocessor.openapi-processor") version ("2021.3")
+    id("io.openapiprocessor.openapi-processor") version ("2022.1")
 }
 
 group = "io.openapiprocessor.samples"
@@ -37,8 +37,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.codehaus.groovy:groovy:2.5.12")
-    testImplementation(platform("org.spockframework:spock-bom:2.0-M3-groovy-2.5"))
+    testImplementation("org.codehaus.groovy:groovy:3.0.9")
+    testImplementation(platform("org.spockframework:spock-bom:2.0-groovy-3.0"))
     testImplementation("org.spockframework:spock-core")
     testImplementation("org.spockframework:spock-spring")
 }
@@ -56,7 +56,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
-        processor("io.openapiprocessor:openapi-processor-spring:2021.5")
+        processor("io.openapiprocessor:openapi-processor-spring:2022.1")
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
