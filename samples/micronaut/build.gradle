@@ -2,10 +2,10 @@ plugins {
     id("idea")
     id("groovy")
     id("com.github.johnrengelman.shadow") version "6.1.0"
-    id("io.micronaut.application") version "1.4.2"
+    id("io.micronaut.application") version "2.0.3"
 
     // add processor-gradle plugin
-    id("io.openapiprocessor.openapi-processor") version "2021.3"
+    id("io.openapiprocessor.openapi-processor") version "2022.1"
 }
 
 group = 'io.openapiprocessor.samples'
@@ -35,10 +35,6 @@ application {
     mainClass.set("mn.Application")
 }
 
-java {
-    sourceCompatibility = JavaVersion.toVersion("1.8")
-    targetCompatibility = JavaVersion.toVersion("1.8")
-}
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
@@ -53,8 +49,8 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     micronaut {
         // the spring processor dependency
-//        processor 'io.openapiprocessor:openapi-processor-core:2021.3'
-        processor 'io.openapiprocessor:openapi-processor-micronaut:2021.3-SNAPSHOT'
+//        processor 'io.openapiprocessor:openapi-processor-core:2022.1.x'
+        processor 'io.openapiprocessor:openapi-processor-micronaut:2022.1'
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
