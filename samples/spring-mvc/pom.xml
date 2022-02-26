@@ -82,13 +82,18 @@
                 </dependencies>
 
                 <configuration>
+                    <id>processor-api</id>
                     <apiPath>${project.basedir}/src/api/openapi.yaml</apiPath>
-                    <id/>
                 </configuration>
 
                 <executions>
                     <execution>
-                        <id>spring</id>
+                        <!--<id>spring-interfaces</id>-->
+                        <!--
+                            use the default id to use this configuration when running the gaol directly
+                            from the shell with ./mvnw openapi-processor:process
+                         -->
+                        <id>default-cli</id>
                         <phase>generate-sources</phase>
 
                         <configuration>
@@ -110,7 +115,7 @@
                     </execution>
 
                     <execution>
-                        <id>json</id>
+                        <id>json-resource</id>
                         <phase>generate-resources</phase>
 
                         <configuration>
@@ -126,7 +131,6 @@
                             <goal>process</goal>
                         </goals>
                     </execution>
-
                 </executions>
 
             </plugin>
