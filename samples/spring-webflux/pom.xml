@@ -105,7 +105,7 @@
 
                 <executions>
                     <execution>
-                        <id>spring</id>
+                        <id>default-cli</id>
                         <phase>generate-sources</phase>
 
                         <configuration>
@@ -127,7 +127,7 @@
                     </execution>
 
                     <execution>
-                        <id>json</id>
+                        <id>json-resource</id>
                         <phase>generate-resources</phase>
 
                         <configuration>
