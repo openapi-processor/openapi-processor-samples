@@ -104,4 +104,13 @@ sourceSets {
 compileJava.dependsOn ('processSpring')
 processResources.dependsOn ('processJson')
 
+// alternative source set configuration, e.g. with lombok plugin
+// id 'io.freefair.lombok' version '6.4.2'
+//
+//afterEvaluate {
+//    def processSpring = tasks.named ('processSpring')
+//    sourceSets.main.java.srcDir (processSpring)
+//    compileJava.dependsOn (processSpring)
+//}
+
 check.dependsOn testInt
