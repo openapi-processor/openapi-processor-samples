@@ -1,6 +1,15 @@
+pluginManagement {
+    repositories {
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+        gradlePluginPortal()
+    }
+}
+
 rootProject.name = 'openapi-processor-samples'
 
 include 'samples:spring-mvc'
 include 'samples:spring-webflux'
-include 'samples:micronaut'
+//include 'samples:micronaut'
 
