@@ -16,7 +16,7 @@
 
 package io.openapiprocessor.samples;
 
-import io.openapiprocessor.api.PingApi;
+import io.openapiprocessor.openapi.api.PingApi;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
