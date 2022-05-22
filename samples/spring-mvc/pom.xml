@@ -66,13 +66,13 @@
             <plugin>
                 <groupId>io.openapiprocessor</groupId>
                 <artifactId>openapi-processor-maven-plugin</artifactId>
-                <version>2021.1</version>
+                <version>2022.1-SNAPSHOT</version>
 
                 <dependencies>
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
                         <artifactId>openapi-processor-spring</artifactId>
-                        <version>2022.2-SNAPSHOT</version>
+                        <version>2022.4-SNAPSHOT-8</version>
                     </dependency>
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
@@ -103,7 +103,7 @@
                                 <values>
                                     <targetDir>${project.basedir}/target/generated-sources/openapi</targetDir>
                                     <mapping>${project.basedir}/src/api/mapping.yaml</mapping>
-                                    <parser>OPENAPI4J</parser>
+                                    <parser>INTERNAL</parser>
                                     <showWarnings>true</showWarnings>
                                 </values>
                             </options>

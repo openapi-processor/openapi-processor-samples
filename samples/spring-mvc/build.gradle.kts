@@ -10,16 +10,16 @@ plugins {
     id("com.github.ben-manes.versions") version("0.42.0")
 
     // add processor-gradle plugin
-    id("io.openapiprocessor.openapi-processor") version ("2022.1")
+    id("io.openapiprocessor.openapi-processor") version ("2022.2-SNAPSHOT")
 }
 
 group = "io.openapiprocessor.samples"
 version = "1.0.0-SNAPSHOT"
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
+//java {
+//    sourceCompatibility = JavaVersion.VERSION_1_8
+//    targetCompatibility = JavaVersion.VERSION_1_8
+//}
 
 repositories {
     mavenCentral ()
@@ -47,7 +47,7 @@ dependencies {
 // configuration with the name of the openapi-processor and its options inside it.
 //
 // ... using 'spring' and 'json'.
-openapiProcessor {
+openapiprocessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
     apiPath("$projectDir/src/api/openapi.yaml")
@@ -56,7 +56,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
-        processor("io.openapiprocessor:openapi-processor-spring:2022.1")
+        processor("io.openapiprocessor:openapi-processor-spring:2022.4-SNAPSHOT-8")
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -71,15 +71,16 @@ openapiProcessor {
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", "$projectDir/src/api/mapping.yaml")
 
-        // sets the parser to SWAGGER or OPENAPI4J. if not set SWAGGER is used.
-        // OPENAPI4J provides better validation.
-        prop("parser", "OPENAPI4J")
+        // sets the parser to SWAGGER, OPENAPI4J or INTERNAL. if not set SWAGGER is used.
+        // OPENAPI4J provides better validation but is not maintained anymore.
+        // INTERNAL provides full JSON schema validation
+        prop("parser", "INTERNAL")
 
         // alternative way of setting processor specific properties
         /*
         prop(mapOf(
             "mapping" to "$projectDir/src/api/mapping.yaml",
-            "parser" to "OPENAPI4J"
+            "parser" to "INTERNAL"
         ))
          */
     }

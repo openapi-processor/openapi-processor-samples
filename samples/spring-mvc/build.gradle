@@ -3,23 +3,20 @@ plugins {
     id 'java'
     id 'groovy'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'org.springframework.boot' version '2.6.3'
+    id 'org.springframework.boot' version '2.7.0'
     id 'org.unbroken-dome.test-sets' version '4.0.0'
     id "com.github.ben-manes.versions" version "0.42.0"
 
     // add processor-gradle plugin
-    id "io.openapiprocessor.openapi-processor" version "2022.1"
+    id "io.openapiprocessor.openapi-processor" version "2022.2-SNAPSHOT"
 }
 
 group = 'io.openapiprocessor.samples'
 version = '1.0.0-SNAPSHOT'
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
 
 repositories {
+    mavenLocal ()
     mavenCentral ()
 }
 
@@ -36,7 +33,7 @@ dependencies {
 
     testImplementation ('org.springframework.boot:spring-boot-starter-test')
 
-    testImplementation 'org.codehaus.groovy:groovy:3.0.9'
+    testImplementation 'org.codehaus.groovy:groovy:3.0.10'
     testImplementation platform('org.spockframework:spock-bom:2.0-groovy-3.0')
     testImplementation 'org.spockframework:spock-core'
     testImplementation 'org.spockframework:spock-spring'
@@ -46,8 +43,7 @@ dependencies {
 // configuration with the name of the openapi-processor and its options inside it.
 //
 // ... using 'spring' and 'json'.
-openapiProcessor {
-
+openapiprocessor {
     // the path to the open api yaml file. Usually the same for all processors.
     apiPath "${projectDir}/src/api/openapi.yaml"
 
@@ -56,7 +52,7 @@ openapiProcessor {
     spring {
         // the spring processor dependency
 //        processor 'io.openapiprocessor:openapi-processor-core:2021.4.1'
-        processor 'io.openapiprocessor:openapi-processor-spring:2021.5'
+        processor 'io.openapiprocessor:openapi-processor-spring:2022.4-SNAPSHOT-8'
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -71,9 +67,10 @@ openapiProcessor {
         // with either {@code .yaml} or {@code .yml}.
         mapping "${projectDir}/src/api/mapping.yaml"
 
-        // sets the parser to SWAGGER or OPENAPI4J. if not set SWAGGER is used.
-        // OPENAPI4J provides better validation.
-        parser 'OPENAPI4J'
+        // sets the parser to SWAGGER, OPENAPI4J or INTERNAL. if not set SWAGGER is used.
+        // OPENAPI4J provides better validation but is not maintained anymore.
+        // INTERNAL provides full JSON schema validation
+        parser 'INTERNAL'
     }
 
     // applying the rules described above the task to run this one is "processJson".
