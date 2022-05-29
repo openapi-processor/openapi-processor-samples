@@ -6,7 +6,7 @@
 package io.openapiprocessor.samples;
 
 import io.micronaut.http.annotation.Controller;
-import io.openapiprocessor.api.PingApi;
+import io.openapiprocessor.openapi.api.PingApi;
 
 @Controller
 public class PingController implements PingApi {

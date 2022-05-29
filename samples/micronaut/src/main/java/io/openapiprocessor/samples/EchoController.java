@@ -6,7 +6,7 @@
 package io.openapiprocessor.samples;
 
 import io.micronaut.http.annotation.Controller;
-import io.openapiprocessor.api.EchoApi;
+import io.openapiprocessor.openapi.api.EchoApi;
 
 @Controller
 public class EchoController implements EchoApi {

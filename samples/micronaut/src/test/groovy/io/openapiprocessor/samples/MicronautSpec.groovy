@@ -2,8 +2,8 @@ package io.openapiprocessor.samples
 
 import io.micronaut.runtime.EmbeddedApplication
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
+import jakarta.inject.Inject
 import spock.lang.Specification
-import javax.inject.Inject
 
 @MicronautTest
 class MicronautSpec extends Specification {
