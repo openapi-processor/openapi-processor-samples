@@ -47,7 +47,7 @@ dependencies {
 // configuration with the name of the openapi-processor and its options inside it.
 //
 // ... using 'spring' and 'json'.
-openapiprocessor {
+openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
     apiPath("$projectDir/src/api/openapi.yaml")
@@ -56,7 +56,7 @@ openapiprocessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
-        processor("io.openapiprocessor:openapi-processor-spring:2022.4-SNAPSHOT-8")
+        processor("io.openapiprocessor:openapi-processor-spring:2022.4-SNAPSHOT")
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"

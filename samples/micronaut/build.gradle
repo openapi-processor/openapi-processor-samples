@@ -1,11 +1,12 @@
 plugins {
     id("idea")
     id("groovy")
-    id("com.github.johnrengelman.shadow") version "6.1.0"
-    id("io.micronaut.application") version "2.0.3"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.4.0"
+    id "com.github.ben-manes.versions" version "0.42.0"
 
     // add processor-gradle plugin
-    id("io.openapiprocessor.openapi-processor") version "2022.1"
+    id("io.openapiprocessor.openapi-processor") version "2022.2-SNAPSHOT"
 }
 
 group = 'io.openapiprocessor.samples'
@@ -49,8 +50,8 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     micronaut {
         // the spring processor dependency
-//        processor 'io.openapiprocessor:openapi-processor-core:2022.1.x'
-        processor 'io.openapiprocessor:openapi-processor-micronaut:2022.1'
+//        processor 'io.openapiprocessor:openapi-processor-core:2022.5'
+        processor 'io.openapiprocessor:openapi-processor-micronaut:2022.4-SNAPSHOT'
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -65,9 +66,10 @@ openapiProcessor {
         // with either {@code .yaml} or {@code .yml}.
         mapping "${projectDir}/src/api/mapping.yaml"
 
-        // sets the parser to SWAGGER or OPENAPI4J. if not set SWAGGER is used.
-        // OPENAPI4J provides better validation.
-        parser 'OPENAPI4J'
+        // sets the parser to SWAGGER, OPENAPI4J or INTERNAL. if not set SWAGGER is used.
+        // OPENAPI4J provides better validation but is not maintained anymore.
+        // INTERNAL provides full JSON schema validation
+        parser 'INTERNAL'
     }
 
     // applying the rules described above the task to run this one is "processJson".

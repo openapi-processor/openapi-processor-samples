@@ -71,7 +71,7 @@ check.dependsOn testInt
 // configuration with the name of the openapi-processor and its options inside it.
 //
 // ... using 'spring' and 'json'.
-openapiprocessor {
+openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
     apiPath "${projectDir}/src/api/openapi.yaml"
