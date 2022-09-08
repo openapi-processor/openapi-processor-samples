@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: openapi-processor-spring sample api
+  version: 1.0.0
+
+paths:
+  /foo:
+    post:
+      tags:
+        - foo
+      summary: annotation mapping example.
+      description: a simple endpoint where an annotation mapping is used on the request body
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Foo'
+        required: true
+      responses:
+        '200':
+          description: echo of the source parameter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Foo'
+
+  /bar:
+    post:
+      tags:
+        - bar
+      summary: annotation mapping example.
+      description: a simple endpoint where an annotation mapping is used on the request body
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bar'
+        required: true
+      responses:
+        '200':
+          description: echo of the source parameter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bar'
+
+components:
+  schemas:
+    Foo:
+      type: object
+      properties:
+        foo1:
+          type: integer
+          minimum: 0
+        foo2:
+          type: integer
+          minimum: -10
+
+    Bar:
+      type: object
+      properties:
+        bar1:
+          type: integer
+        bar2:
+          type: integer

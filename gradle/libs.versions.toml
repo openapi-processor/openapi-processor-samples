@@ -1,0 +1,23 @@
+[versions]
+boot = "2.7.3"
+boot-deps = "1.0.13.RELEASE"
+
+processor-gradle = "2022.2"
+processor-core = "2022.6-SNAPSHOT"
+processor-spring = "2022.4-SNAPSHOT"
+
+versions = "0.42.0"
+
+[libraries]
+processor-core = { group = "io.openapiprocessor", name="openapi-processor-core", version.ref="processor-core" }
+processor-spring = { group = "io.openapiprocessor", name="openapi-processor-spring", version.ref="processor-spring" }
+
+#[bundles]
+#jackson = ["jackson-databind", "jackson-yaml", "jackson-kotlin"]
+#openapi-parser = ["openapi-parser-parser", "openapi-parser-jackson"]
+
+[plugins]
+boot = { id = "org.springframework.boot", version.ref = "boot" }
+boot-deps = { id = "io.spring.dependency-management", version.ref = "boot-deps" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+processor-gradle = { id = "io.openapiprocessor.openapi-processor", version.ref = "processor-gradle" }

@@ -11,6 +11,7 @@ rootProject.name = 'openapi-processor-samples'
 
 include 'samples:spring-mvc'
 include 'samples:spring-webflux'
+include 'samples:spring-validation'
 include 'samples:micronaut'
 
 //includeBuild '../openapi-processor-gradle'

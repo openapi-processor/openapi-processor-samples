@@ -1,0 +1,19 @@
+###
+POST http://localhost:8080/foo
+Accept: application/json
+Content-Type: application/json
+
+{
+  "foo1": 21,
+  "foo2": 21
+}
+
+###
+POST http://localhost:8080/bar
+Accept: application/json
+Content-Type: application/json
+
+{
+  "bar1": 12,
+  "bar2": 12
+}

@@ -1,0 +1,16 @@
+openapi-processor-mapping: v2
+
+options:
+  package-name: io.openapiprocessor.openapi
+  javadoc: true
+  format-code: true
+  bean-validation: true
+
+map:
+  types:
+    - type: Bar @ io.openapiprocessor.samples.validations.Sum(24)
+
+  paths:
+    /foo:
+      parameters:
+        - type: Foo @ io.openapiprocessor.samples.validations.Sum(value = 42)
