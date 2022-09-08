@@ -1,4 +1,5 @@
 * xref:index.adoc[Samples]
 ** xref:spring-mvc.adoc[Spring Boot MVC]
 ** xref:spring-webflux.adoc[Spring Boot WebFlux]
+** xref:spring-validation.adoc[Spring Boot Bean Validation]
 ** xref:micronaut.adoc[Micronaut]

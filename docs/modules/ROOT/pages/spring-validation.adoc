@@ -1,0 +1,30 @@
+= Spring Boot MVC Sample
+:oap-samples-mvc: https://github.com/openapi-processor/openapi-processor-samples/samples/spring-mvc
+:oap-spring: https://docs.openapiprocessor.io/spring
+:oap-json: https://docs.openapiprocessor.io/json
+:oap-gradle: https://docs.openapiprocessor.io/gradle
+:oap-maven: https://docs.openapiprocessor.io/maven
+:oap-github: https://github.com/openapi-processor/openapi-processor-samples/samples/spring-validation
+
+This is a very simple Spring Boot (gradle) project that is using
+
+* xref:spring::index.adoc[openapi-processor-spring] to generate java interfaces for the api defined in an openapi.yaml file
+* xref:gradle::index.adoc[openapi-processor-gradle] plugin to run the processor
+
+This samples shows how to use annotation mapping to add custom bean validation annotations.
+
+== Running with gradle
+
+Clone the project from link:{oap-github}[GitHub], navigate into the project root folder `samples/spring-validation` and run
+
+----
+ ../../gradlew bootRun
+----
+
+to start the sample application.
+
+== Sample Endpoints
+
+the sample has two simple endpoints described with OpenAPI in `src/api`. With IDEA you can call the endpoints by running the requests from the `requests.http` file.
+
+

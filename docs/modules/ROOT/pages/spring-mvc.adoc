@@ -33,7 +33,7 @@ to start the sample application.
 
 == Sample Endpoints
 
-the sample has a few simple endpoints described with OpenAPI in `src/api`.
+the sample has a few simple endpoints described with OpenAPI in `src/api`. With IDEA you can call the endpoints by running the requests from the `requests.http` file.
 
 === ping
 
