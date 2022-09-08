@@ -5,12 +5,20 @@ boot-deps = "1.0.13.RELEASE"
 processor-gradle = "2022.2"
 processor-core = "2022.6-SNAPSHOT"
 processor-spring = "2022.4-SNAPSHOT"
+processor-json = "2021.2"
 
 versions = "0.42.0"
+test-sets = "4.0.0"
+groovy = "3.0.10"
+spock = "2.0-groovy-3.0"
 
 [libraries]
 processor-core = { group = "io.openapiprocessor", name="openapi-processor-core", version.ref="processor-core" }
 processor-spring = { group = "io.openapiprocessor", name="openapi-processor-spring", version.ref="processor-spring" }
+processor-json = { group = "io.openapiprocessor", name="openapi-processor-json", version.ref="processor-json" }
+
+groovy = { group = "org.codehaus.groovy", name="groovy", version.ref="groovy" }
+spock-bom = { group = "org.spockframework", name="spock-bom", version.ref="spock" }
 
 #[bundles]
 #jackson = ["jackson-databind", "jackson-yaml", "jackson-kotlin"]
@@ -20,4 +28,5 @@ processor-spring = { group = "io.openapiprocessor", name="openapi-processor-spri
 boot = { id = "org.springframework.boot", version.ref = "boot" }
 boot-deps = { id = "io.spring.dependency-management", version.ref = "boot-deps" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+test-sets = { id = "org.unbroken-dome.test-sets", version.ref = "test-sets" }
 processor-gradle = { id = "io.openapiprocessor.openapi-processor", version.ref = "processor-gradle" }
