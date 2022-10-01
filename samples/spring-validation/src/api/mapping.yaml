@@ -1,4 +1,4 @@
-openapi-processor-mapping: v2
+openapi-processor-mapping: v2.1
 
 options:
   package-name: io.openapiprocessor.openapi
@@ -10,7 +10,10 @@ map:
   types:
     - type: Bar @ io.openapiprocessor.samples.validations.Sum(24)
 
-  paths:
-    /foo:
-      parameters:
-        - type: Foo @ io.openapiprocessor.samples.validations.Sum(value = 42)
+  parameters:
+    - type: Foo @ io.openapiprocessor.samples.validations.Sum(value = 42)
+
+#  paths:
+#    /foo:
+#      parameters:
+#        - type: Foo @ io.openapiprocessor.samples.validations.Sum(value = 42)
