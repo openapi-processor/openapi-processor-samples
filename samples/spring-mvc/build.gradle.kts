@@ -1,25 +1,23 @@
-// to test this, delete or rename the groovy based build.gradle. gradle will pick up build.gradle
+// this build file is using a version catalog (see ../gradle/libs.versions.toml)
+
+// to try this, delete or rename the groovy based build.gradle. gradle will pick up build.gradle
 // first if it is available.
 
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     id("java")
     id("groovy")
-    id("io.spring.dependency-management") version("1.0.11.RELEASE")
-    id("org.springframework.boot") version("2.6.3")
-    id("org.unbroken-dome.test-sets") version("4.0.0")
-    id("com.github.ben-manes.versions") version("0.42.0")
+    alias(libs.plugins.boot)
+    alias(libs.plugins.boot.deps)
+    alias(libs.plugins.versions)
+    alias(libs.plugins.test.sets)
 
     // add processor-gradle plugin
-    id("io.openapiprocessor.openapi-processor") version ("2022.2-SNAPSHOT")
+    alias(libs.plugins.processor.gradle)
 }
 
 group = "io.openapiprocessor.samples"
 version = "1.0.0-SNAPSHOT"
-
-//java {
-//    sourceCompatibility = JavaVersion.VERSION_1_8
-//    targetCompatibility = JavaVersion.VERSION_1_8
-//}
 
 repositories {
     mavenCentral ()
@@ -37,8 +35,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.codehaus.groovy:groovy:3.0.9")
-    testImplementation(platform("org.spockframework:spock-bom:2.0-groovy-3.0"))
+    testImplementation(libs.groovy)
+    testImplementation(platform(libs.spock.bom.get()))
     testImplementation("org.spockframework:spock-core")
     testImplementation("org.spockframework:spock-spring")
 }
@@ -56,7 +54,8 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
-        processor("io.openapiprocessor:openapi-processor-spring:2022.4-SNAPSHOT")
+//        processor("io.openapiprocessor:openapi-processor-spring:2022.5-SNAPSHOT")
+        processor("${libs.processor.spring.get()}")
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -88,7 +87,8 @@ openapiProcessor {
     // applying the rules described above the task to run this one is "processJson".
     process("json") {
         // the json processor dependency
-        processor("io.openapiprocessor:openapi-processor-json:2021.2")
+//        processor("io.openapiprocessor:openapi-processor-json:2021.2")
+        processor("${libs.processor.json.get()}")
 
         targetDir("$buildDir/json")
     }
