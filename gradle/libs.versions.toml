@@ -4,7 +4,8 @@ boot-deps = "1.0.13.RELEASE"
 
 processor-gradle = "2022.2"
 processor-core = "2022.6-SNAPSHOT"
-processor-spring = "2022.4-SNAPSHOT"
+processor-spring = "2022.5-SNAPSHOT"
+processor-micronaut = "2022.5-SNAPSHOT"
 processor-json = "2021.2"
 
 versions = "0.42.0"
