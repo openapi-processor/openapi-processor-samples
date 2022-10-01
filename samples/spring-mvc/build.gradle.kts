@@ -1,4 +1,4 @@
-// this build file is using a version catalog (see ../gradle/libs.versions.toml)
+// this build file is using a version catalog (see settings.gradle)
 
 // to try this, delete or rename the groovy based build.gradle. gradle will pick up build.gradle
 // first if it is available.
