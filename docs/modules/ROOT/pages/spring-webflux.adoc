@@ -10,7 +10,7 @@ This is a very simple Spring Boot (gradle & maven) project that is using
 
 * xref:spring::index.adoc[openapi-processor-spring] to generate java interfaces for the api defined in an openapi.yaml file
 * xref:json::index.adoc[openapi-processor-json] to convert the openapi yaml to json format
-* xref:gradle::index.adoc[openapi-processor-maven] plugin to run both processors
+* xref:gradle::index.adoc[openapi-processor-gradle]/xref:maven::index.adoc[openapi-processor-maven] plugin to run both processors
 
 The purpose of the sample is to show the setup of the gradle plugin, and the processors for an **annotation** based Spring WebFlux application.
 
@@ -30,6 +30,8 @@ to start the sample application.
 ----
 ../../mvnw spring-boot:run
 ----
+
+Note that the versions in the `pom.xml` are probably not up to date.
 
 == Sample Endpoints
 

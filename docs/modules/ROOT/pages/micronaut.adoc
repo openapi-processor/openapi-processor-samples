@@ -10,7 +10,7 @@ This is a very simple Micronaut (gradle) project that is using
 
 * xref:micronaut::index.adoc[openapi-processor-micronaut] to generate java interfaces for the api defined in an openapi.yaml file
 * xref:json::index.adoc[openapi-processor-json] to convert the openapi yaml to json format
-* xref:gradle::index.adoc[openapi-processor-maven] plugin to run both processors
+* xref:gradle::index.adoc[openapi-processor-gradle] plugin to run both processors
 
 The purpose of the sample is to show the setup of the gradle plugin and the processors.
 
@@ -24,12 +24,6 @@ Clone the project from link:{oap-github}[GitHub], navigate into the project root
 ----
 
 to start the sample application.
-
-//== Running with maven
-//
-//----
-//../../mvnw spring-boot:run
-//----
 
 == Sample Endpoints
 

@@ -11,7 +11,7 @@ This is a very simple Spring Boot (gradle) project that is using
 * xref:spring::index.adoc[openapi-processor-spring] to generate java interfaces for the api defined in an openapi.yaml file
 * xref:gradle::index.adoc[openapi-processor-gradle] plugin to run the processor
 
-This samples shows how to use annotation mapping to add custom bean validation annotations.
+This samples shows how to use annotation type mapping to add a custom bean validation annotations.
 
 == Running with gradle
 
