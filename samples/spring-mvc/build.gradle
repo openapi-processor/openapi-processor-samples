@@ -1,4 +1,5 @@
-// this build file is using a version catalog (see settings.gradle)
+// this build file is using a version catalog (see ../gradle/libs.versions.toml)
+
 plugins {
     id 'idea'
     id 'java'
