@@ -7,6 +7,7 @@ processor-core = "2022.6-SNAPSHOT"
 processor-spring = "2022.5-SNAPSHOT"
 processor-micronaut = "2022.5-SNAPSHOT"
 processor-json = "2021.2"
+mapstruct =  "1.4.2.Final"
 
 versions = "0.42.0"
 test-sets = "4.0.0"
@@ -14,9 +15,11 @@ groovy = "3.0.10"
 spock = "2.0-groovy-3.0"
 
 [libraries]
-processor-core = { group = "io.openapiprocessor", name="openapi-processor-core", version.ref="processor-core" }
-processor-spring = { group = "io.openapiprocessor", name="openapi-processor-spring", version.ref="processor-spring" }
-processor-json = { group = "io.openapiprocessor", name="openapi-processor-json", version.ref="processor-json" }
+processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-core" }
+processor-spring = { group = "io.openapiprocessor", name = "openapi-processor-spring", version.ref = "processor-spring" }
+processor-json = { group = "io.openapiprocessor", name = "openapi-processor-json", version.ref = "processor-json" }
+mapstruct = { group = "org.mapstruct", name = "mapstruct", version.ref  = "mapstruct" }
+mapstruct-processor = { group = "org.mapstruct", name = "mapstruct-processor", version.ref  = "mapstruct" }
 
 groovy = { group = "org.codehaus.groovy", name="groovy", version.ref="groovy" }
 spock-bom = { group = "org.spockframework", name="spock-bom", version.ref="spock" }
