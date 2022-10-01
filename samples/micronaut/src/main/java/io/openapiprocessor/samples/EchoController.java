@@ -10,7 +10,6 @@ import io.openapiprocessor.openapi.api.EchoApi;
 
 @Controller
 public class EchoController implements EchoApi {
-
     @Override
     public String getEcho (String source) {
         return source;

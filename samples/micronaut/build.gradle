@@ -1,12 +1,15 @@
+// this build file is using a version catalog (see settings.gradle)
+
 plugins {
-    id("idea")
-    id("groovy")
-    id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.application") version "3.4.0"
-    id "com.github.ben-manes.versions" version "0.42.0"
+    id 'idea'
+    id 'java'
+    id 'groovy'
+    alias(libs.plugins.shadow)
+    alias(libs.plugins.micronaut)
+    alias(libs.plugins.versions)
 
     // add processor-gradle plugin
-    id("io.openapiprocessor.openapi-processor") version "2022.2-SNAPSHOT"
+    alias(libs.plugins.processor.gradle)
 }
 
 group = 'io.openapiprocessor.samples'
@@ -26,14 +29,26 @@ micronaut {
 }
 
 dependencies {
-    implementation("io.micronaut:micronaut-validation")
-    implementation("io.micronaut:micronaut-runtime")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
     implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    implementation("io.micronaut:micronaut-validation")
     runtimeOnly("ch.qos.logback:logback-classic")
 }
 
 application {
-    mainClass.set("mn.Application")
+    mainClass.set("io.openapiprocessor.samples.Application")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("spock2")
+    processing {
+        incremental(true)
+        annotations("io.openapiprocessor.samples.*")
+    }
 }
 
 
@@ -50,8 +65,10 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     micronaut {
         // the spring processor dependency
-//        processor 'io.openapiprocessor:openapi-processor-core:2022.5'
-        processor 'io.openapiprocessor:openapi-processor-micronaut:2022.4-SNAPSHOT'
+        // processor 'io.openapiprocessor:openapi-processor-core:2022.6-SNAPSHOT'
+        // processor 'io.openapiprocessor:openapi-processor-micronaut:2022.4-SNAPSHOT'
+        //processor "${libs.processor.core.get()}"
+        processor "${libs.processor.micronaut.get()}"
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -75,7 +92,8 @@ openapiProcessor {
     // applying the rules described above the task to run this one is "processJson".
     json {
         // the json processor dependency
-        processor 'io.openapiprocessor:openapi-processor-json:2021.2'
+        // processor 'io.openapiprocessor:openapi-processor-json:2021.2'
+        processor "${libs.processor.json.get()}"
 
         targetDir "$buildDir/json"
     }
