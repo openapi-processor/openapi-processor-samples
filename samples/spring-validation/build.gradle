@@ -1,10 +1,10 @@
 // this build file is using a version catalog (see settings.gradle)
 plugins {
+    id 'idea'
     id 'java'
     alias(libs.plugins.boot)
     alias(libs.plugins.boot.deps)
     alias(libs.plugins.versions)
-//    id 'idea'
 
     // add processor-gradle plugin
     alias(libs.plugins.processor.gradle)
@@ -12,7 +12,6 @@ plugins {
 
 group = 'io.openapiprocessor.samples'
 version = '1.0.0-SNAPSHOT'
-
 
 repositories {
     mavenLocal ()
@@ -38,9 +37,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     spring {
         // the spring processor dependency
-//        processor 'io.openapiprocessor:openapi-processor-core:2022.6-SNAPSHOT'
-//        processor 'io.openapiprocessor:openapi-processor-spring:2022.4-SNAPSHOT'
-        processor "${libs.processor.core.get()}"
+        // processor "${libs.processor.core.get()}"
         processor "${libs.processor.spring.get()}"
 
         // setting api path inside a processor configuration overrides the one at the top.
