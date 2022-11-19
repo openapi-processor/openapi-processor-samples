@@ -1,0 +1,38 @@
+= Spring Boot MVC Annotation Processor Sample
+:oap-samples-mvc: https://github.com/openapi-processor/openapi-processor-samples/samples/spring-mvc
+:oap-spring: https://docs.openapiprocessor.io/spring
+:oap-json: https://docs.openapiprocessor.io/json
+:oap-gradle: https://docs.openapiprocessor.io/gradle
+:oap-maven: https://docs.openapiprocessor.io/maven
+:oap-github: https://github.com/openapi-processor/openapi-processor-samples/samples/spring-mvc
+
+This is a very simple Spring Boot (gradle) project that is using
+
+* xref:spring::index.adoc[openapi-processor-spring] as annotation processor to generate java interfaces for the api defined in an openapi.yaml file
+
+The purpose of the sample is to show the setup of gradle with the annotation processor.
+
+
+== Running with gradle
+
+Clone the project from link:{oap-github}[GitHub], navigate into the project root folder `samples/spring-mvc-ap` and run
+
+----
+ ../../gradlew bootRun
+----
+
+to start the sample application.
+
+
+== Sample Endpoints
+
+the sample has a few simple endpoints described with OpenAPI in `src/api`. With IDEA you can call the endpoints by running the requests from the `requests.http` file.
+
+=== ping
+
+    curl http://localhost:8080/ping
+
+=== echo
+
+    curl http://localhost:8080/echo?source=foo
+
