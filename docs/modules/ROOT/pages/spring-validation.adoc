@@ -1,4 +1,4 @@
-= Spring Boot MVC Sample
+= Spring Boot Validation Sample
 :oap-samples-mvc: https://github.com/openapi-processor/openapi-processor-samples/samples/spring-mvc
 :oap-spring: https://docs.openapiprocessor.io/spring
 :oap-json: https://docs.openapiprocessor.io/json
