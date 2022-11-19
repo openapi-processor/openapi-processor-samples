@@ -7,6 +7,15 @@ pluginManagement {
     }
 }
 
+dependencyResolutionManagement {
+    repositories {
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+        mavenCentral ()
+    }
+}
+
 rootProject.name = 'openapi-processor-samples'
 
 include 'samples:spring-mvc'
