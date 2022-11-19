@@ -3,8 +3,8 @@ boot = "2.7.3"
 boot-deps = "1.0.13.RELEASE"
 micronaut = "3.6.2"
 processor-gradle = "2022.2"
-processor-core = "2022.6-SNAPSHOT"
-processor-spring = "2022.5-SNAPSHOT"
+processor-base = "2022.7-SNAPSHOT"
+processor-spring = "2022.6-SNAPSHOT"
 processor-micronaut = "2022.5-SNAPSHOT"
 processor-json = "2021.2"
 mapstruct = "1.4.2.Final"
@@ -15,7 +15,8 @@ groovy = "3.0.10"
 spock = "2.0-groovy-3.0"
 
 [libraries]
-processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-core" }
+processor-annotations = { group = "io.openapiprocessor", name = "openapi-processor-annotations", version.ref = "processor-base" }
+processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-base" }
 processor-spring = { group = "io.openapiprocessor", name = "openapi-processor-spring", version.ref = "processor-spring" }
 processor-micronaut = { group = "io.openapiprocessor", name = "openapi-processor-micronaut", version.ref = "processor-micronaut" }
 processor-json = { group = "io.openapiprocessor", name = "openapi-processor-json", version.ref = "processor-json" }
@@ -23,6 +24,10 @@ mapstruct = { group = "org.mapstruct", name = "mapstruct", version.ref  = "mapst
 mapstruct-processor = { group = "org.mapstruct", name = "mapstruct-processor", version.ref  = "mapstruct" }
 groovy = { group = "org.codehaus.groovy", name="groovy", version.ref="groovy" }
 spock-bom = { group = "org.spockframework", name="spock-bom", version.ref="spock" }
+
+logback14 = "ch.qos.logback:logback-classic:1.4.4"
+logback12 = "ch.qos.logback:logback-classic:1.2.11"
+slf4j-nop = "org.slf4j:slf4j-nop:1.7.36"
 
 #[bundles]
 #jackson = ["jackson-databind", "jackson-yaml", "jackson-kotlin"]
