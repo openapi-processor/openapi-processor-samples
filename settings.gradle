@@ -19,6 +19,7 @@ dependencyResolutionManagement {
 rootProject.name = 'openapi-processor-samples'
 
 include 'samples:spring-mvc'
+include 'samples:spring-mvc-boot-3'
 include 'samples:spring-webflux'
 include 'samples:spring-validation'
 include 'samples:micronaut'
