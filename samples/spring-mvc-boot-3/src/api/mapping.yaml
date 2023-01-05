@@ -13,7 +13,7 @@ options:
 
   # run the generated code through a code formatter
   # see gradle.properties to fix java 16+ errors.
-  format-code: true
+  format-code: false
 
   # use bean validations with jakarta package name
   bean-validation: jakarta
