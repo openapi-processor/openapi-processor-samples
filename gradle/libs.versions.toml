@@ -1,19 +1,20 @@
 [versions]
-boot = "2.7.3"
-boot3 = "3.0.1"
+boot = "2.7.12"
+boot3 = "3.1.0"
 boot-deps = "1.1.0"
 micronaut = "3.6.2"
-processor-gradle = "2022.2"
-processor-base = "2023.1.1"
-processor-spring = "2023.1.1"
-processor-micronaut = "2023.1.1"
+processor-gradle = "2023.1-SNAPSHOT"
+processor-base = "2023.1.2"
+processor-spring = "2023.2-SNAPSHOT"
+processor-micronaut = "2023.1.2"
 processor-json = "2021.2"
-mapstruct = "1.4.2.Final"
+mapstruct = "1.5.5.Final"
 shadow =  "7.1.2"
-versions = "0.44.0"
-test-sets = "4.0.0"
-groovy = "4.0.7"
+versions = "0.46.0"
+groovy = "4.0.12"
 spock = "2.3-groovy-4.0"
+junit = "5.9.3"
+kotlin = "1.8.21"
 
 [libraries]
 processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-base" }
@@ -29,12 +30,15 @@ logback14 = "ch.qos.logback:logback-classic:1.4.4"
 logback12 = "ch.qos.logback:logback-classic:1.2.11"
 slf4j-nop = "org.slf4j:slf4j-nop:1.7.36"
 
+plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
 #[bundles]
 #jackson = ["jackson-databind", "jackson-yaml", "jackson-kotlin"]
 #openapi-parser = ["openapi-parser-parser", "openapi-parser-jackson"]
 
 [plugins]
-boot = { id = "org.springframework.boot", version.ref = "boot" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+boot2 = { id = "org.springframework.boot", version.ref = "boot" }
 boot3 = { id = "org.springframework.boot", version.ref = "boot3" }
 boot-deps = { id = "io.spring.dependency-management", version.ref = "boot-deps" }
 
@@ -44,4 +48,3 @@ shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
 processor-gradle = { id = "io.openapiprocessor.openapi-processor", version.ref = "processor-gradle" }
 
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
-test-sets = { id = "org.unbroken-dome.test-sets", version.ref = "test-sets" }
