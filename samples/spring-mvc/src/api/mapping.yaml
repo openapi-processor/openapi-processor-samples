@@ -1,4 +1,4 @@
-openapi-processor-mapping: v2
+openapi-processor-mapping: v3
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
