@@ -22,7 +22,6 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
@@ -38,7 +37,6 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
-        // processor("io.openapiprocessor:openapi-processor-spring:2023.1-SNAPSHOT")
         processor("${libs.processor.spring.get()}")
 
         // setting api path inside a processor configuration overrides the one at the top.
@@ -81,8 +79,4 @@ sourceSets {
 // generate api before compiling
 tasks.compileJava {
     dependsOn("processSpring")
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }
