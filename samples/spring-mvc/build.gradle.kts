@@ -7,10 +7,11 @@
 plugins {
     id("java")
     id("groovy")
+    id("openapiprocessor.test")
+    id("openapiprocessor.testInt")
     alias(libs.plugins.boot)
     alias(libs.plugins.boot.deps)
     alias(libs.plugins.versions)
-    alias(libs.plugins.test.sets)
 
     // add processor-gradle plugin
     alias(libs.plugins.processor.gradle)
@@ -23,22 +24,22 @@ repositories {
     mavenCentral ()
 }
 
-testSets {
-    "testInt"()
-}
-
-tasks.withType<Test>() {
-    useJUnitPlatform()
-}
-
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
+    testImplementation("org.springframework.boot:spring-boot-starter-web")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation(libs.groovy)
     testImplementation(platform(libs.spock.bom.get()))
     testImplementation("org.spockframework:spock-core")
     testImplementation("org.spockframework:spock-spring")
+
+    testIntImplementation("org.springframework.boot:spring-boot-starter-web")
+    testIntImplementation("org.springframework.boot:spring-boot-starter-test")
+    testIntImplementation(libs.groovy)
+    testIntImplementation(platform(libs.spock.bom.get()))
+    testIntImplementation("org.spockframework:spock-core")
+    testIntImplementation("org.spockframework:spock-spring")
 }
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
@@ -116,8 +117,4 @@ tasks.compileJava {
 
 tasks.processResources {
     dependsOn("processJson")
-}
-
-tasks.check {
-    dependsOn("testInt")
 }
