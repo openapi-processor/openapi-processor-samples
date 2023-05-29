@@ -27,7 +27,8 @@
 
     <modules>
         <module>samples/spring-mvc</module>
-        <module>samples/spring-webflux</module>
+<!--        <module>samples/spring-mvc-boot-3</module>-->
+<!--        <module>samples/spring-webflux</module>-->
     </modules>
 
 </project>

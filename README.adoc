@@ -8,6 +8,8 @@
 
 this repository contains a couple of sample projects for openapi-processor.
 
+Adjust `settings.gradle`/`pom.xml` as needed to include the interesting sample.
+
 == documentation
 
 See link:{oap-docs}[oap-docs].
