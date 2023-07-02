@@ -43,33 +43,12 @@ dependencies {
     testIntImplementation("org.spockframework:spock-core")
     testIntImplementation("org.spockframework:spock-spring")
     testIntImplementation("io.projectreactor:reactor-test")
-
-//
-//    implementation ('org.springframework:spring-web')
-//
-//    testAnnotationProcessor (libs.mapstruct.processor)
-//    testImplementation ('org.springframework:spring-web')
-//    testImplementation ('org.springframework.boot:spring-boot-starter-test')
-//    testImplementation (libs.groovy)
-//    testImplementation platform(libs.spock.bom.get())
-//    testImplementation 'org.spockframework:spock-core'
-//    testImplementation 'org.spockframework:spock-spring'
-//    testImplementation 'io.projectreactor:reactor-test'
-//
-//    testIntAnnotationProcessor (libs.mapstruct.processor)
-//    testIntImplementation ('org.springframework:spring-web')
-//    testIntImplementation ('org.springframework.boot:spring-boot-starter-test')
-//    testIntImplementation (libs.groovy)
-//    testIntImplementation platform(libs.spock.bom.get())
-//    testIntImplementation 'org.spockframework:spock-core'
-//    testIntImplementation 'org.spockframework:spock-spring'
-//    testIntImplementation 'io.projectreactor:reactor-test'
 }
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
 //
-// ... using 'spring' and 'json'.
+// ... using 'spring'.
 openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
