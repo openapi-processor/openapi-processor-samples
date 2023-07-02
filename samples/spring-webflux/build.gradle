@@ -2,10 +2,11 @@ plugins {
     id 'idea'
     id 'java'
     id 'groovy'
-    alias(libs.plugins.boot)
+    id 'openapiprocessor.test'
+    id 'openapiprocessor.testInt'
+    alias(libs.plugins.boot2)
     alias(libs.plugins.boot.deps)
     alias(libs.plugins.versions)
-    alias(libs.plugins.test.sets)
 
     // add processor-gradle plugin
     alias(libs.plugins.processor.gradle)
@@ -34,6 +35,14 @@ dependencies {
     testImplementation 'org.spockframework:spock-core'
     testImplementation 'org.spockframework:spock-spring'
     testImplementation 'io.projectreactor:reactor-test'
+
+    testIntAnnotationProcessor (libs.mapstruct.processor)
+    testIntImplementation ('org.springframework.boot:spring-boot-starter-test')
+    testIntImplementation (libs.groovy)
+    testIntImplementation platform(libs.spock.bom.get())
+    testIntImplementation 'org.spockframework:spock-core'
+    testIntImplementation 'org.spockframework:spock-spring'
+    testIntImplementation 'io.projectreactor:reactor-test'
 }
 
 // add the targetDir of the processor as additional source folder to java.
@@ -50,20 +59,8 @@ sourceSets {
     }
 }
 
-testSets {
-    testInt
-}
-
-tasks.withType(Test) {
-    useJUnitPlatform()
-}
-
 // generate api before compiling
 compileJava.dependsOn ('processSpring')
-processResources.dependsOn ('processJson')
-
-check.dependsOn testInt
-
 
 // configure an openapi-processor inside the 'openapiprocessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
@@ -99,14 +96,4 @@ openapiProcessor {
         // INTERNAL provides full JSON schema validation
         parser 'INTERNAL'
     }
-
-    // applying the rules described above the task to run this one is "processJson".
-    json {
-        // the json processor dependency
-        // processor 'io.openapiprocessor:openapi-processor-json:2021.2'
-        processor "${libs.processor.json.get()}"
-
-        targetDir "$buildDir/json"
-    }
-
 }
