@@ -1,4 +1,4 @@
-openapi-processor-mapping: v3
+openapi-processor-mapping: v4
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
@@ -17,6 +17,9 @@ options:
 
   # use bean validations with jakarta package name
   bean-validation: jakarta
+
+  # use jave records instead of pojos
+  model-type: record
 
 map:
   types:
