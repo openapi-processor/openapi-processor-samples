@@ -14,7 +14,7 @@ versions = "0.46.0"
 groovy = "4.0.12"
 spock = "2.3-groovy-4.0"
 junit = "5.9.3"
-kotlin = "1.8.21"
+kotlin = "1.8.22"
 
 [libraries]
 processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-base" }
