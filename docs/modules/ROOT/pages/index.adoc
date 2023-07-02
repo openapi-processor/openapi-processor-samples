@@ -3,6 +3,6 @@
 
 = openapi-processor samples
 
-This project is a collection of sample project for openapi-processor.
+This project is a collection of sample project for openapi-processor which show different configurations of openapi-processor. The code of the samples don't do anything useful.
 
 Each sample has a small section that describes it.
