@@ -55,7 +55,7 @@ micronaut {
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
 //
-// ... using 'spring' and 'json'.
+// ... using 'spring'.
 openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
@@ -88,16 +88,6 @@ openapiProcessor {
         // INTERNAL provides full JSON schema validation
         parser 'INTERNAL'
     }
-
-    // applying the rules described above the task to run this one is "processJson".
-    json {
-        // the json processor dependency
-        // processor 'io.openapiprocessor:openapi-processor-json:2021.2'
-        processor "${libs.processor.json.get()}"
-
-        targetDir "$buildDir/json"
-    }
-
 }
 
 // add the targetDir of the processor as additional source folder to java.
@@ -107,13 +97,8 @@ sourceSets {
             // add generated files
             srcDir 'build/openapi'
         }
-
-        resources {
-            srcDir "$buildDir/json"
-        }
     }
 }
 
 // generate api before compiling
 compileJava.dependsOn ('processMicronaut')
-processResources.dependsOn ('processJson')

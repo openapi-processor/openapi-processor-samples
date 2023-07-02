@@ -2,7 +2,7 @@
 boot = "2.7.13"
 boot3 = "3.1.1"
 boot-deps = "1.1.0"
-micronaut = "3.6.2"
+micronaut = "3.7.10"
 processor-gradle = "2023.2-SNAPSHOT"
 processor-base = "2023.3-SNAPSHOT"
 processor-spring = "2023.3-SNAPSHOT"
