@@ -27,7 +27,7 @@ dependencies {
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
 //
-// ... using 'spring' and 'json'.
+// ... using 'spring'.
 openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
