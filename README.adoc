@@ -6,7 +6,7 @@
 
 = openapi-processor sample projects
 
-this repository contains a couple of sample projects for openapi-processor.
+this repository contains a couple of sample projects for openapi-processor to show the configuration.
 
 Adjust `settings.gradle`/`pom.xml` as needed to include the interesting sample.
 
