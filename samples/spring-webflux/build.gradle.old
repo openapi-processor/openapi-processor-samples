@@ -26,9 +26,11 @@ repositories {
 dependencies {
     annotationProcessor (libs.mapstruct.processor)
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation ('org.springframework:spring-web')
     implementation (libs.mapstruct)
 
     testAnnotationProcessor (libs.mapstruct.processor)
+    testImplementation ('org.springframework:spring-web')
     testImplementation ('org.springframework.boot:spring-boot-starter-test')
     testImplementation (libs.groovy)
     testImplementation platform(libs.spock.bom.get())
@@ -37,6 +39,7 @@ dependencies {
     testImplementation 'io.projectreactor:reactor-test'
 
     testIntAnnotationProcessor (libs.mapstruct.processor)
+    testIntImplementation ('org.springframework:spring-web')
     testIntImplementation ('org.springframework.boot:spring-boot-starter-test')
     testIntImplementation (libs.groovy)
     testIntImplementation platform(libs.spock.bom.get())
