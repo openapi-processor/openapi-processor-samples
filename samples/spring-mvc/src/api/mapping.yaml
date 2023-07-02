@@ -1,4 +1,4 @@
-openapi-processor-mapping: v3
+openapi-processor-mapping: v4
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
@@ -10,4 +10,6 @@ options:
 
   # generate javadoc from OpenAPI description properties
   javadoc: true
+
+  # enable code/javadoc formatting
   format-code: true
