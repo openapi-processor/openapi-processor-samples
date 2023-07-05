@@ -25,11 +25,19 @@ map:
   types:
     - type: string:uuid => java.util.UUID
 
+    # annotate all generated model classes
     - type: object @ lombok.Builder
     - type: object @ lombok.EqualsAndHashCode
+
+    # annotate Foo with a custom annotation
     - type: Foo @ io.openapiprocessor.samples.FooBar
 
-#    - type: Bar => io.openapiprocessor.samples.MappedBar
-#    - type: Bar @ io.openapiprocessor.samples.FooBar
-#    - type: string:uuid @ io.openapiprocessor.samples.FooBar
-#    - type: string @ io.openapiprocessor.samples.FooBar
+    # do not generate Bar, instead use an existing class
+    - type: Bar => io.openapiprocessor.samples.MappedBar
+
+    # annotate Bar with a custom annotation, since Bar is mapped to MappedBar it will be placed at Bar properties
+    - type: Bar @ io.openapiprocessor.samples.FooBar
+
+    # more places with annotation
+    - type: string:uuid @ io.openapiprocessor.samples.FooBar
+    - type: string @ io.openapiprocessor.samples.FooBar
