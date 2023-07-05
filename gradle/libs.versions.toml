@@ -15,6 +15,7 @@ groovy = "4.0.12"
 spock = "2.3-groovy-4.0"
 junit = "5.9.3"
 kotlin = "1.8.22"
+lombok = "8.1.0"
 
 [libraries]
 processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-base" }
@@ -41,6 +42,8 @@ kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 boot2 = { id = "org.springframework.boot", version.ref = "boot" }
 boot3 = { id = "org.springframework.boot", version.ref = "boot3" }
 boot-deps = { id = "io.spring.dependency-management", version.ref = "boot-deps" }
+
+lombok = { id = "io.freefair.lombok", version.ref = "lombok" }
 
 micronaut = { id = "io.micronaut.application", version.ref = "micronaut" }
 shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }

@@ -1,0 +1,35 @@
+openapi-processor-mapping: v4
+
+options:
+  # the root package of the generated interfaces/model. The package folder tree will be created
+  # inside {targetDir} configured in the build.gradle file. The generated interfaces and models
+  # will be placed into the "api" and "model" subpackages of packageName:
+  #  - interfaces => "${packageName}.api"
+  #  - models => "${packageName}.model"
+  package-name: io.openapiprocessor.openapi
+
+  # generate javadoc from OpenAPI description properties
+  javadoc: true
+
+  # run the generated code through a code formatter
+  # see gradle.properties to fix java 16+ errors.
+  format-code: false
+
+  # use bean validations with jakarta package name
+  bean-validation: jakarta
+
+  # use java records instead of pojos
+  model-type: default
+
+map:
+  types:
+    - type: string:uuid => java.util.UUID
+
+    - type: object @ lombok.Builder
+    - type: object @ lombok.EqualsAndHashCode
+    - type: Foo @ io.openapiprocessor.samples.FooBar
+
+#    - type: Bar => io.openapiprocessor.samples.MappedBar
+#    - type: Bar @ io.openapiprocessor.samples.FooBar
+#    - type: string:uuid @ io.openapiprocessor.samples.FooBar
+#    - type: string @ io.openapiprocessor.samples.FooBar

@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: openapi-processor-spring sample api
+  version: 1.0.0
+
+paths:
+  /foo:
+    post:
+      tags:
+        - foo
+      summary: echo a Foo.
+      description: simple sample endpoint
+      requestBody:
+          $ref: '#/components/requestBodies/FooBody'
+      responses:
+        '200':
+          description: foo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Foo'
+
+  /bar:
+    post:
+      tags:
+        - bar
+      summary: echo a Bar.
+      description: simple sample endpoint
+      requestBody:
+          $ref: '#/components/requestBodies/BarBody'
+      responses:
+        '200':
+          description: bar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bar'
+
+components:
+  schemas:
+    Foo:
+      type: object
+      properties:
+        foo:
+          type: string
+          maxLength: 10
+        id:
+          type: string
+          format: uuid
+        bar:
+          $ref: '#/components/schemas/Bar'
+
+    Bar:
+      type: object
+      properties:
+        foo:
+          type: string
+          maxLength: 20
+
+  requestBodies:
+    FooBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Foo'
+
+    BarBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Bar'
