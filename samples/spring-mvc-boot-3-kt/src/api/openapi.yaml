@@ -53,7 +53,7 @@ components:
     Bar:
       type: object
       properties:
-        foo:
+        bar:
           type: string
           maxLength: 20
 
