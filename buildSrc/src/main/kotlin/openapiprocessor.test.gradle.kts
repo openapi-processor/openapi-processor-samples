@@ -1,4 +1,4 @@
-@file:Suppress("UnstableApiUsage", "UNUSED_VARIABLE")
+@file:Suppress("UnstableApiUsage")
 
 import org.gradle.accessors.dm.LibrariesForLibs
 
