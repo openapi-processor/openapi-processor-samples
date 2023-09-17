@@ -1,6 +1,4 @@
 // this build file is using a version catalog (see settings.gradle)
-
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     id("java")
     id("groovy")
