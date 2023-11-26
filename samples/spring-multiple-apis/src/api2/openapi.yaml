@@ -1,0 +1,49 @@
+openapi: 3.1.0
+info:
+  title: openapi-processor-spring sample api
+  version: 1.0.0
+
+paths:
+  /foo:
+    post:
+      summary: api with enum in body and parameter.
+      parameters:
+        - name: type
+          description: enum parameter
+          in: query
+          schema:
+            $ref: '#/components/schemas/Type'
+
+      requestBody:
+          $ref: '#/components/requestBodies/FooBody'
+      responses:
+        '200':
+          description: foo response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Foo'
+
+components:
+  schemas:
+    Foo:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/Type'
+
+    Type:
+      type: string
+      enum:
+        - foo
+        - bar
+
+  requestBodies:
+   FooBody:
+     content:
+       application/json:
+         schema:
+           $ref: '#/components/schemas/Foo'

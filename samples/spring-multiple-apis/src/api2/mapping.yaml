@@ -1,0 +1,29 @@
+openapi-processor-mapping: v5
+
+options:
+  # the root package of the generated interfaces/model. The package folder tree will be created
+  # inside {targetDir} configured in the build.gradle file. The generated interfaces and models
+  # will be placed into the "api" and "model" subpackages of packageName:
+  #  - interfaces => "${packageName}.api"
+  #  - models => "${packageName}.model"
+  package-name: io.openapiprocessor.openapi2
+
+  # generate javadoc from OpenAPI description properties
+  javadoc: true
+
+  # run the generated code through a code formatter
+  # see gradle.properties to fix java 16+ errors.
+  format-code: false
+
+  # use bean validations with jakarta package name
+  bean-validation: jakarta
+
+  # use pojos (default)
+  model-type: default
+
+  # generate enums with converter factory
+  enum-type: framework
+
+map:
+  types:
+    - type: string:uuid => java.util.UUID
