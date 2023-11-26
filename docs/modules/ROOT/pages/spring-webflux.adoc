@@ -1,5 +1,4 @@
 = openapi-processor-spring (webflux) sample project
-:oap-samples: https://github.com/openapi-processor/openapi-processor-samples/samples
 :oap-spring: https://docs.openapiprocessor.io/spring
 :oap-json: https://docs.openapiprocessor.io/json
 :oap-gradle: https://docs.openapiprocessor.io/gradle

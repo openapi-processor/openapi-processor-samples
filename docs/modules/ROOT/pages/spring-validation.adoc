@@ -1,10 +1,7 @@
 = Spring Boot Validation Sample
-:oap-samples-mvc: https://github.com/openapi-processor/openapi-processor-samples/samples/spring-mvc
 :oap-spring: https://docs.openapiprocessor.io/spring
-:oap-json: https://docs.openapiprocessor.io/json
 :oap-gradle: https://docs.openapiprocessor.io/gradle
-:oap-maven: https://docs.openapiprocessor.io/maven
-:oap-github: https://github.com/openapi-processor/openapi-processor-samples/samples/spring-validation
+
 
 This is a very simple Spring Boot (gradle) project that is using
 

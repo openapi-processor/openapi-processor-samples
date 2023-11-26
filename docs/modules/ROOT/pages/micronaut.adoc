@@ -1,5 +1,4 @@
 = Micronaut Sample
-:oap-samples-mn: https://github.com/openapi-processor/openapi-processor-samples/samples/micronaut
 :oap-micronaut: https://docs.openapiprocessor.io/micronaut
 :oap-json: https://docs.openapiprocessor.io/json
 :oap-gradle: https://docs.openapiprocessor.io/gradle
