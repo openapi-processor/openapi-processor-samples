@@ -23,7 +23,7 @@ paths:
     post:
       tags:
         - book
-      description: create a new list of available books. Overrides all existing books.
+      description: updates the list of available books. Does not check for duplicate books.
       requestBody:
         required: true
         content:
@@ -44,7 +44,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of pet to use
+          description: ID of the book
           required: true
           schema:
             type: integer
