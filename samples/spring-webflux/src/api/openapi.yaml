@@ -32,6 +32,8 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Book'
+              minItems: 1
+              uniqueItems: true
       responses:
         '201':
           description: success
@@ -66,9 +68,12 @@ components:
         id:
           type: integer
           format: int64
+          minimum: 1
         title:
           type: string
+          minLength: 1
         authors:
           type: array
           items:
             type: string
+          minItems: 1

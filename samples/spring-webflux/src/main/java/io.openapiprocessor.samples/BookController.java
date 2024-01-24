@@ -10,15 +10,16 @@ import io.openapiprocessor.openapi.api.BookApi;
 import io.openapiprocessor.openapi.model.Book;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
  * implementation of the generated BookApi.
- *
  * uses ResponseEntity just to show it is possible ;-)
  */
+@Validated
 @RestController
 public class BookController implements BookApi {
 
