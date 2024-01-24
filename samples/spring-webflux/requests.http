@@ -1,0 +1,17 @@
+### valid request
+POST http://localhost:8080/books
+Content-Type: application/json
+
+[{
+  "title": "Implementation Patterns",
+  "authors": ["Kent Beck"]
+}]
+
+### invalid request
+POST http://localhost:8080/books
+Content-Type: application/json
+
+[{
+  "title": "Implementation Patterns",
+  "authors": []
+}]
