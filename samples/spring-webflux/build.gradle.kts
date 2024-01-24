@@ -15,18 +15,17 @@ plugins {
 group = "io.openapiprocessor.samples"
 version = "1.0.0-SNAPSHOT"
 
-repositories {
-    mavenCentral ()
-}
-
 dependencies {
     annotationProcessor (libs.mapstruct.processor)
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation(libs.spring.webflux)
+    implementation(libs.spring.validation)
     implementation (libs.mapstruct)
+    //implementation(libs.processor.core)
 
     testAnnotationProcessor (libs.mapstruct.processor)
-    testImplementation("org.springframework.boot:spring-boot-starter-webflux")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(libs.spring.webflux)
+    testImplementation(libs.spring.validation)
+    testImplementation(libs.spring.test)
     testImplementation(libs.groovy)
     testImplementation(platform(libs.spock.bom.get()))
     testImplementation("org.spockframework:spock-core")
@@ -34,8 +33,9 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
 
     testIntAnnotationProcessor (libs.mapstruct.processor)
-    testIntImplementation("org.springframework.boot:spring-boot-starter-webflux")
-    testIntImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(libs.spring.webflux)
+    testImplementation(libs.spring.validation)
+    testImplementation(libs.spring.test)
     testIntImplementation(libs.groovy)
     testIntImplementation(platform(libs.spock.bom.get()))
     testIntImplementation("org.spockframework:spock-core")
@@ -56,7 +56,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
-//        processor("io.openapiprocessor:openapi-processor-spring:2022.5-SNAPSHOT")
+        //processor("${libs.processor.core.get()}")
         processor("${libs.processor.spring.get()}")
 
         // setting api path inside a processor configuration overrides the one at the top.
@@ -92,7 +92,7 @@ sourceSets {
     main {
         java {
             // add generated files
-            srcDir("build/openapi")
+            srcDir("$buildDir/openapi")
         }
 
         resources {
