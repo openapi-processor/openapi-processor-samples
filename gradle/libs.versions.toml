@@ -3,10 +3,10 @@ boot = "2.7.13"
 boot3 = "3.1.1"
 boot-deps = "1.1.0"
 micronaut = "3.7.10"
-processor-gradle = "2023.2-SNAPSHOT"
-processor-base = "2023.7-SNAPSHOT"
-processor-spring = "2023.6-SNAPSHOT"
-processor-micronaut = "2023.6-SNAPSHOT"
+processor-gradle = "2023.2"
+processor-base = "2024.1-SNAPSHOT"
+processor-spring = "2024.1-SNAPSHOT"
+processor-micronaut = "2024.1-SNAPSHOT"
 processor-json = "2021.2"
 mapstruct = "1.5.5.Final"
 shadow =  "7.1.2"
@@ -26,6 +26,10 @@ mapstruct = { group = "org.mapstruct", name = "mapstruct", version.ref  = "mapst
 mapstruct-processor = { group = "org.mapstruct", name = "mapstruct-processor", version.ref  = "mapstruct" }
 groovy = { group = "org.apache.groovy", name="groovy", version.ref="groovy" }
 spock-bom = { group = "org.spockframework", name="spock-bom", version.ref="spock" }
+
+spring-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux" }
+spring-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
+spring-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
 
 logback14 = "ch.qos.logback:logback-classic:1.4.4"
 logback12 = "ch.qos.logback:logback-classic:1.2.11"
