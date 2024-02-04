@@ -66,13 +66,13 @@
             <plugin>
                 <groupId>io.openapiprocessor</groupId>
                 <artifactId>openapi-processor-maven-plugin</artifactId>
-                <version>2022.1-SNAPSHOT</version>
+                <version>2024.1-SNAPSHOT</version>
 
                 <dependencies>
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
                         <artifactId>openapi-processor-spring</artifactId>
-                        <version>2023.3-SNAPSHOT</version>
+                        <version>2024.1-SNAPSHOT</version>
                     </dependency>
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
@@ -98,6 +98,7 @@
 
                         <configuration>
                             <id>spring</id>
+                            <addSourceRoot>true</addSourceRoot>
 
                             <options>
                                 <values>
@@ -120,6 +121,7 @@
 
                         <configuration>
                             <id>json</id>
+                            <addSourceRoot>false</addSourceRoot>
 
                             <options>
                                 <values>
@@ -133,41 +135,6 @@
                     </execution>
                 </executions>
 
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>oap-sources</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>${project.build.directory}/generated-sources/openapi</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>oap-resources</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>add-resource</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/generated-resources/json</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- groovy tests -->
@@ -258,6 +225,12 @@
             </plugin>
 
         </plugins>
+
+        <resources>
+          <resource>
+            <directory>${project.build.directory}/generated-resources/json</directory>
+          </resource>
+        </resources>
     </build>
 
     <dependencyManagement>
