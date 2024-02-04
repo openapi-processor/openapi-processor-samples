@@ -55,7 +55,7 @@
             <plugin>
                 <groupId>io.openapiprocessor</groupId>
                 <artifactId>openapi-processor-maven-plugin</artifactId>
-                <version>2024.1-SNAPSHOT-3</version>
+                <version>2024.1</version>
 
                 <dependencies>
                     <dependency>
