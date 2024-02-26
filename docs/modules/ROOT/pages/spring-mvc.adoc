@@ -3,6 +3,7 @@
 :oap-json: https://docs.openapiprocessor.io/json
 :oap-gradle: https://docs.openapiprocessor.io/gradle
 :oap-maven: https://docs.openapiprocessor.io/maven
+:oap-github: https://github.com/openapi-processor/openapi-processor-samples/samples/spring-mvc
 
 This is a very simple Spring Boot (gradle & maven) project that is using
 
