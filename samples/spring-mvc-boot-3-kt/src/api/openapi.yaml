@@ -11,7 +11,7 @@ paths:
       summary: echo a Foo.
       description: simple sample endpoint
       requestBody:
-          $ref: '#/components/requestBodies/FooBody'
+        $ref: '#/components/requestBodies/FooBody'
       responses:
         '200':
           description: foo
@@ -25,16 +25,37 @@ paths:
       tags:
         - bar
       summary: echo a Bar.
-      description: simple sample endpoint
+      description: simple sample endpoint.
+      operationId: echoBar
       requestBody:
-          $ref: '#/components/requestBodies/BarBody'
+        $ref: '#/components/requestBodies/BarBody'
       responses:
         '200':
-          description: bar
+          description: the echoed Bar
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Bar'
+
+  /bars:
+    get:
+      tags:
+        - bar
+      summary: get Bar pages.
+      description: simple sample endpoint.
+      parameters:
+        - in: query
+          name: pageable
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: the pages of Bars
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BarPage'
 
 components:
   schemas:
@@ -57,7 +78,42 @@ components:
           type: string
           maxLength: 20
 
+    Pageable:
+      description: minimal Pageable query parameters
+      type: object
+      properties:
+        page:
+          type: integer
+        size:
+          type: integer
+
+    Page:
+      description: minimal Page response without content property
+      type: object
+      properties:
+        number:
+          type: integer
+        size:
+          type: integer
+
+    BarContent:
+      description: specific content List of the Page response
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bar'
+
+    BarPage:
+      description: typed Page
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - $ref: '#/components/schemas/BarContent'
+
   requestBodies:
+
     FooBody:
       content:
         application/json:
@@ -65,6 +121,8 @@ components:
             $ref: '#/components/schemas/Foo'
 
     BarBody:
+      description: the Bar object that is echoed
+      required: true
       content:
         application/json:
           schema:

@@ -1,4 +1,4 @@
-openapi-processor-mapping: v4
+openapi-processor-mapping: v6
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
@@ -23,12 +23,17 @@ options:
 
 map:
   types:
-    - type: Foo @ io.openapiprocessor.samples.FooBar
-
-    - type: Bar => io.openapiprocessor.samples.MappedBar
-    - type: Bar @ io.openapiprocessor.samples.FooBar
-
+#    - type: Foo @ io.openapiprocessor.samples.FooBar
+#
+    - type: Bar => io.openapiprocessor.samples.Bar
+#    - type: Bar @ io.openapiprocessor.samples.FooBar
+#
     - type: string:uuid => java.util.UUID
-    - type: string:uuid @ io.openapiprocessor.samples.FooBar
+#    - type: string:uuid @ io.openapiprocessor.samples.FooBar
+#
+#    - type: string @ io.openapiprocessor.samples.FooBar
 
-    - type: string @ io.openapiprocessor.samples.FooBar
+    - type: Pageable => org.springframework.data.domain.Pageable
+    - type: BarPage => org.springframework.data.domain.Page<io.openapiprocessor.samples.Bar>
+
+#    - type: BarPage => org.springframework.data.domain.Page<{package-name}.model.Bar>

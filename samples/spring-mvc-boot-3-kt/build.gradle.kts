@@ -4,7 +4,7 @@ plugins {
     id("java")
     alias(libs.plugins.boot3)
     alias(libs.plugins.boot.deps)
-    kotlin("jvm") //version "1.8.22"  // errors
+    kotlin("jvm") //version "1.9.21"  // errors
     kotlin("plugin.spring") version "1.8.22"
 
     // add processor-gradle plugin
@@ -26,6 +26,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.data:spring-data-commons")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
