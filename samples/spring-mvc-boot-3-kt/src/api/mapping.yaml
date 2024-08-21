@@ -1,4 +1,4 @@
-openapi-processor-mapping: v6
+openapi-processor-mapping: v8
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
@@ -6,7 +6,7 @@ options:
   # will be placed into the "api" and "model" subpackages of packageName:
   #  - interfaces => "${packageName}.api"
   #  - models => "${packageName}.model"
-  package-name: io.openapiprocessor.openapi
+  package-name: io.openapiprocessor.samples
 
   # generate javadoc from OpenAPI description properties
   javadoc: true
@@ -34,6 +34,6 @@ map:
 #    - type: string @ io.openapiprocessor.samples.FooBar
 
     - type: Pageable => org.springframework.data.domain.Pageable
-    - type: BarPage => org.springframework.data.domain.Page<io.openapiprocessor.samples.Bar>
+    - type: BarPage => org.springframework.data.domain.Page<{package-name}.model.Bar>
 
 #    - type: BarPage => org.springframework.data.domain.Page<{package-name}.model.Bar>

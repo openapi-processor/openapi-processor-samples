@@ -19,10 +19,6 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -57,6 +53,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
+        processor("${libs.processor.core.get()}")
         processor("${libs.processor.spring.get()}")
 
         // setting api path inside a processor configuration overrides the one at the top.
