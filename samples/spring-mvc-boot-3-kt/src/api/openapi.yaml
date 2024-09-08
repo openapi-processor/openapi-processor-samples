@@ -3,6 +3,25 @@ info:
   title: openapi-processor-spring sample api
   version: 1.0.0
 
+servers:
+  - url: "{schema}://{host}:{port}/{path1}/{path2}/v{version}"
+    variables:
+      schema:
+        default: https
+        enum:
+          - https
+          - http
+      host:
+        default: openapiprocessor.io
+      port:
+        default: "443"
+      path1:
+        default: foo
+      path2:
+        default: bar
+      version:
+        default: "1"
+
 paths:
   /foo:
     post:
@@ -61,22 +80,28 @@ components:
   schemas:
     Foo:
       type: object
+      description: Foo object description
       properties:
         foo:
           type: string
           maxLength: 10
+          description: foo property description
         id:
           type: string
           format: uuid
+          description: id property description
         bar:
           $ref: '#/components/schemas/Bar'
+          description: bar description
 
     Bar:
       type: object
+      description: Bar object description
       properties:
         bar:
           type: string
           maxLength: 20
+          description: bar property description
 
     Pageable:
       description: minimal Pageable query parameters

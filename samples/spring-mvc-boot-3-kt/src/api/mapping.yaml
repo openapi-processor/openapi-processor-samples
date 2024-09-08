@@ -1,4 +1,4 @@
-openapi-processor-mapping: v8
+openapi-processor-mapping: v9
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
@@ -15,6 +15,9 @@ options:
   # see gradle.properties to fix java 16+ errors.
   format-code: false
 
+  # add server/url path as prefix
+  server-url: true
+
   # use bean validations with jakarta package name
   bean-validation: jakarta
 
@@ -24,8 +27,7 @@ options:
 map:
   types:
 #    - type: Foo @ io.openapiprocessor.samples.FooBar
-#
-    - type: Bar => io.openapiprocessor.samples.Bar
+#    - type: Bar => io.openapiprocessor.samples.Bar
 #    - type: Bar @ io.openapiprocessor.samples.FooBar
 #
     - type: string:uuid => java.util.UUID
