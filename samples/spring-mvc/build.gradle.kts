@@ -52,6 +52,11 @@ openapiProcessor {
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", "$projectDir/src/api/mapping.yaml")
 
+        // sets the parser to SWAGGER or INTERNAL. if not set INTERNAL is used.
+        // OPENAPI4J provides better validation but is not maintained anymore.
+        // INTERNAL provides full JSON schema validation
+        // prop("parser", "INTERNAL")
+
         // alternative way of setting processor specific properties
         /*
         prop(mapOf(
