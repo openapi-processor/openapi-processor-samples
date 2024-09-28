@@ -1,26 +1,21 @@
-// this build file is using a version catalog (see settings.gradle.kts)
 plugins {
     id("java")
     id("groovy")
-    alias(libs.plugins.boot3)
-    alias(libs.plugins.boot.deps)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.deps)
     alias(libs.plugins.versions)
     alias(libs.plugins.lombok)
 
     // add processor-gradle plugin
-    alias(libs.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle)
 }
 
 group = "io.openapiprocessor"
 version = "1.0.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation(libs.spring.web)
+    implementation(libs.spring.validation)
 }
 
 // configure multiple openapi-processors inside the 'openapiProcessor' configuration by adding a nested
@@ -32,7 +27,7 @@ openapiProcessor {
     process("spring1") {
         // by using a different name than the processor we have to say which processor we want
         processorName("spring")
-        processor("${libs.processor.spring.get()}")
+        processor("${oap.processor.spring.get()}")
 
         apiPath("${projectDir}/src/api1/openapi.yaml")
         targetDir("$projectDir/build/api1")
@@ -44,7 +39,7 @@ openapiProcessor {
     process("spring2") {
         // by using a different name than the processor we have to say which processor we want
         processorName("spring")
-        processor("${libs.processor.spring.get()}")
+        processor("${oap.processor.spring.get()}")
 
         apiPath("${projectDir}/src/api2/openapi.yaml")
         targetDir("$projectDir/build/api2")
