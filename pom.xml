@@ -26,8 +26,8 @@
     </properties>
 
     <modules>
-<!--        <module>samples/spring-mvc</module>-->
-        <module>samples/spring-multiple-apis</module>
+        <module>samples/spring-mvc</module>
+<!--        <module>samples/spring-multiple-apis</module>-->
 <!--        <module>samples/spring-mvc-boot-3</module>-->
 <!--        <module>samples/spring-webflux</module>-->
     </modules>
