@@ -1,0 +1,15 @@
+[versions]
+processor-gradle = "2023.2"
+processor-base = "2024.6-SNAPSHOT"
+processor-spring = "2024.5-SNAPSHOT"
+#processor-spring = "2024.4"
+processor-micronaut = "2024.5-SNAPSHOT"
+#processor-micronaut = "2024.4"
+
+[libraries]
+processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-base" }
+processor-spring = { group = "io.openapiprocessor", name = "openapi-processor-spring", version.ref = "processor-spring" }
+processor-micronaut = { group = "io.openapiprocessor", name = "openapi-processor-micronaut", version.ref = "processor-micronaut" }
+
+[plugins]
+processor-gradle = { id = "io.openapiprocessor.openapi-processor", version.ref = "processor-gradle" }
