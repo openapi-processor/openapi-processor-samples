@@ -1,20 +1,13 @@
-@file:Suppress("UnstableApiUsage")
-
-import org.gradle.accessors.dm.LibrariesForLibs
-
 plugins {
     java
 }
 
-// see buildSrc/build.gradle.kts
-val libs = the<LibrariesForLibs>()
-
 testing {
     suites {
-        val test by getting(JvmTestSuite::class)
+        @Suppress("UnstableApiUsage") val test by getting(JvmTestSuite::class)
 
-        val testInt by registering(JvmTestSuite::class) {
-            useJUnitJupiter(libs.versions.junit.get())
+        @Suppress("UnstableApiUsage") val testInt by registering(JvmTestSuite::class) {
+            useJUnitJupiter()
             testType.set(TestSuiteType.INTEGRATION_TEST)
 
             dependencies {
@@ -39,5 +32,6 @@ testing {
 }
 
 tasks.named("check") {
+    @Suppress("UnstableApiUsage")
     dependsOn(testing.suites.named("testInt"))
 }
