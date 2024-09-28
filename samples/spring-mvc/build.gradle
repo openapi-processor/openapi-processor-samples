@@ -1,43 +1,27 @@
-// this build file is using a version catalog (see settings.gradle)
-
 plugins {
-    id 'idea'
+//    id 'idea'
     id 'java'
     id 'groovy'
     id 'openapiprocessor.test'
     id 'openapiprocessor.testInt'
-    alias(libs.plugins.boot2)
-    alias(libs.plugins.boot.deps)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.deps)
     alias(libs.plugins.versions)
 
     // add processor-gradle plugin
-    alias(libs.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle)
 }
 
 group = 'io.openapiprocessor.samples'
 version = '1.0.0-SNAPSHOT'
 
-repositories {
-    mavenLocal ()
-    mavenCentral ()
-}
-
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation(libs.spring.web)
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation ('org.springframework.boot:spring-boot-starter-test')
-    testImplementation (libs.groovy)
-    testImplementation platform(libs.spock.bom.get())
-    testImplementation 'org.spockframework:spock-core'
-    testImplementation 'org.spockframework:spock-spring'
-
-    testIntImplementation 'org.springframework.boot:spring-boot-starter-web'
-    testIntImplementation ('org.springframework.boot:spring-boot-starter-test')
-    testIntImplementation (libs.groovy)
-    testIntImplementation platform(libs.spock.bom.get())
-    testIntImplementation 'org.spockframework:spock-core'
-    testIntImplementation 'org.spockframework:spock-spring'
+    testImplementation(libs.bundles.spring.test)
+    testImplementation(libs.bundles.groovy.test)
+    testIntImplementation(libs.bundles.spring.test)
+    testIntImplementation(libs.bundles.groovy.test)
 }
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
@@ -47,6 +31,7 @@ dependencies {
 openapiProcessor {
     // the path to the open api yaml file. Usually the same for all processors.
     apiPath "${projectDir}/src/api/openapi.yaml"
+//    apiPath = layout.projectDirectory.file("src/api/openapi.yaml")
 
     // based on the name of the processor configuration the plugin creates a gradle task with name
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
@@ -55,7 +40,7 @@ openapiProcessor {
         // processor 'io.openapiprocessor:openapi-processor-core:2022.6-SNAPSHOT'
         // processor 'io.openapiprocessor:openapi-processor-spring:2022.4-SNAPSHOT'
         //processor "${libs.processor.core.get()}"
-        processor "${libs.processor.spring.get()}"
+        processor "${oap.processor.spring.get()}"
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -75,16 +60,6 @@ openapiProcessor {
         // INTERNAL provides full JSON schema validation
         parser 'INTERNAL'
     }
-
-    // applying the rules described above the task to run this one is "processJson".
-    json {
-        // the json processor dependency
-        // processor 'io.openapiprocessor:openapi-processor-json:2021.2'
-        processor "${libs.processor.json.get()}"
-
-        targetDir "$buildDir/json"
-    }
-
 }
 
 // add the targetDir of the processor as additional source folder to java.
@@ -103,7 +78,6 @@ sourceSets {
 
 // generate api before compiling
 compileJava.dependsOn ('processSpring')
-processResources.dependsOn ('processJson')
 
 // alternative source set configuration, e.g. with lombok plugin
 // id 'io.freefair.lombok' version '6.4.2'
