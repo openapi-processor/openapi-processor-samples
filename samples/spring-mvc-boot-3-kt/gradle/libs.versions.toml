@@ -1,0 +1,21 @@
+[versions]
+spring-boot = "3.3.4"
+spring-deps = "1.1.6"
+kotlin = "1.9.25"
+versions = "0.46.0"
+
+[libraries]
+spring-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
+spring-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
+spring-data-common = { group = "org.springframework.data", name = "spring-data-commons" }
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-deps = { id = "io.spring.dependency-management", version.ref = "spring-deps" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+
+kotlin-lang = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+
+#//    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+#//    implementation("org.jetbrains.kotlin:kotlin-reflect")

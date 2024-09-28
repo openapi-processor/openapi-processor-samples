@@ -1,23 +1,16 @@
 pluginManagement {
-    repositories {
-        maven {
-            url("https://oss.sonatype.org/content/repositories/snapshots")
-        }
-        gradlePluginPortal()
-    }
+    includeBuild("../../gradle/repositories")
+    includeBuild("../../gradle/conventions")
+}
+
+plugins {
+    id("repositories")
 }
 
 dependencyResolutionManagement {
-    repositories {
-        maven {
-            url("https://oss.sonatype.org/content/repositories/snapshots")
-        }
-        mavenCentral ()
-    }
-
     versionCatalogs {
-        create("libs") {
-            from(files("../../gradle/libs.versions.toml"))
+        create("oap") {
+            from(files("../../gradle/oap.versions.toml"))
         }
     }
 }
