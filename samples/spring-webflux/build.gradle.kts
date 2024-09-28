@@ -1,15 +1,14 @@
-// this build file is using a version catalog (see settings.gradle)
 plugins {
     id("java")
     id("groovy")
     id("openapiprocessor.test")
     id("openapiprocessor.testInt")
-    alias(libs.plugins.boot2)
-    alias(libs.plugins.boot.deps)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.deps)
     alias(libs.plugins.versions)
 
     // add processor-gradle plugin
-    alias(libs.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle)
 }
 
 group = "io.openapiprocessor.samples"
@@ -19,28 +18,12 @@ dependencies {
     annotationProcessor (libs.mapstruct.processor)
     implementation(libs.spring.webflux)
     implementation(libs.spring.validation)
-    implementation (libs.mapstruct)
-    //implementation(libs.processor.core)
+    implementation(libs.mapstruct.base)
 
-    testAnnotationProcessor (libs.mapstruct.processor)
-    testImplementation(libs.spring.webflux)
-    testImplementation(libs.spring.validation)
-    testImplementation(libs.spring.test)
-    testImplementation(libs.groovy)
-    testImplementation(platform(libs.spock.bom.get()))
-    testImplementation("org.spockframework:spock-core")
-    testImplementation("org.spockframework:spock-spring")
-    testImplementation("io.projectreactor:reactor-test")
-
-    testIntAnnotationProcessor (libs.mapstruct.processor)
-    testImplementation(libs.spring.webflux)
-    testImplementation(libs.spring.validation)
-    testImplementation(libs.spring.test)
-    testIntImplementation(libs.groovy)
-    testIntImplementation(platform(libs.spock.bom.get()))
-    testIntImplementation("org.spockframework:spock-core")
-    testIntImplementation("org.spockframework:spock-spring")
-    testIntImplementation("io.projectreactor:reactor-test")
+    testImplementation(libs.bundles.spring.test)
+    testImplementation(libs.bundles.groovy.test)
+    testIntImplementation(libs.bundles.spring.test)
+    testIntImplementation(libs.bundles.groovy.test)
 }
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
@@ -57,7 +40,7 @@ openapiProcessor {
     process("spring") {
         // the spring processor dependency
         //processor("${libs.processor.core.get()}")
-        processor("${libs.processor.spring.get()}")
+        processor("${oap.processor.spring.get()}")
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -72,10 +55,10 @@ openapiProcessor {
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", "$projectDir/src/api/mapping.yaml")
 
-        // sets the parser to SWAGGER, OPENAPI4J or INTERNAL. if not set SWAGGER is used.
+        // sets the parser to SWAGGER or INTERNAL. if not set INTERNAL is used.
         // OPENAPI4J provides better validation but is not maintained anymore.
         // INTERNAL provides full JSON schema validation
-        prop("parser", "INTERNAL")
+        // prop("parser", "INTERNAL")
 
         // alternative way of setting processor specific properties
         /*
@@ -93,10 +76,6 @@ sourceSets {
         java {
             // add generated files
             srcDir("$buildDir/openapi")
-        }
-
-        resources {
-            srcDir("$buildDir/json")
         }
     }
 }

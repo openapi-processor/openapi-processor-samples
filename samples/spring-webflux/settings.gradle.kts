@@ -1,18 +1,18 @@
-rootProject.name = "spring-webflux"
-
 pluginManagement {
-    repositories {
-        maven {
-            url = uri("https://oss.sonatype.org/content/repositories/snapshots")
-        }
-        gradlePluginPortal()
-    }
+    includeBuild("../../gradle/repositories")
+    includeBuild("../../gradle/conventions")
+}
+
+plugins {
+    id("repositories")
 }
 
 dependencyResolutionManagement {
     versionCatalogs {
-        create("libs") {
-            from(files("../../gradle/libs.versions.toml"))
+        create("oap") {
+            from(files("../../gradle/oap.versions.toml"))
         }
     }
 }
+
+rootProject.name = "spring-webflux"

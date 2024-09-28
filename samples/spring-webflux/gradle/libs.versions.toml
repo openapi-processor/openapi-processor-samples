@@ -1,0 +1,43 @@
+[versions]
+spring-boot = "2.7.13"
+spring-deps = "1.1.0"
+versions = "0.46.0"
+
+mapstruct = "1.5.5.Final"
+
+groovy = "4.0.12"
+spock = "2.3-groovy-4.0"
+
+[libraries]
+spring-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux" }
+spring-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
+spring-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
+reactor-test = { group = "io.projectreactor", name = "reactor-test" }
+
+mapstruct-base = { group = "org.mapstruct", name = "mapstruct", version.ref  = "mapstruct" }
+mapstruct-processor = { group = "org.mapstruct", name = "mapstruct-processor", version.ref  = "mapstruct" }
+
+groovy = { group = "org.apache.groovy", name="groovy", version.ref="groovy" }
+spock-bom = { group = "org.spockframework", name="spock-bom", version.ref="spock" }
+# bom does not work in bundle, so we use the explicit version on the parts
+spock-core = { group = "org.spockframework", name="spock-core", version.ref="spock" }
+spock-spring = { group = "org.spockframework", name="spock-spring", version.ref="spock" }
+
+
+[bundles]
+spring-test = [
+    "spring-test",
+    "spring-webflux",
+    "reactor-test"
+]
+
+groovy-test = [
+    "groovy",
+    "spock-core",
+    "spock-spring"
+]
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-deps = { id = "io.spring.dependency-management", version.ref = "spring-deps" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
