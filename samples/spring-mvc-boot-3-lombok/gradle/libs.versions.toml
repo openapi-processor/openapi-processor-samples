@@ -1,0 +1,15 @@
+[versions]
+spring-boot = "3.3.4"
+spring-deps = "1.1.6"
+versions = "0.51.0"
+lombok = "8.10"
+
+[libraries]
+spring-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
+spring-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-deps = { id = "io.spring.dependency-management", version.ref = "spring-deps" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+lombok = { id = "io.freefair.lombok", version.ref = "lombok" }

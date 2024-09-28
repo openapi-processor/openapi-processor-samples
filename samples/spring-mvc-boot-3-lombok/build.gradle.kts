@@ -1,26 +1,20 @@
-// this build file is using a version catalog (see settings.gradle.kts)
 plugins {
     id("java")
-    id("groovy")
-    alias(libs.plugins.boot3)
-    alias(libs.plugins.boot.deps)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.deps)
     alias(libs.plugins.versions)
     alias(libs.plugins.lombok)
 
     // add processor-gradle plugin
-    alias(libs.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle)
 }
 
 group = "io.openapiprocessor"
 version = "1.0.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation(libs.spring.web)
+    implementation(libs.spring.validation)
 }
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
@@ -36,7 +30,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
-        processor("${libs.processor.spring.get()}")
+        processor("${oap.processor.spring.get()}")
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -80,12 +74,6 @@ tasks.compileJava {
     dependsOn("processSpring")
 }
 
-
-/*
-// build.gradle
-afterEvaluate {
-    def processSpring = tasks.named ('processSpring')
-    sourceSets.main.java.srcDir (processSpring)
-    compileJava.dependsOn (processSpring)
+tasks.named("generateEffectiveLombokConfig") {
+    dependsOn("processSpring")
 }
- */
