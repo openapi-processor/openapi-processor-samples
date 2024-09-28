@@ -1,28 +1,24 @@
 pluginManagement {
     repositories {
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
-        }
         gradlePluginPortal()
     }
 }
 
 dependencyResolutionManagement {
     repositories {
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
-        }
         mavenCentral ()
     }
 }
 
 rootProject.name = 'openapi-processor-samples'
 
+
+includeBuild("samples/spring-mvc")
 //include 'samples:spring-mvc'
 //include 'samples:spring-mvc-boot-3'
 //include 'samples:spring-mvc-boot-3-kt'
 //include 'samples:spring-mvc-boot-3-lombok'
-include 'samples:spring-multiple-apis'
+//include 'samples:spring-multiple-apis'
 //include 'samples:spring-webflux'
 //include 'samples:spring-validation'
 //include 'samples:micronaut'
