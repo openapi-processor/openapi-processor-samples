@@ -8,15 +8,22 @@ options:
   #  - models => "${packageName}.model"
   package-name: io.openapiprocessor.samples
 
+  # target-dir options
+  target-dir:
+    # add src/resource directories to target-dir
+    layout: standard
+
+  # create property file with server/url path (requires standard target-dir layout)
+  base-path:
+    server-url: 0
+    profile-name: api.properties
+
   # generate javadoc from OpenAPI description properties
   javadoc: true
 
   # run the generated code through a code formatter
   # see gradle.properties to fix java 16+ errors.
-  format-code: false
-
-  # add server/url path as prefix
-  server-url: true
+  format-code: true
 
   # use bean validations with jakarta package name
   bean-validation: jakarta
@@ -26,16 +33,10 @@ options:
 
 map:
   types:
-#    - type: Foo @ io.openapiprocessor.samples.FooBar
-#    - type: Bar => io.openapiprocessor.samples.Bar
-#    - type: Bar @ io.openapiprocessor.samples.FooBar
-#
     - type: string:uuid => java.util.UUID
-#    - type: string:uuid @ io.openapiprocessor.samples.FooBar
-#
-#    - type: string @ io.openapiprocessor.samples.FooBar
+    - type: Foo @ io.openapiprocessor.samples.FooAnnotation
+    - type: Bar @ io.openapiprocessor.samples.BarAnnotation
+#    - type: Bar => io.openapiprocessor.MappedBar
 
     - type: Pageable => org.springframework.data.domain.Pageable
     - type: BarPage => org.springframework.data.domain.Page<{package-name}.model.Bar>
-
-#    - type: BarPage => org.springframework.data.domain.Page<{package-name}.model.Bar>

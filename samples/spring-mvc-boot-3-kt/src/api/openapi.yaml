@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
-  title: openapi-processor-spring sample api
+  title: sample api
   version: 1.0.0
 
 servers:
-  - url: "{schema}://{host}:{port}/{path1}/{path2}/v{version}"
+  - url: "{schema}://{host}:{port}/{api}/v{version}"
     variables:
       schema:
         default: https
@@ -15,10 +15,8 @@ servers:
         default: openapiprocessor.io
       port:
         default: "443"
-      path1:
-        default: foo
-      path2:
-        default: bar
+      api:
+        default: api
       version:
         default: "1"
 

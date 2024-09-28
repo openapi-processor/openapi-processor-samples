@@ -2,8 +2,8 @@ package io.openapiprocessor.samples
 
 import io.openapiprocessor.samples.api.BarApi
 import io.openapiprocessor.samples.api.FooApi
-import io.openapiprocessor.samples.model.Foo
 import io.openapiprocessor.samples.model.Bar
+import io.openapiprocessor.samples.model.Foo
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
