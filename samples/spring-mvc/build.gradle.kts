@@ -1,51 +1,32 @@
-// this build file is using a version catalog (see settings.gradle)
-
-// to try this, delete or rename the groovy based build.gradle. gradle will pick up build.gradle
-// first if it is available.
-
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     id("java")
     id("groovy")
     id("openapiprocessor.test")
     id("openapiprocessor.testInt")
-    alias(libs.plugins.boot)
-    alias(libs.plugins.boot.deps)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.deps)
     alias(libs.plugins.versions)
 
     // add processor-gradle plugin
-    alias(libs.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle)
 }
 
 group = "io.openapiprocessor.samples"
 version = "1.0.0-SNAPSHOT"
 
-repositories {
-    mavenCentral ()
-}
-
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation(libs.spring.web)
 
-    testImplementation("org.springframework.boot:spring-boot-starter-web")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation(libs.groovy)
-    testImplementation(platform(libs.spock.bom.get()))
-    testImplementation("org.spockframework:spock-core")
-    testImplementation("org.spockframework:spock-spring")
-
-    testIntImplementation("org.springframework.boot:spring-boot-starter-web")
-    testIntImplementation("org.springframework.boot:spring-boot-starter-test")
-    testIntImplementation(libs.groovy)
-    testIntImplementation(platform(libs.spock.bom.get()))
-    testIntImplementation("org.spockframework:spock-core")
-    testIntImplementation("org.spockframework:spock-spring")
+    testImplementation(libs.bundles.spring.test)
+    testImplementation(libs.bundles.groovy.test)
+    testIntImplementation(libs.bundles.spring.test)
+    testIntImplementation(libs.bundles.groovy.test)
 }
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
 //
-// ... using 'spring' and 'json'.
+// ... using 'spring'
 openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
@@ -71,11 +52,6 @@ openapiProcessor {
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", "$projectDir/src/api/mapping.yaml")
 
-        // sets the parser to SWAGGER, OPENAPI4J or INTERNAL. if not set SWAGGER is used.
-        // OPENAPI4J provides better validation but is not maintained anymore.
-        // INTERNAL provides full JSON schema validation
-        prop("parser", "INTERNAL")
-
         // alternative way of setting processor specific properties
         /*
         prop(mapOf(
@@ -84,16 +60,6 @@ openapiProcessor {
         ))
          */
     }
-
-    // applying the rules described above the task to run this one is "processJson".
-    process("json") {
-        // the json processor dependency
-//        processor("io.openapiprocessor:openapi-processor-json:2021.2")
-        processor("${libs.processor.json.get()}")
-
-        targetDir("$buildDir/json")
-    }
-
 }
 
 // add the targetDir of the processor as additional source folder to java.
@@ -103,18 +69,10 @@ sourceSets {
             // add generated files
             srcDir("build/openapi")
         }
-
-        resources {
-            srcDir("$buildDir/json")
-        }
     }
 }
 
 // generate api before compiling
 tasks.compileJava {
     dependsOn("processSpring")
-}
-
-tasks.processResources {
-    dependsOn("processJson")
 }
