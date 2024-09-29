@@ -1,5 +1,5 @@
 [versions]
-processor-gradle = "2023.2"
+processor-gradle = "2024.1-SNAPSHOT"
 processor-base = "2024.6-SNAPSHOT"
 processor-spring = "2024.5-SNAPSHOT"
 #processor-spring = "2024.4"
