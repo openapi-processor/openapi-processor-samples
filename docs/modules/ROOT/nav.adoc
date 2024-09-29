@@ -1,8 +1,1 @@
 * xref:index.adoc[Samples]
-** xref:spring-mvc.adoc[Spring Boot MVC]
-** xref:spring-mvc-boot-3.adoc[Spring Boot 3 MVC]
-** xref:spring-mvc-boot-3-kt.adoc[Spring Boot 3 MVC Kotlin]
-** xref:spring-webflux.adoc[Spring Boot WebFlux]
-** xref:spring-validation.adoc[Spring Boot Bean Validation]
-** xref:spring-multiple-apis.adoc[Spring Boot multiple APIs/enum types]
-** xref:micronaut.adoc[Micronaut]
