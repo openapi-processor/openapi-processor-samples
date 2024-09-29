@@ -8,7 +8,7 @@
 
 this repository contains a couple of sample projects for openapi-processor to show the configuration. A few examples have some code and/or tests.
 
-Adjust `settings.gradle`/`pom.xml` as needed to include the interesting sample.
+Adjust `settings.gradle`/`pom.xml` as needed.
 
 == documentation
 
