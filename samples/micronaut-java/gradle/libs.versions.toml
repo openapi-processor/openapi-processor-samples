@@ -1,0 +1,16 @@
+[versions]
+micronaut = "3.7.10"
+shadow =  "7.1.2"
+versions = "0.51.0"
+
+groovy = "4.0.12"
+spock = "2.3-groovy-4.0"
+
+[libraries]
+
+[bundles]
+
+[plugins]
+micronaut = { id = "io.micronaut.application", version.ref = "micronaut" }
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
