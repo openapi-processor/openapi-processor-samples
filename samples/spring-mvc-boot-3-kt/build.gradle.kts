@@ -3,8 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.deps)
-    kotlin("jvm") version "1.9.21"
-//    alias(libs.plugins.kotlin.lang)
+    alias(libs.plugins.kotlin.lang)
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.versions)
 
@@ -47,7 +46,7 @@ openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
     apiPath("${projectDir}/src/api/openapi.yaml")
-//    apiPath = layout.projectDirectory.file("src/api/openapi.yaml")
+    //apiPath = layout.projectDirectory.file("src/api/openapi.yaml")
 
     // based on the name of the processor configuration the plugin creates a gradle task with name
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
@@ -63,8 +62,8 @@ openapiProcessor {
         // {package-name} folder tree configured in the mapping file.
 
         targetDir("$projectDir/build/openapi")
-//        targetDir(layout.buildDirectory.dir("openapi"))
-//        targetDir = layout.buildDirectory.dir("openapi")
+        //targetDir(layout.buildDirectory.dir("openapi"))
+        //targetDir = layout.buildDirectory.dir("openapi")
 
         // processor specific options, creates a key => value map that is passed to the processor
 
