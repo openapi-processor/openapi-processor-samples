@@ -16,7 +16,7 @@ options:
   # create property file with server/url path (requires standard target-dir layout)
   base-path:
     server-url: 0
-    profile-name: api.properties
+    properties-name: api.properties
 
   # generate javadoc from OpenAPI description properties
   javadoc: true
