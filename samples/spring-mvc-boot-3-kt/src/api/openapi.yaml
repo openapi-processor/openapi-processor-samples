@@ -4,21 +4,10 @@ info:
   version: 1.0.0
 
 servers:
-  - url: "{schema}://{host}:{port}/{api}/v{version}"
+  - url: "https://openapiprocessor.io/{path}"
     variables:
-      schema:
-        default: https
-        enum:
-          - https
-          - http
-      host:
-        default: openapiprocessor.io
-      port:
-        default: "443"
-      api:
+      path:
         default: api
-      version:
-        default: "1"
 
 paths:
   /foo:
