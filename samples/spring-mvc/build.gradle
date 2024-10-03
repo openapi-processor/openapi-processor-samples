@@ -29,8 +29,8 @@ dependencies {
 // ... using 'spring'
 openapiProcessor {
     // the path to the open api yaml file. Usually the same for all processors.
-    apiPath "${projectDir}/src/api/openapi.yaml"
-//    apiPath = layout.projectDirectory.file("src/api/openapi.yaml")
+    apiPath "${projectDir}/src/api/openapi.yaml"  // set as String by method call
+    //apiPath = layout.projectDirectory.file("src/api/openapi.yaml")  // with gradle plugin 2024.1-SNAPSHOT
 
     // based on the name of the processor configuration the plugin creates a gradle task with name
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
@@ -42,7 +42,8 @@ openapiProcessor {
         processor "${oap.processor.spring.get()}"
 
         // setting api path inside a processor configuration overrides the one at the top.
-        // apiPath "${projectDir}/src/api/openapi.yaml"
+        apiPath "${projectDir}/src/api/openapi.yaml"
+        //apiPath = layout.projectDirectory.file("src/api/openapi.yaml")  // with gradle plugin 2024.1-SNAPSHOT
 
         // the destination folder for generating interfaces & models. This is the parent of the
         // {package-name} folder tree configured in the mapping file.

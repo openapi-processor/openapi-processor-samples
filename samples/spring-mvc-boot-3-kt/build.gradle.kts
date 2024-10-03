@@ -46,7 +46,7 @@ openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
     apiPath("${projectDir}/src/api/openapi.yaml")
-    //apiPath = layout.projectDirectory.file("src/api/openapi.yaml")
+    //apiPath = layout.projectDirectory.file("src/api/openapi.yaml") // with gradle plugin 2024.1-SNAPSHOT
 
     // based on the name of the processor configuration the plugin creates a gradle task with name
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
@@ -63,7 +63,7 @@ openapiProcessor {
 
         targetDir("$projectDir/build/openapi")
         //targetDir(layout.buildDirectory.dir("openapi"))
-        //targetDir = layout.buildDirectory.dir("openapi")
+        //targetDir = layout.buildDirectory.dir("openapi") // with gradle plugin 2024.1-SNAPSHOT
 
         // processor specific options, creates a key => value map that is passed to the processor
 

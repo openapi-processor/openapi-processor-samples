@@ -16,3 +16,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "spring-mvc-boot-3-kt"
+
+//includeBuild("../../../openapi-processor-gradle")
+//includeBuild("../../../openapi-processor-spring")
