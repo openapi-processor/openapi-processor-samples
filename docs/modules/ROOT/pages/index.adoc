@@ -8,3 +8,5 @@ This project is a collection of sample project for openapi-processor which show 
 A few of the examples have a `pom` with the maven plugin, most of the examples use `gradle` (a few have a  groovy dsl `build.grade`, most have a kotlin dsl `build.gradle.kts`).
 
 the name of the example project gives a hint which feature (configuration) and framework is showcased in the example. Most simply use java, the newer examples usually use kotlin.
+
+Sample projects: https://github.com/openapi-processor/openapi-processor-samples
