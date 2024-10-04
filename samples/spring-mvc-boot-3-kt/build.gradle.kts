@@ -46,6 +46,7 @@ openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
     apiPath("${projectDir}/src/api/openapi.yaml")
+    //apiPath("${projectDir}/src/api/openapi.json")
     //apiPath = layout.projectDirectory.file("src/api/openapi.yaml") // with gradle plugin 2024.1-SNAPSHOT
 
     // based on the name of the processor configuration the plugin creates a gradle task with name

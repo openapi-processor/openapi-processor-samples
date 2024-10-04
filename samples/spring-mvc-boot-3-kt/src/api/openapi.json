@@ -1,0 +1,204 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "sample api",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://openapiprocessor.io/{path}",
+      "variables": {
+        "path": {
+          "default": "api"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/foo": {
+      "post": {
+        "tags": [
+          "foo"
+        ],
+        "summary": "echo a Foo.",
+        "description": "simple sample endpoint",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/FooBody"
+        },
+        "responses": {
+          "200": {
+            "description": "foo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Foo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bar": {
+      "post": {
+        "tags": [
+          "bar"
+        ],
+        "summary": "echo a Bar.",
+        "description": "simple sample endpoint.",
+        "operationId": "echoBar",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/BarBody"
+        },
+        "responses": {
+          "200": {
+            "description": "the echoed Bar",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bar"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bars": {
+      "get": {
+        "tags": [
+          "bar"
+        ],
+        "summary": "get Bar pages.",
+        "description": "simple sample endpoint.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "pageable",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/Pageable"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the pages of Bars",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BarPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Foo": {
+        "type": "object",
+        "description": "Foo object description",
+        "properties": {
+          "foo": {
+            "type": "string",
+            "maxLength": 10,
+            "description": "foo property description"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "id property description"
+          },
+          "bar": {
+            "$ref": "#/components/schemas/Bar",
+            "description": "bar description"
+          }
+        }
+      },
+      "Bar": {
+        "type": "object",
+        "description": "Bar object description",
+        "properties": {
+          "bar": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "bar property description"
+          }
+        }
+      },
+      "Pageable": {
+        "description": "minimal Pageable query parameters",
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          }
+        }
+      },
+      "Page": {
+        "description": "minimal Page response without content property",
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          }
+        }
+      },
+      "BarContent": {
+        "description": "specific content List of the Page response",
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Bar"
+            }
+          }
+        }
+      },
+      "BarPage": {
+        "description": "typed Page",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Page"
+          },
+          {
+            "$ref": "#/components/schemas/BarContent"
+          }
+        ]
+      }
+    },
+    "requestBodies": {
+      "FooBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Foo"
+            }
+          }
+        }
+      },
+      "BarBody": {
+        "description": "the Bar object that is echoed",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Bar"
+            }
+          }
+        }
+      }
+    }
+  }
+}
