@@ -1,0 +1,24 @@
+openapi-processor-mapping: v10
+
+options:
+  package-name: io.openapiprocessor.samples.bar
+
+  target-dir:
+    layout: standard
+
+  # create property file with server/url path (requires standard target-dir layout)
+  base-path:
+    server-url: 0
+    properties-name: bar.properties
+
+  # generate javadoc from OpenAPI description properties
+  javadoc: true
+
+  # run the generated code through a code formatter
+  # see gradle.properties to fix java 16+ errors.
+  format-code: true
+
+  # use java records instead of pojos
+  model-type: record
+
+  model-name-suffix: Dto

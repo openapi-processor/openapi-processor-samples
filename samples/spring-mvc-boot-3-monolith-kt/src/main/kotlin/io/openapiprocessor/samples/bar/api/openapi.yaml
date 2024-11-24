@@ -1,0 +1,51 @@
+openapi: 3.1.0
+
+info:
+  title: bar api
+  version: 1.0.0
+
+servers:
+  - url: "https://openapiprocessor.io/{path}"
+    variables:
+      path:
+        default: api
+
+paths:
+  /bar:
+    post:
+      tags:
+        - bar
+      summary: echo a Bar.
+      description: echo a Bar object.
+      requestBody:
+        $ref: '#/components/requestBodies/BarBody'
+      responses:
+        '200':
+          description: Bar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bar'
+
+
+components:
+  requestBodies:
+
+    BarBody:
+      description: a Bar body
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Bar'
+
+  schemas:
+
+    Bar:
+      type: object
+      description: Bar object description
+      properties:
+        bar:
+          type: string
+          maxLength: 20
+          description: bar property description

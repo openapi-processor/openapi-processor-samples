@@ -1,0 +1,51 @@
+openapi: 3.1.0
+
+info:
+  title: foo api
+  version: 1.0.0
+
+servers:
+  - url: "https://openapiprocessor.io/{path}"
+    variables:
+      path:
+        default: api
+
+paths:
+  /foo:
+    post:
+      tags:
+        - foo
+      summary: echo a Foo.
+      description: echo a Foo object.
+      requestBody:
+        $ref: '#/components/requestBodies/FooBody'
+      responses:
+        '200':
+          description: Foo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Foo'
+
+
+components:
+  requestBodies:
+
+    FooBody:
+      description: a Foo body
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Foo'
+
+  schemas:
+
+    Foo:
+      type: object
+      description: Foo object description
+      properties:
+        foo:
+          type: string
+          maxLength: 20
+          description: foo property description
