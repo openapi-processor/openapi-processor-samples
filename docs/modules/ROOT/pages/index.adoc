@@ -1,5 +1,7 @@
 :page-title: openapi-processor samples
-:page-aliases: current@samples:ROOT:index.adoc, latest@samples:ROOT:index.adoc
+:page-aliases: current@samples:ROOT:index.adoc, \
+latest@samples:ROOT:index.adoc, \
+2021.3.x@samples::spring-webflux.adoc
 
 = openapi-processor samples
 
