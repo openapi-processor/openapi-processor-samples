@@ -3,3 +3,15 @@
 == update wrapper
 
  ./mvnw -N wrapper:wrapper -Dmaven=3.6.3
+
+== run process goal
+
+  ./mvnw openapi-processor:process
+
+goal requires `<id>default-cli</id>`
+
+== enable mapping lookup logging
+
+add
+
+  -Dorg.slf4j.simpleLogger.log.io.openapiprocessor.core.converter.mapping=info
