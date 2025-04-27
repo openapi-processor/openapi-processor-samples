@@ -37,7 +37,7 @@ openapiProcessor {
     process("spring") {
         // the spring processor dependency
         // processor("io.openapiprocessor:openapi-processor-spring:2022.5-SNAPSHOT")
-        processor("${libs.processor.spring.get()}")
+        processor("${oap.processor.spring.get()}")
 
         // setting api path inside a processor configuration overrides the one at the top.
         // apiPath "${projectDir}/src/api/openapi.yaml"
@@ -68,7 +68,7 @@ openapiProcessor {
 
 // add the targetDir of the processor as additional source folder to java.
 sourceSets {
-    api {
+    create("api") {
         resources {
             srcDir("${projectDir}/src/api")
         }
