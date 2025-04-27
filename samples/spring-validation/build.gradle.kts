@@ -41,7 +41,7 @@ openapiProcessor {
         // {package-name} folder tree configured in the mapping file.
         targetDir("$projectDir/build/openapi")
 
-        // processor specific options, creates a key => value map that is passed to the processor
+        // processor-specific options, creates a key => value map that is passed to the processor
 
         // file name of the mapping yaml configuration file. Note that the yaml file name must end
         // with either {@code .yaml} or {@code .yml}.
@@ -51,7 +51,7 @@ openapiProcessor {
         // INTERNAL provides full JSON schema validation
         prop("parser", "INTERNAL")
 
-        // alternative way of setting processor specific properties
+        // alternative way of setting processor-specific properties
         /*
         prop(mapOf(
             "mapping" to "$projectDir/src/api/mapping.yaml",
@@ -61,8 +61,14 @@ openapiProcessor {
     }
 }
 
-// add the targetDir of the processor as additional source folder to java.
+// add the targetDir of the processor as an additional source folder to java.
 sourceSets {
+    create("api") {
+        resources {
+            srcDir("${projectDir}/src/api")
+        }
+    }
+
     main {
         java {
             // add generated files
