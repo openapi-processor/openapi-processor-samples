@@ -89,12 +89,12 @@
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
                         <artifactId>openapi-processor-spring</artifactId>
-                        <version>2023.3-SNAPSHOT</version>
+                        <version>${openapiprocessor.micronaut}</version>
                     </dependency>
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
                         <artifactId>openapi-processor-json</artifactId>
-                        <version>2021.2</version>
+                        <version>${openapiprocessor.micronaut}</version>
                     </dependency>
                 </dependencies>
 
