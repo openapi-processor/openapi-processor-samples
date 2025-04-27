@@ -36,7 +36,7 @@ openapiProcessor {
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
-//        processor("io.openapiprocessor:openapi-processor-spring:2022.5-SNAPSHOT")
+        // processor("io.openapiprocessor:openapi-processor-spring:2022.5-SNAPSHOT")
         processor("${libs.processor.spring.get()}")
 
         // setting api path inside a processor configuration overrides the one at the top.
@@ -53,15 +53,14 @@ openapiProcessor {
         prop("mapping", "$projectDir/src/api/mapping.yaml")
 
         // sets the parser to SWAGGER or INTERNAL. if not set INTERNAL is used.
-        // OPENAPI4J provides better validation but is not maintained anymore.
         // INTERNAL provides full JSON schema validation
-        // prop("parser", "INTERNAL")
+        // prop("parser", "SWAGGER")
 
         // alternative way of setting processor specific properties
         /*
         prop(mapOf(
             "mapping" to "$projectDir/src/api/mapping.yaml",
-            "parser" to "INTERNAL"
+            "parser" to "SWAGGER"
         ))
          */
     }
@@ -69,6 +68,12 @@ openapiProcessor {
 
 // add the targetDir of the processor as additional source folder to java.
 sourceSets {
+    api {
+        resources {
+            srcDir("${projectDir}/src/api")
+        }
+    }
+
     main {
         java {
             // add generated files

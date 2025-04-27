@@ -65,6 +65,12 @@ openapiProcessor {
 
 // add the targetDir of the processor as additional source folder to java.
 sourceSets {
+    api {
+        resources {
+            srcDir "${projectDir}/src/api"
+        }
+    }
+
     main {
         java {
             // add generated files
