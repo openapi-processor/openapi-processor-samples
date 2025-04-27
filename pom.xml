@@ -12,17 +12,20 @@
 
     <pluginRepositories>
 
-        <pluginRepository>
-            <id>openapi-processor-snapshots</id>
-            <name>openapi-processor-snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </pluginRepository>
+<!--        <pluginRepository>-->
+<!--            <id>openapi-processor-snapshots</id>-->
+<!--            <name>openapi-processor-snapshots</name>-->
+<!--            <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+<!--        </pluginRepository>-->
 
     </pluginRepositories>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <openapiprocessor.spring>2025.2</openapiprocessor.spring>
+        <openapiprocessor.micronaut>2025.2</openapiprocessor.micronaut>
+        <openapiprocessor.json>2021.2</openapiprocessor.json>
     </properties>
 
     <modules>
