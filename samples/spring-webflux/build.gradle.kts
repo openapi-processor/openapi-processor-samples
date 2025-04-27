@@ -55,27 +55,32 @@ openapiProcessor {
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", "$projectDir/src/api/mapping.yaml")
 
-        // sets the parser to SWAGGER or INTERNAL. if not set INTERNAL is used.
-        // OPENAPI4J provides better validation but is not maintained anymore.
+        // sets the parser to SWAGGER or INTERNAL. if not set, INTERNAL is used.
         // INTERNAL provides full JSON schema validation
-        // prop("parser", "INTERNAL")
+        // prop("parser", "SWAGGER")
 
-        // alternative way of setting processor specific properties
+        // alternative way of setting processor-specific properties
         /*
         prop(mapOf(
             "mapping" to "$projectDir/src/api/mapping.yaml",
-            "parser" to "INTERNAL"
+            "parser" to "SWAGGER"
         ))
          */
     }
 }
 
-// add the targetDir of the processor as additional source folder to java.
+// add the targetDir of the processor as an additional source folder to java.
 sourceSets {
+    create("api") {
+        resources {
+            srcDir("${projectDir}/src/api")
+        }
+    }
+
     main {
         java {
             // add generated files
-            srcDir("$buildDir/openapi")
+            srcDir("build/openapi")
         }
     }
 }
