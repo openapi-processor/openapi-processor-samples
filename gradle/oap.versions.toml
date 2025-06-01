@@ -1,9 +1,9 @@
 [versions]
 #processor-gradle = "2024.1-SNAPSHOT"
 processor-gradle = "2023.2"
-processor-base = "2025.2"
-processor-spring = "2025.2"
-processor-micronaut = "2025.2"
+processor-base = "2025.3-SNAPSHOT"
+processor-spring = "2025.3-SNAPSHOT"
+processor-micronaut = "2025.3-SNAPSHOT"
 
 [libraries]
 processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-base" }
