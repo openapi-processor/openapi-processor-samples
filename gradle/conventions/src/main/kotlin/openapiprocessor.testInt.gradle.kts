@@ -8,7 +8,6 @@ testing {
 
         @Suppress("UnstableApiUsage") val testInt by registering(JvmTestSuite::class) {
             useJUnitJupiter()
-            testType.set(TestSuiteType.INTEGRATION_TEST)
 
             dependencies {
                 implementation(project())
