@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.1.0
 info:
   title: openapi-processor-spring sample api
   version: 1.0.0
@@ -38,3 +38,13 @@ paths:
             text/plain:
               schema:
                 type: string
+
+  /nop:
+    get:
+      tags:
+        - nop
+      summary: response status
+      description: adds status for success other than 200
+      responses:
+        '204':
+          description: no content
