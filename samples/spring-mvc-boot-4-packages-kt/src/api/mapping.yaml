@@ -1,0 +1,31 @@
+openapi-processor-mapping: v13
+
+options:
+  # this must be
+  package-name: io.openapiprocessor.samples
+
+  # this enables package generation from the endpoint $ref file location
+  package-name-from-path: true
+
+  # target-dir options
+  target-dir:
+    # add src/resource directories to target-dir
+    layout: standard
+
+  # create a property file with server/url path (requires standard target-dir layout)
+  base-path:
+    server-url: 0
+    properties-name: api.properties
+
+  # generate javadoc from OpenAPI description properties
+  javadoc: true
+
+  # enable code/javadoc formatting
+  format-code: true
+
+  # generate java records
+  model-type: record
+
+map:
+  types:
+    - type: string:uuid => java.util.UUID

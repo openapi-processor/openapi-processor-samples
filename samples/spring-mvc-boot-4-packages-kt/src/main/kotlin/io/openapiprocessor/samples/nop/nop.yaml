@@ -1,0 +1,8 @@
+get:
+  tags:
+    - nop
+  summary: response status
+  description: adds status for success other than 200
+  responses:
+    '204':
+      description: no content

@@ -1,0 +1,12 @@
+get:
+  tags:
+    - ping
+  summary: returns a single "pong" string.
+  description: very simple sample endpoint
+  responses:
+    '200':
+      description: pong
+      content:
+        text/plain:
+          schema:
+            type: string

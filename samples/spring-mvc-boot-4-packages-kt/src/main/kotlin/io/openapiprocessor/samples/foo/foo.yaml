@@ -1,0 +1,14 @@
+post:
+  tags:
+    - foo
+  summary: echo a Foo.
+  description: simple sample endpoint
+  requestBody:
+    $ref: 'resources.yaml#/FooBody'
+  responses:
+    '200':
+      description: foo
+      content:
+        application/json:
+          schema:
+            $ref: 'resources.yaml#/Foo'

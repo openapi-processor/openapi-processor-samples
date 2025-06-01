@@ -1,0 +1,23 @@
+openapi: 3.1.0
+info:
+  title: openapi-processor-spring sample api
+  version: 1.0.0
+
+servers:
+  - url: "https://openapiprocessor.io/{path}"
+    variables:
+      path:
+        default: api
+
+paths:
+  /ping:
+    $ref: '../main/kotlin/io/openapiprocessor/samples/ping/ping.yaml'
+
+  /echo:
+    $ref: '../main/kotlin/io/openapiprocessor/samples/echo/echo.yaml'
+
+  /nop:
+    $ref: '../main/kotlin/io/openapiprocessor/samples/nop/nop.yaml'
+
+  /foo:
+    $ref: '../main/kotlin/io/openapiprocessor/samples/foo/foo.yaml'

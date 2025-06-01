@@ -1,0 +1,18 @@
+FooBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/Foo'
+
+Foo:
+  type: object
+  description: Foo object description
+  properties:
+    foo:
+      type: string
+      maxLength: 10
+      description: foo property description
+    id:
+      type: string
+      format: uuid
+      description: id property description
