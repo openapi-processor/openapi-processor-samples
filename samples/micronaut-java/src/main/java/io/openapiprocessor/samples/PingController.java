@@ -10,9 +10,9 @@ import io.openapiprocessor.openapi.api.PingApi;
 
 @Controller
 public class PingController implements PingApi {
+
     @Override
     public String getPing () {
         return "pong";
     }
-
 }
