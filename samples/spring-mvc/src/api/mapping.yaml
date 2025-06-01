@@ -1,4 +1,4 @@
-openapi-processor-mapping: v12
+openapi-processor-mapping: v13
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
@@ -13,3 +13,10 @@ options:
 
   # enable code/javadoc formatting
   format-code: true
+
+map:
+  result-status: false
+
+  paths:
+    /nop:
+      result-status: true

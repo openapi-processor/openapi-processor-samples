@@ -1,7 +1,10 @@
-###
+### echo
 GET http://localhost:8080/echo?source=OpenAPI
 Accept: text/plain
 
-###
+### ping
 GET http://localhost:8080/ping
 Accept: text/plain
+
+### nop => 204
+GET http://localhost:8080/nop
