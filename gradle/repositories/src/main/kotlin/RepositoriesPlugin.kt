@@ -7,9 +7,9 @@ class RepositoriesPlugin : Plugin<Settings> {
         settings.pluginManagement {
             repositories {
                 gradlePluginPortal()
-                maven {
-                    setUrl("https://oss.sonatype.org/content/repositories/snapshots")
-                }
+                maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
+                maven { setUrl("https://repo.spring.io/milestone") }
+                maven { setUrl("https://repo.spring.io/snapshot") }
             }
         }
 
@@ -18,12 +18,11 @@ class RepositoriesPlugin : Plugin<Settings> {
             repositories {
                 //mavenLocal()
                 mavenCentral()
-                maven {
-                    setUrl("https://oss.sonatype.org/content/repositories/snapshots")
-                }
+                maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
+                maven { setUrl("https://repo.spring.io/milestone") }
+                maven { setUrl("https://repo.spring.io/snapshot") }
             }
         }
 
     }
 }
-
