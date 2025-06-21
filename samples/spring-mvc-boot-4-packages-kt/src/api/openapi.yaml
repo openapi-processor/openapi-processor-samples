@@ -21,3 +21,7 @@ paths:
 
   /foo:
     $ref: '../main/kotlin/io/openapiprocessor/samples/foo/foo.yaml'
+
+  /bar:
+    # placed into base package
+    $ref: './bar.yaml'

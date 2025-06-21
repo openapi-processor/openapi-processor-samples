@@ -1,11 +1,14 @@
 openapi-processor-mapping: v13
 
 options:
-  # this must be
-  package-name: io.openapiprocessor.samples
+  # shortcut to package-names.base
+  # package-name: io.openapiprocessor.samples
 
-  # this enables package generation from the endpoint $ref file location
-  package-name-from-path: true
+  package-names:
+    # same as package-name
+    base: io.openapiprocessor.openapi
+    # this enables package generation from the endpoint $ref file location
+    location: io.openapiprocessor.samples
 
   # target-dir options
   target-dir:
