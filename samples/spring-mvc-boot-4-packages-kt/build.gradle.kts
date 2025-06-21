@@ -85,15 +85,19 @@ openapiProcessor {
 
 // add the targetDir of the processor as additional source folder to java.
 sourceSets {
+    create("api") {
+        resources {
+            // add api resources
+            srcDir("${projectDir}/src/api")
+        }
+    }
+
     main {
         java {
             // add generated files
             srcDir(layout.buildDirectory.dir("openapi/java"))
         }
         resources {
-            // add api resources
-            srcDir(layout.projectDirectory.dir("src/api"))
-
             // add generated resources
             srcDir(layout.buildDirectory.dir("openapi/resources"))
         }
