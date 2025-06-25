@@ -13,7 +13,7 @@ dependencyResolutionManagement {
 rootProject.name = 'openapi-processor-samples'
 
 
-includeBuild("samples/spring-mvc")
+//includeBuild("samples/spring-mvc")
 //includeBuild("samples/spring-webflux")
 //includeBuild("samples/spring-validation")
 //includeBuild("samples/spring-multiple-apis")
@@ -21,6 +21,7 @@ includeBuild("samples/spring-mvc")
 //includeBuild("samples/spring-mvc-boot-3-lombok")
 //includeBuild("samples/spring-mvc-boot-3-kt")
 //includeBuild("samples/spring-mvc-boot-3-monolith-kt")
+includeBuild("samples/spring-mvc-boot-4-packages-kt")
 //includeBuild("samples/micronaut-java")
 //includeBuild("samples/micronaut-kt")
 //includeBuild("samples/micronaut-validation")
