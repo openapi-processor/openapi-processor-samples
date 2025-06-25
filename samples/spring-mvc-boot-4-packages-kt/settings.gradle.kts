@@ -17,5 +17,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "spring-mvc-boot-4-packages-kt"
 
-includeBuild("../../../openapi-processor-spring")
-includeBuild("../../../openapi-processor-base")
+//includeBuild("../../../openapi-processor-spring")
+//includeBuild("../../../openapi-processor-base")
