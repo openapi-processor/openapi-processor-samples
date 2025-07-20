@@ -6,7 +6,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class Api2WebConfig implements WebMvcConfigurer {
 
     @SuppressWarnings("rawtypes")
     @Override

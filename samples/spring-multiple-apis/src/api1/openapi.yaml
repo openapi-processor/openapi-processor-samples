@@ -4,7 +4,7 @@ info:
   version: 1.0.0
 
 paths:
-  /foo:
+  /api1/foo:
     post:
       summary: api with enum in body and parameter.
       parameters:
@@ -28,15 +28,19 @@ components:
   schemas:
     Foo:
       type: object
+      description: Foo
       properties:
         id:
           type: string
           format: uuid
+          description: an id
         type:
           $ref: '#/components/schemas/Type'
+          description: an enum
 
     Type:
       type: string
+      description: Type
       enum:
         - foo
         - bar

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Api2Controller implements Api {
 
     @Override
-    public Foo postFoo(Type type, Foo body) {
+    public Foo postApi2Foo(Type type, Foo foo) {
         return null;
     }
 }

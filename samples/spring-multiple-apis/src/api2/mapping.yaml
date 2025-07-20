@@ -1,4 +1,4 @@
-openapi-processor-mapping: v5
+openapi-processor-mapping: v13
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
@@ -13,7 +13,7 @@ options:
 
   # run the generated code through a code formatter
   # see gradle.properties to fix java 16+ errors.
-  format-code: false
+  format-code: eclipse
 
   # use bean validations with jakarta package name
   bean-validation: jakarta
@@ -21,8 +21,10 @@ options:
   # use pojos (default)
   model-type: default
 
+  # generate enums as strings
+  enum-type: string
   # generate enums with converter factory
-  enum-type: framework
+#  enum-type: framework
 
 map:
   types:

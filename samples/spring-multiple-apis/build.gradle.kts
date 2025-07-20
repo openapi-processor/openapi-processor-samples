@@ -16,6 +16,7 @@ version = "1.0.0-SNAPSHOT"
 dependencies {
     implementation(libs.spring.web)
     implementation(libs.spring.validation)
+    testImplementation(libs.spring.test)
 }
 
 // configure multiple openapi-processors inside the 'openapiProcessor' configuration by adding a nested
@@ -28,24 +29,24 @@ openapiProcessor {
         // by using a different name than the processor we have to say which processor we want
         processorName("spring")
         processor("${oap.processor.spring.get()}")
+//        processor("${oap.processor.core.get()}")
 
         apiPath("${projectDir}/src/api1/openapi.yaml")
         targetDir("$projectDir/build/api1")
 
         prop("mapping", "$projectDir/src/api1/mapping.yaml")
-        prop("parser", "INTERNAL")
     }
 
     process("spring2") {
         // by using a different name than the processor we have to say which processor we want
         processorName("spring")
         processor("${oap.processor.spring.get()}")
+//        processor("${oap.processor.core.get()}")
 
         apiPath("${projectDir}/src/api2/openapi.yaml")
         targetDir("$projectDir/build/api2")
 
         prop("mapping", "$projectDir/src/api2/mapping.yaml")
-        prop("parser", "INTERNAL")
     }
 }
 
@@ -59,5 +60,9 @@ sourceSets {
 }
 
 tasks.compileJava {
-    dependsOn("processSpring2", "processSpring2")
+    dependsOn("processSpring1", "processSpring2")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

@@ -1,0 +1,8 @@
+### api1, with custom enum value mapping
+POST http://localhost:8080/api1/foo?type=foo
+Content-Type: application/json
+
+{
+  "id": "0fba5be9-e73d-4050-bec7-02ad87fcca8e",
+  "type": "bar"
+}

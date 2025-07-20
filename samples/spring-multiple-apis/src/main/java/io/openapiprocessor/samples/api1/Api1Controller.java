@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class Api1Controller implements Api {
 
     @Override
-    public Foo postFoo(String type, Foo body) {
-        return null;
+    public Foo postApi1Foo(Type type, Foo foo) {
+        var result = new Foo();
+        result.setId(foo.getId());
+        result.setType(type);
+        return result;
     }
 }
