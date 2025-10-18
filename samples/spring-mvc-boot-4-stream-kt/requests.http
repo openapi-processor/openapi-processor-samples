@@ -1,0 +1,55 @@
+// I think it is done like documented here: https://www.jetbrains.com/help/idea/http-response-handling-examples.html#stream_scripting
+// but it does not work: it does not log, it does not stop, it does not run the test
+
+### SSE Stream example
+GET http://localhost:8080/api/sse
+
+> {%
+    let updatesCount = 1;
+
+    // process lines/events from the stream
+    response.body.onEachLine((eventData, unsubscribe) => {
+        updatesCount++;
+
+        if (updatesCount >= 10) {
+            // where does it log to? Can't see it.
+            client.log("stopping stream processing...");
+            unsubscribe();
+            // how to stop the connection?
+            return;
+        }
+
+        // does not run?
+        client.test("stream connection established", function() {
+            client.assert(response.status === 200, "response status is not 200");
+            client.assert(response.headers.valueOf("Content-Type").includes("text/event-stream"), "Content-Type is not text/event-stream");
+        });
+    });
+%}
+
+### StreamResponseBody example
+GET http://localhost:8080/api/jsonl
+
+> {%
+    let updatesCount = 1;
+
+    // process lines/events from the stream
+    response.body.onEachLine((eventData, unsubscribe) => {
+        updatesCount++;
+
+        // stop
+        if (updatesCount >= 10) {
+            // where does it log to? Can't see it.
+            client.log("stopping stream processing...");
+            unsubscribe();
+            // how to stop the connection?
+            return;
+        }
+
+        // does not run?
+        client.test("stream connection established", function() {
+            client.assert(response.status === 201, "response status is not 200");
+            client.assert(response.headers.valueOf("Content-Type").includes("application/jsonl"), "Content-Type is not application/jsonl");
+        });
+    });
+%}

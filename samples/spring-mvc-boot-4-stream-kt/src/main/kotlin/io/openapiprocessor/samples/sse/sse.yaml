@@ -1,0 +1,22 @@
+get:
+  tags:
+    - sse
+  summary: stream objects
+  description: endpoint send has a stream response
+  parameters:
+    - name: source
+      description: query, required, string
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: jsonl stream
+      content:
+        application/json:
+          itemSchema:
+            type: object
+            properties:
+              foo:
+                type: string

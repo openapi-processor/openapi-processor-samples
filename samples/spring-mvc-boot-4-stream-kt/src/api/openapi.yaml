@@ -1,0 +1,17 @@
+openapi: 3.2.0
+info:
+  title: openapi-processor-spring sample api
+  version: 1.0.0
+
+servers:
+  - url: "https://openapiprocessor.io/{path}"
+    variables:
+      path:
+        default: api
+
+paths:
+  /sse:
+    $ref: '../main/kotlin/io/openapiprocessor/samples/sse/sse.yaml'
+
+  /jsonl:
+    $ref: '../main/kotlin/io/openapiprocessor/samples/jsonl/jsonl.yaml'
