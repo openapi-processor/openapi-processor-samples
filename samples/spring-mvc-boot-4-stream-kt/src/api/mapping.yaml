@@ -35,10 +35,7 @@ map:
 
   paths:
     /sse:
-      result: plain =>  org.springframework.web.servlet.mvc.method.annotation.SseEmitter
+      result: plain => org.springframework.web.servlet.mvc.method.annotation.SseEmitter
 
     /jsonl:
       result: plain => org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody
-#      responses:
-#        - content: application/jsonl => org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody
-

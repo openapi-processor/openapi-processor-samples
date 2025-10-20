@@ -1,5 +1,0 @@
-Bar:
-  type: object
-  properties:
-    foo:
-      type: string

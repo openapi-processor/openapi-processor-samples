@@ -2,17 +2,16 @@ get:
   tags:
     - sse
   summary: stream objects
-  description: endpoint send has a stream response
+  description: endpoint has a stream response
   parameters:
     - name: source
-      description: query, required, string
+      description: query, string
       in: query
-      required: true
       schema:
         type: string
   responses:
     '200':
-      description: jsonl stream
+      description: sse
       content:
         application/json:
           itemSchema:

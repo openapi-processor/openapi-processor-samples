@@ -1,6 +1,7 @@
 openapi: 3.2.0
+$self: '../main/kotlin/io/openapiprocessor/samples/'
 info:
-  title: openapi-processor-spring sample api
+  title: openapi-processor-spring stream sample api
   version: 1.0.0
 
 servers:
@@ -11,7 +12,7 @@ servers:
 
 paths:
   /sse:
-    $ref: '../main/kotlin/io/openapiprocessor/samples/sse/sse.yaml'
+    $ref: 'sse/sse.yaml'
 
   /jsonl:
-    $ref: '../main/kotlin/io/openapiprocessor/samples/jsonl/jsonl.yaml'
+    $ref: 'jsonl/jsonl.yaml'

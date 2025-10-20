@@ -2,12 +2,11 @@ get:
   tags:
     - jsonl
   summary: stream objects
-  description: endpoint send has a sream response
+  description: endpoint has a stream response
   parameters:
     - name: source
-      description: query, required, string
+      description: query, string
       in: query
-      required: true
       schema:
         type: string
   responses:

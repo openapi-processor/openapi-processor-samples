@@ -1,9 +1,0 @@
-get:
-  tags: [ bar ]
-  responses:
-    '200':
-      description: the bar result
-      content:
-        application/json:
-            schema:
-              $ref: './resources.yaml#/Bar'
