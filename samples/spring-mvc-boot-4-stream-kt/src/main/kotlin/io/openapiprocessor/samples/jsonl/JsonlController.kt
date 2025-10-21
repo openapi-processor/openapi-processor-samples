@@ -26,8 +26,6 @@ class JsonlController(val mapper: ObjectMapper) {
                     }
                 } catch (ex: Exception) {
                     throw ex
-                } finally {
-                    os.close()
                 }
             }
         }
