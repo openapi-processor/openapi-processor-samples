@@ -1,4 +1,4 @@
-openapi-processor-mapping: v15
+openapi-processor-mapping: v16
 
 options:
   # shortcut to package-names.base
@@ -33,9 +33,15 @@ map:
   types:
     - type: string:uuid => java.util.UUID
 
+    # dummy annotation for "annotation-targets"
+    - type: JsonlGetResponse200 @ io.openapiprocessor.samples.Dummy
+
   paths:
     /sse:
       result: plain => org.springframework.web.servlet.mvc.method.annotation.SseEmitter
 
     /jsonl:
       result: plain => org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody
+
+annotation-targets:
+  io.openapiprocessor.samples.Dummy: ['parameter']
