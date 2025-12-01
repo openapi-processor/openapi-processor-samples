@@ -46,7 +46,7 @@ tasks.withType<Test> {
 // ... using 'spring'.
 openapiProcessor {
 
-    // the path to the open api yaml file. Usually the same for all processors.
+    // the path to the open api YAML file. Usually the same for all processors.
     apiPath("${projectDir}/src/api/openapi.yaml")
     //apiPath("${projectDir}/src/api/openapi.json")
 
@@ -68,7 +68,7 @@ openapiProcessor {
 
         // processor specific options, creates a key => value map that is passed to the processor
 
-        // file name of the mapping yaml configuration file. Note that the yaml file name must end
+        // file name of the mapping YAML configuration file. Note that the yaml file name must end
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", layout.projectDirectory.file("src/api/mapping.yaml"))
         prop("logging", "stdout")
