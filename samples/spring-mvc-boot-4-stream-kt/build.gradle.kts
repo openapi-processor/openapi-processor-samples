@@ -81,6 +81,11 @@ openapiProcessor {
         ))
          */
     }
+
+    process("json") {
+        processor("${oap.processor.json.get()}")
+        targetDir("$projectDir/build/openapi/resources")
+    }
 }
 
 // add the targetDir of the processor as additional source folder to java.
