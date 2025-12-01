@@ -1,12 +1,14 @@
 [versions]
 processor-gradle-next = "2025.1-SNAPSHOT"
 processor-gradle = "2023.2"
-processor-base = "2025.6"
-processor-spring = "2025.5"
+processor-base = "2025.7-SNAPSHOT"
+processor-json = "2025.1-b1-SNAPSHOT"
+processor-spring = "2025.6-SNAPSHOT"
 processor-micronaut = "2025.5"
 
 [libraries]
 processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-base" }
+processor-json = { group = "io.openapiprocessor", name = "openapi-processor-json", version.ref = "processor-json" }
 processor-spring = { group = "io.openapiprocessor", name = "openapi-processor-spring", version.ref = "processor-spring" }
 processor-micronaut = { group = "io.openapiprocessor", name = "openapi-processor-micronaut", version.ref = "processor-micronaut" }
 
