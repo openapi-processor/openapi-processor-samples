@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage") // dependencyResolutionManagement.repositories
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -5,7 +7,8 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    @Suppress("UnstableApiUsage") repositories {
+    repositories {
+        gradlePluginPortal()
         mavenCentral()
     }
 
