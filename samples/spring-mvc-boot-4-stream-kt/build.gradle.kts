@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.deps)
-    id("updates")
+    //id("updates")
 
     // add processor-gradle plugin
     alias(oap.plugins.processor.gradlex)
