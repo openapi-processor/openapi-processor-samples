@@ -1,6 +1,6 @@
 [versions]
-processor-gradle-next = "2025.1-SNAPSHOT"
 processor-gradle = "2023.2"
+processor-gradlex = "2025.1-SNAPSHOT"
 processor-base = "2025.7-SNAPSHOT"
 processor-json = "2025.1-b1-SNAPSHOT"
 processor-spring = "2025.6-SNAPSHOT"
@@ -14,4 +14,4 @@ processor-micronaut = { group = "io.openapiprocessor", name = "openapi-processor
 
 [plugins]
 processor-gradle = { id = "io.openapiprocessor.openapi-processor", version.ref = "processor-gradle" }
-processor-gradle-next = { id = "io.openapiprocessor.openapi-processor", version.ref = "processor-gradle-next" }
+processor-gradlex = { id = "io.openapiprocessor.openapi-processor", version.ref = "processor-gradlex" }
