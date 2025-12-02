@@ -1,0 +1,13 @@
+[versions]
+kotlin = "2.2.21"
+spring-boot = "4.0.0"
+spring-deps = "1.1.7"
+
+[libraries]
+
+[plugins]
+kotlin-lang = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" } # kotlin("jvm") version "..."
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" } # kotlin("plugin.spring") version "..."
+
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-deps = { id = "io.spring.dependency-management", version.ref = "spring-deps" }

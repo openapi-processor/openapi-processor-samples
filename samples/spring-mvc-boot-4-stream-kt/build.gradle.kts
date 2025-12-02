@@ -1,14 +1,14 @@
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "2.1.0"
-    kotlin("plugin.spring") version "2.1.0"
-    id("org.springframework.boot") version "4.0.0-SNAPSHOT"
-    id("io.spring.dependency-management") version "1.1.7"
+    alias(libs.plugins.kotlin.lang)
+    alias(libs.plugins.kotlin.spring)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.deps)
+    id("updates")
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradle.next)
+    alias(oap.plugins.processor.gradlex)
 }
 
 group = "io.openapiprocessor.sample"
@@ -42,8 +42,6 @@ tasks.withType<Test> {
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
-//
-// ... using 'spring'.
 openapiProcessor {
 
     // the path to the open api YAML file. Usually the same for all processors.
@@ -68,7 +66,7 @@ openapiProcessor {
 
         // processor specific options, creates a key => value map that is passed to the processor
 
-        // file name of the mapping YAML configuration file. Note that the yaml file name must end
+        // file name of the mapping YAML configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", layout.projectDirectory.file("src/api/mapping.yaml"))
         prop("logging", "stdout")
