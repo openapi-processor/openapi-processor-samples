@@ -3,13 +3,14 @@ import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "2.1.0"
-    kotlin("plugin.spring") version "2.1.0"
-    id("org.springframework.boot") version "4.0.0-SNAPSHOT"
-    id("io.spring.dependency-management") version "1.1.7"
+    alias(libs.plugins.kotlin.lang)
+    alias(libs.plugins.kotlin.spring)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.deps)
+    //id("updates")
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradle.next)
+    alias(oap.plugins.processor.gradlex)
 }
 
 group = "io.openapiprocessor.sample"
