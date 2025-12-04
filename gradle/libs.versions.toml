@@ -1,1 +1,8 @@
 [versions]
+updates = "0.53.0"
+
+[libraries]
+updates = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "updates" }
+
+[plugins]
+updates = { id = "com.github.ben-manes.versions", version.ref = "updates" }
