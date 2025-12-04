@@ -1,3 +1,4 @@
+import io.openapiprocessor.gradle.OpenApiProcessorTask
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -42,8 +43,6 @@ tasks.withType<Test> {
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
-//
-// ... using 'spring'.
 openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
@@ -83,6 +82,9 @@ openapiProcessor {
     }
 }
 
+/*
+// "old" configuration
+
 // add the targetDir of the processor as additional source folder to java.
 sourceSets {
     create("api") {
@@ -112,4 +114,27 @@ tasks.withType<KotlinCompile> {
 // generate api resource before processing
 tasks.withType<ProcessResources> {
     dependsOn("processSpring")
+}*/
+
+// "modern" configuration
+afterEvaluate {
+    sourceSets {
+        create("api") {
+            resources {
+                // add api resources
+                srcDir("${projectDir}/src/api")
+            }
+        }
+
+        main {
+            java {
+                // add generated files
+                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("java") })
+            }
+            resources {
+                // add generated resources
+                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("resources") })
+            }
+        }
+    }
 }
