@@ -4,7 +4,9 @@ plugins {
 
 testing {
     suites {
-        @Suppress("UnstableApiUsage") val test by getting(JvmTestSuite::class)
+        @Suppress("UnstableApiUsage") val test by getting(JvmTestSuite::class) {
+            useJUnitJupiter()
+        }
 
         @Suppress("UnstableApiUsage") val testInt by registering(JvmTestSuite::class) {
             useJUnitJupiter()
