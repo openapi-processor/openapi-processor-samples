@@ -1,10 +1,9 @@
 [versions]
-spring-boot = "2.7.16"
-spring-deps = "1.1.0"
-versions = "0.46.0"
+spring-boot = "3.5.8"
+spring-deps = "1.1.7"
 
 groovy = "4.0.12"
-spock = "2.3-groovy-4.0"
+spock = "2.4-M7-groovy-4.0"
 
 [libraries]
 spring-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
@@ -31,4 +30,3 @@ groovy-test = [
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-deps = { id = "io.spring.dependency-management", version.ref = "spring-deps" }
-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

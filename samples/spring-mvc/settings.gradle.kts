@@ -19,3 +19,4 @@ rootProject.name = "spring-mvc"
 
 //includeBuild("../../../openapi-processor-gradle")
 //includeBuild("../../../openapi-processor-spring")
+//includeBuild("../../../openapi-processor-base")

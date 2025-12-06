@@ -1,11 +1,10 @@
 plugins {
     id("java")
     id("groovy")
-    id("openapiprocessor.test")
+    id("updates")
     id("openapiprocessor.testInt")
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.deps)
-    alias(libs.plugins.versions)
 
     // add processor-gradle plugin
     alias(oap.plugins.processor.gradle)
@@ -23,10 +22,17 @@ dependencies {
     testIntImplementation(libs.bundles.groovy.test)
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
-//
-// ... using 'spring'
 openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
