@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.spring.deps)
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradlex)
 }
 
 group = "io.openapiprocessor.samples"
@@ -35,8 +35,9 @@ java {
 // configuration with the name of the openapi-processor and its options inside it.
 openapiProcessor {
 
-    // the path to the open api yaml file. Usually the same for all processors.
-    apiPath("$projectDir/src/api/openapi.yaml")
+    // the path to the open api YAML file. Usually the same for all processors.
+    // apiPath("$projectDir/src/api/openapi.yaml")
+    apiPath(layout.projectDirectory.file("src/api/openapi.yaml"))
 
     // based on the name of the processor configuration the plugin creates a gradle task with name
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
@@ -50,13 +51,15 @@ openapiProcessor {
 
         // the destination folder for generating interfaces & models. This is the parent of the
         // {package-name} folder tree configured in the mapping file.
-        targetDir("$projectDir/build/openapi")
+        // targetDir("$projectDir/build/openapi")
+        targetDir(layout.buildDirectory.dir("openapi"))
 
         // processor specific options, creates a key => value map that is passed to the processor
 
         // file name of the mapping yaml configuration file. Note that the yaml file name must end
         // with either {@code .yaml} or {@code .yml}.
-        prop("mapping", "$projectDir/src/api/mapping.yaml")
+        //prop("mapping", "$projectDir/src/api/mapping.yaml")
+        prop("mapping", layout.projectDirectory.file("src/api/mapping.yaml"))
 
         // sets the parser to SWAGGER or INTERNAL. if not set INTERNAL is used.
         // INTERNAL provides full JSON schema validation
@@ -72,6 +75,7 @@ openapiProcessor {
     }
 }
 
+/* "old" configuration
 // add the targetDir of the processor as additional source folder to java.
 sourceSets {
     create("api") {
@@ -91,4 +95,24 @@ sourceSets {
 // generate api before compiling
 tasks.compileJava {
     dependsOn("processSpring")
+}
+*/
+
+// "modern" configuration
+sourceSets {
+    create("api") {
+        resources {
+            // add api resources
+            srcDir(layout.projectDirectory.dir("src/api"))
+        }
+    }
+
+    afterEvaluate {
+        main {
+            java {
+                // add generated files
+                srcDir(tasks.named("processSpring"))
+            }
+        }
+    }
 }
