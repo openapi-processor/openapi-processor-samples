@@ -15,6 +15,7 @@ version = "1.0.0-SNAPSHOT"
 
 dependencies {
     implementation(libs.spring.web)
+    implementation(libs.spring.validation)
 
     testImplementation(libs.bundles.spring.test)
     testImplementation(libs.bundles.groovy.test)

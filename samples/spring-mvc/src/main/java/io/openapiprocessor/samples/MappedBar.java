@@ -1,5 +1,6 @@
 package io.openapiprocessor.samples;
 
+/* a class that replaces the Bar schema */
 public class MappedBar {
     private String bar = "bar";
 
