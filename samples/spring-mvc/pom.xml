@@ -12,14 +12,13 @@
 
     <groupId>io.openapiprocessor.samples</groupId>
     <artifactId>spring-mvc</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <name>spring-mvc sample project</name>
     <description>openapi-processor demo project for spring boot with maven</description>
 
     <properties>
-        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring.version>3.5.8</spring.version>
     </properties>
 
     <dependencies>
@@ -60,7 +59,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.6.3</version>
+                <version>${spring.version}</version>
             </plugin>
 
             <plugin>
@@ -82,7 +81,7 @@
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
                         <artifactId>openapi-processor-json</artifactId>
-                        <version>2021.2</version>
+                        <version>${openapiprocessor.json}</version>
                     </dependency>
                 </dependencies>
 
@@ -146,7 +145,7 @@
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.9.0</version>
+                <version>4.2.1</version>
                 <executions>
                     <execution>
                         <id>test</id>
@@ -190,7 +189,7 @@
 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.5.2</version>
 
                 <configuration>
                     <useFile>false</useFile>
@@ -244,7 +243,7 @@
           <dependency>
               <groupId>org.springframework.boot</groupId>
               <artifactId>spring-boot-dependencies</artifactId>
-              <version>2.6.3</version>
+              <version>${spring.version}</version>
               <type>pom</type>
               <scope>import</scope>
           </dependency>
@@ -253,7 +252,7 @@
           <dependency>
               <groupId>org.spockframework</groupId>
               <artifactId>spock-bom</artifactId>
-              <version>2.0-groovy-3.0</version>
+              <version>2.4-M7-groovy-4.0</version>
               <type>pom</type>
               <scope>import</scope>
           </dependency>

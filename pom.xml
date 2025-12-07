@@ -11,21 +11,41 @@
     <name>openapi-processor - Sample Projects</name>
 
     <pluginRepositories>
-
-<!--        <pluginRepository>-->
-<!--            <id>openapi-processor-snapshots</id>-->
-<!--            <name>openapi-processor-snapshots</name>-->
-<!--            <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
-<!--        </pluginRepository>-->
-
+        <pluginRepository>
+            <id>plugin-snapshots</id>
+            <name>plugin-snapshots</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </pluginRepository>
     </pluginRepositories>
 
+    <repositories>
+<!--        <repository>-->
+<!--            <id>central-snapshots</id>-->
+<!--            <name>central-snapshots</name>-->
+<!--            <url>https://central.sonatype.com/repository/maven-snapshots</url>-->
+<!--            <releases>-->
+<!--                <enabled>false</enabled>-->
+<!--            </releases>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--                <updatePolicy>always</updatePolicy>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+    </repositories>
+
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <openapiprocessor.spring>2025.2</openapiprocessor.spring>
-        <openapiprocessor.micronaut>2025.2</openapiprocessor.micronaut>
-        <openapiprocessor.json>2021.2</openapiprocessor.json>
+        <java.version>17</java.version>
+        <maven.compiler.release>17</maven.compiler.release>
+        <openapiprocessor.spring>2025.6-SNAPSHOT</openapiprocessor.spring>
+        <openapiprocessor.micronaut>2025.5</openapiprocessor.micronaut>
+        <openapiprocessor.json>2025.1-SNAPSHOT</openapiprocessor.json>
     </properties>
 
     <modules>
