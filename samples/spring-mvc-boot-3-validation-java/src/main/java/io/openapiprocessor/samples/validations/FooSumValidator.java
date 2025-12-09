@@ -2,8 +2,8 @@ package io.openapiprocessor.samples.validations;
 
 import io.openapiprocessor.openapi.model.Foo;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class FooSumValidator implements ConstraintValidator<Sum, Foo> {
     private Integer sum;

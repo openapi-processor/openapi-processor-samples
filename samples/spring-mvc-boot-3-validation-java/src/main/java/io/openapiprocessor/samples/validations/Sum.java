@@ -1,8 +1,8 @@
 package io.openapiprocessor.samples.validations;
 
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 import java.lang.annotation.*;
 
 @Constraint (validatedBy = {FooSumValidator.class, BarSumValidator.class})

@@ -55,6 +55,10 @@ components:
         foo2:
           type: integer
           minimum: -10
+        foo3:
+          type: integer
+          format: year
+          minimum: 0
 
     Bar:
       type: object

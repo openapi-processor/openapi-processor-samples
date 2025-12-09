@@ -2,8 +2,8 @@ package io.openapiprocessor.samples.validations;
 
 import io.openapiprocessor.openapi.model.Bar;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class BarSumValidator implements ConstraintValidator<Sum, Bar> {
     private Integer sum;

@@ -1,10 +1,10 @@
-openapi-processor-mapping: v12
+openapi-processor-mapping: v15
 
 options:
   package-name: io.openapiprocessor.openapi
   javadoc: true
   format-code: true
-  bean-validation: true
+  bean-validation: jakarta
 
 map:
   types:

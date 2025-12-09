@@ -1,7 +1,6 @@
 [versions]
-spring-boot = "2.7.13"
-spring-deps = "1.1.0"
-versions = "0.46.0"
+spring-boot = "3.5.8"
+spring-deps = "1.1.7"
 
 [libraries]
 spring-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
@@ -10,4 +9,3 @@ spring-validation = { group = "org.springframework.boot", name = "spring-boot-st
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-deps = { id = "io.spring.dependency-management", version.ref = "spring-deps" }
-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

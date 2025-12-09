@@ -15,4 +15,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "spring-validation"
+rootProject.name = "spring-mvc-boot-3-validation-java"
