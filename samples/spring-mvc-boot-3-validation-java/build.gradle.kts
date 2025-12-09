@@ -19,15 +19,13 @@ dependencies {
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
-//
-// ... using 'spring'.
 openapiProcessor {
 
     // the path to the open api YAML file. Usually the same for all processors.
     //apiPath(layout.projectDirectory.file("src/api/openapi.yaml"))
     setApiPath(layout.projectDirectory.file("src/api/openapi.yaml"))
 
-    // based on the name of the processor configuration, the plugin creates a gradle task with name
+    // based on the name of the processor configuration, the plugin creates a Gradle task with name
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
@@ -43,7 +41,7 @@ openapiProcessor {
 
         // processor-specific options, creates a key => value map that is passed to the processor
 
-        // file name of the mapping yaml configuration file. Note that the yaml file name must end
+        // file name of the mapping YAML configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", layout.projectDirectory.file("src/api/mapping.yaml"))
 
