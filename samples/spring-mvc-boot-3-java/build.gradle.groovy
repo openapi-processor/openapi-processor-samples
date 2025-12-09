@@ -15,6 +15,7 @@ version = '1.0.0-SNAPSHOT'
 
 dependencies {
     implementation(libs.spring.web)
+    implementation(libs.spring.validation)
 
     testImplementation(libs.bundles.spring.test)
     testImplementation(libs.bundles.groovy.test)
@@ -36,11 +37,11 @@ java {
 //
 // ... using 'spring'
 openapiProcessor {
-    // the path to the open api yaml file. Usually the same for all processors.
-    apiPath "${projectDir}/src/api/openapi.yaml"  // set as String by method call
-    //apiPath = layout.projectDirectory.file("src/api/openapi.yaml")  // with gradle plugin 2024.1-SNAPSHOT
+    // the path to the open api YAML file. Usually the same for all processors.
+    //apiPath "${projectDir}/src/api/openapi.yaml"  // set as String by method call
+    apiPath = layout.projectDirectory.file("src/api/openapi.yaml")
 
-    // based on the name of the processor configuration the plugin creates a gradle task with name
+    // based on the name of the processor configuration the plugin creates a Gradle task with name
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     spring {
         // the spring processor dependency
@@ -51,17 +52,19 @@ openapiProcessor {
 
         // setting api path inside a processor configuration overrides the one at the top.
         apiPath "${projectDir}/src/api/openapi.yaml"
-        //apiPath = layout.projectDirectory.file("src/api/openapi.yaml")  // with gradle plugin 2024.1-SNAPSHOT
+        //apiPath = layout.projectDirectory.file("src/api/openapi.yaml")
 
         // the destination folder for generating interfaces & models. This is the parent of the
         // {package-name} folder tree configured in the mapping file.
-        targetDir "$projectDir/build/openapi"
+        //targetDir "$projectDir/build/openapi"
+        targetDir layout.buildDirectory.dir("openapi")
 
         // processor specific options, creates a key => value map that is passed to the processor
 
-        // file name of the mapping yaml configuration file. Note that the yaml file name must end
+        // file name of the mapping YAML configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
-        mapping "${projectDir}/src/api/mapping.yaml"
+        //mapping "${projectDir}/src/api/mapping.yaml"
+        mapping layout.projectDirectory.file("src/api/mapping.yaml")
 
         // sets the parser to SWAGGER or INTERNAL. if not set INTERNAL is used.
         // INTERNAL provides full JSON schema validation
@@ -70,6 +73,7 @@ openapiProcessor {
     }
 }
 
+/* "old" configuration
 // add the targetDir of the processor as additional source folder to java.
 sourceSets {
     api {
@@ -92,13 +96,25 @@ sourceSets {
 
 // generate api before compiling
 compileJava.dependsOn ('processSpring')
+*/
 
-// alternative source set configuration, e.g. with lombok plugin
-// id 'io.freefair.lombok' version '6.4.2'
-//
-//afterEvaluate {
-//    def processSpring = tasks.named ('processSpring')
-//    sourceSets.main.java.srcDir (processSpring)
-//    compileJava.dependsOn (processSpring)
-//}
+// "modern" configuration
+sourceSets {
+    api {
+        resources {
+            // add api resources
+            srcDir layout.projectDirectory.dir("src/api")
+        }
+    }
+}
 
+afterEvaluate {
+    sourceSets {
+        main {
+            java {
+                // add generated files
+                srcDir tasks.named("processSpring")
+            }
+        }
+    }
+}
