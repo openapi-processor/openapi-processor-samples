@@ -1,11 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import io.openapiprocessor.gradle.OpenApiProcessorTask
 
 plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.deps)
     alias(libs.plugins.kotlin.lang)
     alias(libs.plugins.kotlin.spring)
-    alias(libs.plugins.versions)
 
     // add processor-gradle plugin
     alias(oap.plugins.processor.gradle)
@@ -16,6 +15,9 @@ group = "io.openapiprocessor.sample"
 version = "1.0.0"
 
 java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
@@ -45,11 +47,10 @@ tasks.withType<Test> {
 openapiProcessor {
 
     // the path to the open api yaml file. Usually the same for all processors.
-    apiPath("${projectDir}/src/api/openapi.yaml")
-    //apiPath("${projectDir}/src/api/openapi.json")
-    //apiPath = layout.projectDirectory.file("src/api/openapi.yaml") // with gradle plugin 2024.1-SNAPSHOT
+    //apiPath("${projectDir}/src/api/openapi.yaml")
+    apiPath(layout.projectDirectory.file("src/api/openapi.yaml"))
 
-    // based on the name of the processor configuration the plugin creates a gradle task with name
+    // based on the name of the processor configuration the plugin creates a Gradle task with name
     // "process${name of processor}"  (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
@@ -62,15 +63,15 @@ openapiProcessor {
         // the destination folder for generating interfaces & models. This is the parent of the
         // {package-name} folder tree configured in the mapping file.
 
-        targetDir("$projectDir/build/openapi")
-        //targetDir(layout.buildDirectory.dir("openapi"))
-        //targetDir = layout.buildDirectory.dir("openapi") // with gradle plugin 2024.1-SNAPSHOT
+        //targetDir("$projectDir/build/openapi")
+        targetDir(layout.buildDirectory.dir("openapi"))
 
         // processor specific options, creates a key => value map that is passed to the processor
 
-        // file name of the mapping yaml configuration file. Note that the yaml file name must end
+        // file name of the mapping YAML configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", layout.projectDirectory.file("src/api/mapping.yaml"))
+        prop("logging", "stdout")
 
         // alternative way of setting processor specific properties
         /*
@@ -82,26 +83,24 @@ openapiProcessor {
     }
 }
 
-// add the targetDir of the processor as additional source folder to java.
 sourceSets {
-    main {
-        java {
-            // add generated files
-            srcDir(layout.buildDirectory.dir("openapi/java"))
-        }
+    create("api") {
         resources {
-            // add generated resources
-            srcDir(layout.buildDirectory.dir("openapi/resources"))
+            // add api resources
+            srcDir(layout.projectDirectory.dir("src/api"))
         }
     }
-}
 
-// generate api before compiling
-tasks.withType<KotlinCompile> {
-    dependsOn("processSpring")
-}
-
-// generate api resource before processing
-tasks.withType<ProcessResources> {
-    dependsOn("processSpring")
+    afterEvaluate {
+        main {
+            java {
+                // add generated files
+                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("java") })
+            }
+            resources {
+                // add generated resources
+                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("resources") })
+            }
+        }
+    }
 }
