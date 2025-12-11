@@ -1,4 +1,4 @@
-openapi-processor-mapping: v9
+openapi-processor-mapping: v15
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
