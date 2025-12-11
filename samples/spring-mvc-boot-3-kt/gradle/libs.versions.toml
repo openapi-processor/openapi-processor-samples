@@ -1,7 +1,7 @@
 [versions]
 spring-boot = "3.3.4"
 spring-deps = "1.1.6"
-kotlin = "1.9.25"
+kotlin = "2.2.21"
 versions = "0.46.0"
 
 [libraries]
