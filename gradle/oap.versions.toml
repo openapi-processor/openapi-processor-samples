@@ -1,5 +1,5 @@
 [versions]
-processor-gradle = "2025.1"
+processor-gradle = "2025.1.1"
 processor-gradlex = "2026.1-SNAPSHOT"
 processor-base = "2026.2-SNAPSHOT"
 processor-json = "2026.1-SNAPSHOT"
