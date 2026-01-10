@@ -13,7 +13,7 @@ options:
     # add src/resource directories to target-dir
     layout: standard
 
-  # create property file with server/url path (requires standard target-dir layout)
+  # create a property file with a server/url path (requires standard target-dir layout)
   base-path:
     server-url: 0
     properties-name: api.properties
