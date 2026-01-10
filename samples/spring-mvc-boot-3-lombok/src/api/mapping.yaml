@@ -35,7 +35,7 @@ map:
     # do not generate Bar, instead use an existing class
     - type: Bar => io.openapiprocessor.samples.MappedBar
 
-    # annotate Bar with a custom annotation, since Bar is mapped to MappedBar it will be placed at Bar properties
+    # annotate Bar with a custom annotation; since Bar is mapped to MappedBar it will be placed at Bar properties
     - type: Bar @ io.openapiprocessor.samples.FooBar
 
     # more places with annotation
