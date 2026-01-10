@@ -2,7 +2,7 @@
 
 == update wrapper
 
- ./mvnw -N wrapper:wrapper -Dmaven=3.6.3
+ ./mvnw -N wrapper:wrapper -Dmaven=3.8.9
 
 == run process goal
 

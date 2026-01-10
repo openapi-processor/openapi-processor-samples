@@ -8,7 +8,17 @@
 
 this repository contains a couple of sample projects for openapi-processor to show the configuration. A few examples have some code and/or tests.
 
-Adjust `settings.gradle`/`pom.xml` as needed.
+There is no "parent" project. The sample projects are all standalone projects.
+
+You can open the parent folder as a project and link the samples to the workspace or open each sample on its own.
+
+== Gradle
+
+The samples get the processor versions from `<root>/gradle/oap.versions.toml`.
+
+== Maven
+
+The samples get the processor versions from `<root>/pom.xml`.
 
 == documentation
 
