@@ -1,0 +1,39 @@
+openapi-processor-mapping: v16
+
+options:
+  # the root package of the generated interfaces/DTOs. The package folder tree will be created
+  # inside {targetDir} configured in the build.gradle file. The generated interfaces and models
+  # will be placed into the "api" and "model" subpackages of packageName:
+  #  - interfaces => "${packageName}.api"
+  #  - models => "${packageName}.model"
+  package-name: io.openapiprocessor.openapi
+
+  # target-dir options
+  target-dir:
+    # add src/resource directories to target-dir
+    layout: standard
+
+  # create a property file with a server/url path (requires standard target-dir layout)
+  base-path:
+    server-url: 0
+    properties-name: application-openapi.properties
+
+  # use bean validations with jakarta package name
+  bean-validation: jakarta
+
+  # use java records instead of pojos
+  model-type: record
+
+  # generate javadoc from OpenAPI description properties
+  javadoc: true
+
+  # run the generated code through a code formatter
+  format-code: eclipse
+
+map:
+  types:
+    - type: string:uuid => java.util.UUID
+    - type: Foo @ io.openapiprocessor.samples.FooAnnotation
+    - type: Bar @ io.openapiprocessor.samples.BarAnnotation
+#    - type: Bar => io.openapiprocessor.MappedBar
+    - type: object =+ java.io.Serializable

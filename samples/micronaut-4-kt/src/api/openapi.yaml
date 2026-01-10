@@ -1,7 +1,26 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: sample api
   version: 1.0.0
+
+servers:
+  - url: "{schema}://{host}:{port}/{path1}/{path2}/v{version}"
+    variables:
+      schema:
+        default: https
+        enum:
+          - https
+          - http
+      host:
+        default: openapiprocessor.io
+      port:
+        default: "443"
+      path1:
+        default: foo
+      path2:
+        default: bar
+      version:
+        default: "1"
 
 paths:
   /foo:
@@ -40,22 +59,28 @@ components:
   schemas:
     Foo:
       type: object
+      description: Foo object
       properties:
         foo:
           type: string
           maxLength: 10
+          description: foo property
         id:
           type: string
           format: uuid
+          description: id property
         bar:
           $ref: '#/components/schemas/Bar'
+          description: bar property
 
     Bar:
       type: object
+      description: Foo object
       properties:
         bar:
           type: string
           maxLength: 20
+          description: bar property
 
   requestBodies:
     FooBody:
