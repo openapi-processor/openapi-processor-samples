@@ -15,4 +15,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name="micronaut-java"
+rootProject.name="micronaut-3-java"
