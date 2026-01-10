@@ -40,8 +40,8 @@ openapiProcessor {
     // apiPath("$projectDir/src/api/openapi.yaml")
     apiPath(layout.projectDirectory.file("src/api/openapi.yaml"))
 
-    // based on the name of the processor configuration the plugin creates a gradle task with name
-    // "process${name of processor}"  (in this case "processSpring") to run the processor.
+    // based on the name of the processor configuration, the plugin creates a Gradle task with the name
+    // "process${name of processor}" (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
         // processor("io.openapiprocessor:openapi-processor-spring:2022.5-SNAPSHOT")
@@ -55,18 +55,18 @@ openapiProcessor {
         // targetDir("$projectDir/build/openapi")
         targetDir(layout.buildDirectory.dir("openapi"))
 
-        // processor specific options, creates a key => value map that is passed to the processor
+        // processor-specific options, creates a key => value map that is passed to the processor
 
-        // file name of the mapping yaml configuration file. Note that the yaml file name must end
+        // file name of the mapping yaml configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
         //prop("mapping", "$projectDir/src/api/mapping.yaml")
         prop("mapping", layout.projectDirectory.file("src/api/mapping.yaml"))
 
-        // sets the parser to SWAGGER or INTERNAL. if not set INTERNAL is used.
+        // sets the parser to SWAGGER or INTERNAL. if not set, INTERNAL is used.
         // INTERNAL provides full JSON schema validation
         // prop("parser", "SWAGGER")
 
-        // alternative way of setting processor specific properties
+        // alternative way of setting processor-specific properties
         /*
         prop(mapOf(
             "mapping" to "$projectDir/src/api/mapping.yaml",
@@ -77,7 +77,7 @@ openapiProcessor {
 }
 
 /* "old" configuration
-// add the targetDir of the processor as additional source folder to java.
+// add the targetDir of the processor as an additional source folder to java.
 sourceSets {
     create("api") {
         resources {
