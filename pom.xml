@@ -41,11 +41,11 @@
     </repositories>
 
     <properties>
-        <java.version>17</java.version>
-        <maven.compiler.release>17</maven.compiler.release>
-        <openapiprocessor.spring>2025.6-SNAPSHOT</openapiprocessor.spring>
-        <openapiprocessor.micronaut>2025.5</openapiprocessor.micronaut>
-        <openapiprocessor.json>2025.1-SNAPSHOT</openapiprocessor.json>
+        <java.version>21</java.version>
+        <maven.compiler.release>21</maven.compiler.release>
+        <openapiprocessor.spring>2026.2-SNAPSHOT</openapiprocessor.spring>
+        <openapiprocessor.micronaut>2026.2-SNAPSHOT</openapiprocessor.micronaut>
+        <openapiprocessor.json>2026.1-SNAPSHOT</openapiprocessor.json>
     </properties>
 
     <modules>
