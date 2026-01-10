@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     alias(libs.plugins.kotlin.lang)
     alias(libs.plugins.kotlin.kapt)
@@ -80,24 +78,29 @@ openapiProcessor {
 }
 
 sourceSets {
-    main {
-        java {
-            srcDir(layout.buildDirectory.dir("openapi/bar/java"))
-            srcDir(layout.buildDirectory.dir("openapi/foo/java"))
-        }
+    create("api") {
         resources {
-            srcDir(layout.buildDirectory.dir("openapi/bar/resources"))
-            srcDir(layout.buildDirectory.dir("openapi/foo/resources"))
+            // add api resources
+            srcDir(layout.projectDirectory.dir("src/api"))
         }
     }
-}
 
-// generate api before compiling
-tasks.withType<KotlinCompile> {
-    dependsOn("processBar", "processFoo")
-}
+    afterEvaluate {
+        main {
+            java {
+                // add generated files
+                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processFoo")
+                    .map { it.getTargetDir().dir("java") })
+                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processBar")
+                    .map { it.getTargetDir().dir("java") })
+            }
 
-// generate api resource before processing
-tasks.withType<ProcessResources> {
-    dependsOn("processBar", "processFoo")
+            resources {
+                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processFoo")
+                    .map { it.getTargetDir().dir("resources") })
+                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processBar")
+                    .map { it.getTargetDir().dir("resources") })
+            }
+        }
+    }
 }
