@@ -1,4 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import io.openapiprocessor.gradle.OpenApiProcessorTask
+import org.gradle.kotlin.dsl.named
 
 plugins {
     alias(libs.plugins.kotlin.lang)
@@ -48,8 +49,8 @@ openapiProcessor {
     apiPath("${projectDir}/src/api/openapi.yaml")
     //apiPath("${projectDir}/src/api/openapi.json")
 
-    // based on the name of the processor configuration the plugin creates a gradle task with name
-    // "process${name of processor}"  (in this case "processSpring") to run the processor.
+    // based on the name of the processor configuration, the plugin creates a Gradle task with the name
+    // "process${name of processor}" (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
         processor("${oap.processor.core.get()}")
@@ -64,14 +65,14 @@ openapiProcessor {
         targetDir("$projectDir/build/openapi")
         //targetDir(layout.buildDirectory.dir("openapi"))
 
-        // processor specific options, creates a key => value map that is passed to the processor
+        // processor-specific options, creates a key => value map passed to the processor
 
         // file name of the mapping YAML configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", layout.projectDirectory.file("src/api/mapping.yaml"))
         prop("logging", "stdout")
 
-        // alternative way of setting processor specific properties
+        // alternative way of setting processor-specific properties
         /*
         prop(mapOf(
             "mapping" to "$projectDir/src/api/mapping.yaml",
@@ -86,33 +87,32 @@ openapiProcessor {
     }
 }
 
-// add the targetDir of the processor as additional source folder to java.
-sourceSets {
-    create("api") {
-        resources {
-            // add api resources
-            srcDir("${projectDir}/src/api")
-        }
-    }
 
-    main {
-        java {
-            // add generated files
-            srcDir(layout.buildDirectory.dir("openapi/java"))
+// "modern" configuration
+afterEvaluate {
+    sourceSets {
+        create("api") {
+            resources {
+                // add api resources
+                srcDir("${projectDir}/src/api")
+            }
         }
-        resources {
-            // add generated resources
-            srcDir(layout.buildDirectory.dir("openapi/resources"))
+
+        main {
+            java {
+                // add generated files
+                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("java") })
+            }
+            resources {
+                // add generated resources
+                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("resources") })
+                srcDir(tasks.named<OpenApiProcessorTask>("processJson"))
+            }
         }
     }
 }
 
-// generate api before compiling
-tasks.withType<KotlinCompile> {
-    dependsOn("processSpring")
-}
-
-// generate api resource before processing
-tasks.withType<ProcessResources> {
-    dependsOn("processSpring")
+// the generated api.properties causes a duplicate warning, not sure why...?
+tasks.named<ProcessResources>("processResources") {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
