@@ -28,15 +28,13 @@ dependencies {
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
 // configuration with the name of the openapi-processor and its options inside it.
-//
-// ... using 'spring'.
 openapiProcessor {
 
-    // the path to the open api yaml file. Usually the same for all processors.
+    // the path to the open api YAML file. Usually the same for all processors.
     apiPath("$projectDir/src/api/openapi.yaml")
 
-    // based on the name of the processor configuration the plugin creates a gradle task with name
-    // "process${name of processor}"  (in this case "processSpring") to run the processor.
+    // based on the name of the processor configuration, the plugin creates a Gradle task with the name
+    // "process${name of processor}" (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
         //processor("${libs.processor.core.get()}")
@@ -49,9 +47,9 @@ openapiProcessor {
         // {package-name} folder tree configured in the mapping file.
         targetDir("$projectDir/build/openapi")
 
-        // processor specific options, creates a key => value map that is passed to the processor
+        // processor-specific options, creates a key => value map passed to the processor
 
-        // file name of the mapping yaml configuration file. Note that the yaml file name must end
+        // file name of the mapping YAML configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", "$projectDir/src/api/mapping.yaml")
 
@@ -69,23 +67,41 @@ openapiProcessor {
     }
 }
 
-// add the targetDir of the processor as an additional source folder to java.
 sourceSets {
     create("api") {
         resources {
-            srcDir("${projectDir}/src/api")
+            // add api resources
+            srcDir(layout.projectDirectory.dir("src/api"))
         }
     }
 
-    main {
-        java {
-            // add generated files
-            srcDir("build/openapi")
+    afterEvaluate {
+        main {
+            java {
+                // add generated files
+                srcDir(tasks.named("processSpring"))
+            }
         }
     }
 }
 
-// generate api before compiling
-tasks.compileJava {
-    dependsOn("processSpring")
-}
+//// add the targetDir of the processor as an additional source folder to java.
+//sourceSets {
+//    create("api") {
+//        resources {
+//            srcDir("${projectDir}/src/api")
+//        }
+//    }
+//
+//    main {
+//        java {
+//            // add generated files
+//            srcDir("build/openapi")
+//        }
+//    }
+//}
+//
+//// generate api before compiling
+//tasks.compileJava {
+//    dependsOn("processSpring")
+//}

@@ -15,4 +15,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "spring-webflux"
+rootProject.name = "spring-webflux-boot-2"
