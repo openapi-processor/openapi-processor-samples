@@ -15,4 +15,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "spring-multiple-apis"
+rootProject.name = "spring-mvc-boot-3-multiple-apis"

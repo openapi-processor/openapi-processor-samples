@@ -29,7 +29,6 @@ openapiProcessor {
         // by using a different name than the processor we have to say which processor we want
         processorName("spring")
         processor("${oap.processor.spring.get()}")
-//        processor("${oap.processor.core.get()}")
 
         apiPath("${projectDir}/src/api1/openapi.yaml")
         targetDir("$projectDir/build/api1")
@@ -41,7 +40,6 @@ openapiProcessor {
         // by using a different name than the processor we have to say which processor we want
         processorName("spring")
         processor("${oap.processor.spring.get()}")
-//        processor("${oap.processor.core.get()}")
 
         apiPath("${projectDir}/src/api2/openapi.yaml")
         targetDir("$projectDir/build/api2")
@@ -51,16 +49,28 @@ openapiProcessor {
 }
 
 sourceSets {
-    main {
-        java {
-            srcDir("$projectDir/build/api1")
-            srcDir("$projectDir/build/api2")
+    create("api1") {
+        resources {
+            // add api resources
+            srcDir(layout.projectDirectory.dir("src/api1"))
         }
     }
-}
+    create("api2") {
+        resources {
+            // add api resources
+            srcDir(layout.projectDirectory.dir("src/api2"))
+        }
+    }
 
-tasks.compileJava {
-    dependsOn("processSpring1", "processSpring2")
+    afterEvaluate {
+        main {
+            java {
+                // add generated files
+                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processSpring1"))
+                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processSpring2"))
+            }
+        }
+    }
 }
 
 tasks.withType<Test> {
