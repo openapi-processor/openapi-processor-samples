@@ -83,40 +83,6 @@ openapiProcessor {
     }
 }
 
-/*
-// "old" configuration
-
-// add the targetDir of the processor as additional source folder to java.
-sourceSets {
-    create("api") {
-        resources {
-            // add api resources
-            srcDir("${projectDir}/src/api")
-        }
-    }
-
-    main {
-        java {
-            // add generated files
-            srcDir(layout.buildDirectory.dir("openapi/java"))
-        }
-        resources {
-            // add generated resources
-            srcDir(layout.buildDirectory.dir("openapi/resources"))
-        }
-    }
-}
-
-// generate api before compiling
-tasks.withType<KotlinCompile> {
-    dependsOn("processSpring")
-}
-
-// generate api resource before processing
-tasks.withType<ProcessResources> {
-    dependsOn("processSpring")
-}*/
-
 // "modern" configuration
 afterEvaluate {
     sourceSets {
