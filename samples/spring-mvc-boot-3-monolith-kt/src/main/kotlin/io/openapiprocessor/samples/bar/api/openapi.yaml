@@ -27,10 +27,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/Bar'
 
+    put:
+      tags:
+        - bar
+      summary: echo a Bar.
+      description: echo a Bar object.
+      requestBody:
+        $ref: '#/components/requestBodies/BarBody'
+      responses:
+        '200':
+          description: Bar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bar'
 
 components:
   requestBodies:
-
     BarBody:
       description: a Bar body
       required: true
@@ -40,7 +53,6 @@ components:
             $ref: '#/components/schemas/Bar'
 
   schemas:
-
     Bar:
       type: object
       description: Bar object description

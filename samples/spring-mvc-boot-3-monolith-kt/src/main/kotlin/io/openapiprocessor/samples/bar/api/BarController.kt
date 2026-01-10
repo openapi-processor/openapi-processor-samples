@@ -10,4 +10,8 @@ class BarController(private val mapper: BarMapper, private val service: BarServi
     override fun postBar(bar: BarDto): BarDto {
         return mapper.map(service.echo(mapper.map(bar)))
     }
+
+    override fun putBar(bar: BarDto): BarDto {
+        return mapper.map(service.echo(mapper.map(bar)))
+    }
 }

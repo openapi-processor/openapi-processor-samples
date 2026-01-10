@@ -14,11 +14,13 @@ options:
   # generate javadoc from OpenAPI description properties
   javadoc: true
 
-  # run the generated code through a code formatter
-  # see gradle.properties to fix java 16+ errors.
-  format-code: true
-
   # use java records instead of pojos
   model-type: record
 
+  # class suffix
   model-name-suffix: Dto
+
+map:
+  paths:
+    /bar:
+      exclude: false
