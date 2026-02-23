@@ -87,32 +87,26 @@ openapiProcessor {
     }
 }
 
-
 // "modern" configuration
-afterEvaluate {
-    sourceSets {
-        create("api") {
-            resources {
-                // add api resources
-                srcDir("${projectDir}/src/api")
-            }
-        }
-
-        main {
-            java {
-                // add generated files
-                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("java") })
-            }
-            resources {
-                // add generated resources
-                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("resources") })
-                srcDir(tasks.named<OpenApiProcessorTask>("processJson"))
-            }
+sourceSets {
+    create("api") {
+        resources {
+            // add api resources
+            srcDir("${projectDir}/src/api")
+            srcDir(tasks.named<OpenApiProcessorTask>("processJson"))
         }
     }
-}
 
-// the generated api.properties causes a duplicate warning, not sure why...?
-tasks.named<ProcessResources>("processResources") {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    main {
+        val processTask = tasks.named<OpenApiProcessorTask>("processSpring")
+
+        java {
+            // add generated files
+            srcDir(processTask.map { it.getTargetDir().dir("java") })
+        }
+        resources {
+            // add generated resources
+            srcDir(processTask.map { it.getTargetDir().dir("resources") })
+        }
+    }
 }

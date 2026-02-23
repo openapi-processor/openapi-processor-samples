@@ -1,6 +1,4 @@
 import io.openapiprocessor.gradle.OpenApiProcessorTask
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     alias(libs.plugins.kotlin.lang)
@@ -84,24 +82,24 @@ openapiProcessor {
 }
 
 // "modern" configuration
-afterEvaluate {
-    sourceSets {
-        create("api") {
-            resources {
-                // add api resources
-                srcDir("${projectDir}/src/api")
-            }
+sourceSets {
+    create("api") {
+        resources {
+            // add api resources
+            srcDir("${projectDir}/src/api")
         }
+    }
 
-        main {
-            java {
-                // add generated files
-                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("java") })
-            }
-            resources {
-                // add generated resources
-                srcDir(tasks.named<OpenApiProcessorTask>("processSpring").map { it.getTargetDir().dir("resources") })
-            }
+    main {
+        val processTask = tasks.named<OpenApiProcessorTask>("processSpring")
+
+        java {
+            // add generated files
+            srcDir(processTask.map { it.getTargetDir().dir("java") })
+        }
+        resources {
+            // add generated resources
+            srcDir(processTask.map { it.getTargetDir().dir("resources") })
         }
     }
 }
