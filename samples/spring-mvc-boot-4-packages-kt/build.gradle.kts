@@ -64,14 +64,14 @@ openapiProcessor {
         targetDir("$projectDir/build/openapi")
         //targetDir(layout.buildDirectory.dir("openapi"))
 
-        // processor specific options, creates a key => value map that is passed to the processor
+        // processor-specific options, creates a key => value map passed to the processor
 
-        // file name of the mapping yaml configuration file. Note that the yaml file name must end
+        // file name of the mapping YAML configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
         prop("mapping", layout.projectDirectory.file("src/api/mapping.yaml"))
         prop("logging", "stdout")
 
-        // alternative way of setting processor specific properties
+        // alternative way of setting processor-specific properties
         /*
         prop(mapOf(
             "mapping" to "$projectDir/src/api/mapping.yaml",
