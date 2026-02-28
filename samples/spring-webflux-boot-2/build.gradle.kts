@@ -14,6 +14,12 @@ plugins {
 group = "io.openapiprocessor.samples"
 version = "1.0.0-SNAPSHOT"
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 dependencies {
     annotationProcessor (libs.mapstruct.processor)
     implementation(libs.spring.webflux)
@@ -75,33 +81,10 @@ sourceSets {
         }
     }
 
-    afterEvaluate {
-        main {
-            java {
-                // add generated files
-                srcDir(tasks.named("processSpring"))
-            }
+    main {
+        java {
+            // add generated files
+            srcDir(tasks.named("processSpring"))
         }
     }
 }
-
-//// add the targetDir of the processor as an additional source folder to java.
-//sourceSets {
-//    create("api") {
-//        resources {
-//            srcDir("${projectDir}/src/api")
-//        }
-//    }
-//
-//    main {
-//        java {
-//            // add generated files
-//            srcDir("build/openapi")
-//        }
-//    }
-//}
-//
-//// generate api before compiling
-//tasks.compileJava {
-//    dependsOn("processSpring")
-//}

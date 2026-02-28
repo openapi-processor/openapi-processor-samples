@@ -1,12 +1,12 @@
 [versions]
-spring-boot = "2.7.13"
-spring-deps = "1.1.0"
+spring-boot = "3.5.11"
+spring-deps = "1.1.7"
 versions = "0.46.0"
 
-mapstruct = "1.5.5.Final"
+mapstruct = "1.6.3"
 
 groovy = "4.0.12"
-spock = "2.3-groovy-4.0"
+spock = "2.4-groovy-4.0"
 
 [libraries]
 spring-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux" }

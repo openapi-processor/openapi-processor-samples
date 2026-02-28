@@ -1,4 +1,4 @@
-openapi-processor-mapping: v12
+openapi-processor-mapping: v17
 
 options:
   # the root package of the generated interfaces/model. The package folder tree will be created
@@ -8,8 +8,8 @@ options:
   #  - models => "${packageName}.model"
   package-name: io.openapiprocessor.openapi
 
-  # enable bean validation, javax package
-  bean-validation: javax
+  # enable bean validation, package
+  bean-validation: jakarta
 
   # generate javadoc from OpenAPI description properties
   javadoc: true
