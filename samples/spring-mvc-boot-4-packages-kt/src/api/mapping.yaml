@@ -1,4 +1,4 @@
-openapi-processor-mapping: v13
+openapi-processor-mapping: v17
 
 options:
   # shortcut to package-names.base
