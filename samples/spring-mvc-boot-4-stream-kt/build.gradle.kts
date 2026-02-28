@@ -1,5 +1,4 @@
 import io.openapiprocessor.gradle.OpenApiProcessorTask
-import org.gradle.kotlin.dsl.named
 
 plugins {
     alias(libs.plugins.kotlin.lang)
