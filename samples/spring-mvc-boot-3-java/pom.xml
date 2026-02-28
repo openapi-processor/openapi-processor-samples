@@ -11,20 +11,37 @@
     </parent>
 
     <groupId>io.openapiprocessor.samples</groupId>
-    <artifactId>spring-mvc</artifactId>
-    <name>spring-mvc sample project</name>
-    <description>openapi-processor demo project for spring boot with maven</description>
+    <artifactId>spring-mvc-boot-3-java</artifactId>
+    <name>spring-mvc-boot-3-java</name>
+    <description>openapi-processor demo project using Spring Boot 3. MVC, Java</description>
 
     <properties>
+        <java.version>17</java.version>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+
+        <spring.version>3.5.11</spring.version>
+        <spock.version>2.4-groovy-4.0</spock.version>
+        <org.mapstruct.version>1.6.3</org.mapstruct.version>
+
+        <maven-compiler-plugin>3.8.1</maven-compiler-plugin>
+        <maven-surefire-plugin>3.5.2</maven-surefire-plugin>
+        <maven-build-helper-plugin>3.1.0</maven-build-helper-plugin>
+        <gmavenplus-plugin>3.0.2</gmavenplus-plugin>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring.version>3.5.8</spring.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
         <dependency>
@@ -52,6 +69,12 @@
           <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -65,7 +88,7 @@
             <plugin>
                 <groupId>io.openapiprocessor</groupId>
                 <artifactId>openapi-processor-maven-plugin</artifactId>
-                <version>2024.1</version>
+                <version>${openapiprocessor.maven}</version>
 
                 <dependencies>
                     <dependency>
@@ -141,11 +164,61 @@
 
             </plugin>
 
-            <!-- groovy tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin}</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${maven-build-helper-plugin}</version>
+                <executions>
+                    <execution>
+                        <id>oap-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/openapi</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>oap-resources</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/generated-resources/json</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- tests -->
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>4.2.1</version>
+                <version>${gmavenplus-plugin}</version>
                 <executions>
                     <execution>
                         <id>test</id>
@@ -189,10 +262,11 @@
 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.2</version>
+                <version>${maven-surefire-plugin}</version>
 
                 <configuration>
                     <useFile>false</useFile>
+                    <argLine>-XX:+EnableDynamicAgentLoading</argLine>
                 </configuration>
 
                 <executions>
@@ -229,12 +303,6 @@
             </plugin>
 
         </plugins>
-
-        <resources>
-          <resource>
-            <directory>${project.build.directory}/generated-resources/json</directory>
-          </resource>
-        </resources>
     </build>
 
     <dependencyManagement>
@@ -252,7 +320,7 @@
           <dependency>
               <groupId>org.spockframework</groupId>
               <artifactId>spock-bom</artifactId>
-              <version>2.4-M7-groovy-4.0</version>
+              <version>${spock.version}</version>
               <type>pom</type>
               <scope>import</scope>
           </dependency>
