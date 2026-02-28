@@ -46,13 +46,14 @@
         <openapiprocessor.spring>2026.2-SNAPSHOT</openapiprocessor.spring>
         <openapiprocessor.micronaut>2026.2-SNAPSHOT</openapiprocessor.micronaut>
         <openapiprocessor.json>2026.1-SNAPSHOT</openapiprocessor.json>
+        <openapiprocessor.maven>2024.1</openapiprocessor.maven>
     </properties>
 
     <modules>
-        <module>samples/spring-mvc</module>
+<!--        <module>samples/spring-mvc</module>-->
+        <module>samples/spring-flux-boot-3-java</module>
 <!--        <module>samples/spring-multiple-apis</module>-->
 <!--        <module>samples/spring-mvc-boot-3</module>-->
-<!--        <module>samples/spring-webflux</module>-->
     </modules>
 
 </project>
