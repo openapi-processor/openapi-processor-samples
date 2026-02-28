@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.spring.deps)
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle.next)
 }
 
 group = 'io.openapiprocessor.samples'
@@ -73,31 +73,6 @@ openapiProcessor {
     }
 }
 
-/* "old" configuration
-// add the targetDir of the processor as additional source folder to java.
-sourceSets {
-    api {
-        resources {
-            srcDir "${projectDir}/src/api"
-        }
-    }
-
-    main {
-        java {
-            // add generated files
-            srcDir 'build/openapi'
-        }
-
-        resources {
-            srcDir "$buildDir/json"
-        }
-    }
-}
-
-// generate api before compiling
-compileJava.dependsOn ('processSpring')
-*/
-
 // "modern" configuration
 sourceSets {
     api {
@@ -106,15 +81,11 @@ sourceSets {
             srcDir layout.projectDirectory.dir("src/api")
         }
     }
-}
 
-afterEvaluate {
-    sourceSets {
-        main {
-            java {
-                // add generated files
-                srcDir tasks.named("processSpring")
-            }
+    main {
+        java {
+            // add generated files
+            srcDir tasks.named("processSpring")
         }
     }
 }
