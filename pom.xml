@@ -46,7 +46,7 @@
         <openapiprocessor.spring>2026.2-SNAPSHOT</openapiprocessor.spring>
         <openapiprocessor.micronaut>2026.2-SNAPSHOT</openapiprocessor.micronaut>
         <openapiprocessor.json>2026.1-SNAPSHOT</openapiprocessor.json>
-        <openapiprocessor.maven>2024.1</openapiprocessor.maven>
+        <openapiprocessor.maven>2026.1-SNAPSHOT</openapiprocessor.maven>
     </properties>
 
     <modules>
