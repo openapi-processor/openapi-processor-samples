@@ -1,41 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>io.openapiprocessor</groupId>
+        <artifactId>openapi-processor-samples</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>io.openapiprocessor</groupId>
-    <artifactId>spring-multiple-apis</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <name>spring-multiple-apis sample project</name>
-    <description>Demo project for Spring Boot</description>
+    <groupId>io.openapiprocessor.samples</groupId>
+    <artifactId>spring-mvc-boot-3-multiple-apis</artifactId>
+    <name>spring-mvc-boot-3-multiple-apis</name>
+    <description>openapi-processor demo project using Spring Boot 3, MVC, Java, multiple apis</description>
+
     <properties>
         <java.version>17</java.version>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+
+        <spring.version>3.5.11</spring.version>
+        <spock.version>2.4-groovy-4.0</spock.version>
+        <lombok.version>1.18.36</lombok.version>
+
+        <maven-compiler-plugin>3.8.1</maven-compiler-plugin>
+        <maven-surefire-plugin>3.5.2</maven-surefire-plugin>
+        <maven-build-helper-plugin>3.1.0</maven-build-helper-plugin>
+        <gmavenplus-plugin>3.0.2</gmavenplus-plugin>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
-    <pluginRepositories>
-
-        <pluginRepository>
-            <id>openapi-processor-snapshots</id>
-            <name>openapi-processor-snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </pluginRepository>
-
-    </pluginRepositories>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -50,18 +63,19 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.version}</version>
             </plugin>
 
             <plugin>
                 <groupId>io.openapiprocessor</groupId>
                 <artifactId>openapi-processor-maven-plugin</artifactId>
-                <version>2024.1</version>
+                <version>${openapiprocessor.maven}</version>
 
                 <dependencies>
                     <dependency>
                         <groupId>io.openapiprocessor</groupId>
                         <artifactId>openapi-processor-spring</artifactId>
-                        <version>2025.2-SNAPSHOT</version>
+                        <version>${openapiprocessor.spring}</version>
                     </dependency>
                     <!--
                     <dependency>
@@ -72,22 +86,21 @@
                     -->
                 </dependencies>
 
-                <configuration>
-                    <id>processor-api</id>
-                </configuration>
-
                 <executions>
                     <execution>
                         <id>api1</id>
                         <phase>generate-sources</phase>
 
                         <configuration>
-                            <id>spring</id>
+                            <id>api1</id>
+                            <processor>spring</processor>
+                            <addSourceRoot>true</addSourceRoot>
+
                             <apiPath>${project.basedir}/src/api1/openapi.yaml</apiPath>
 
                             <options>
                                 <values>
-                                    <!-- if not set it will automatically use:
+                                    <!-- if not set, it will automatically add the configuration id:
                                     <targetDir>${project.basedir}/target/generated-sources/api1</targetDir>
                                     -->
                                     <mapping>${project.basedir}/src/api1/mapping.yaml</mapping>
@@ -105,12 +118,15 @@
                         <phase>generate-sources</phase>
 
                         <configuration>
-                            <id>spring</id>
+                            <id>api2</id>
+                            <processor>spring</processor>
+                            <addSourceRoot>true</addSourceRoot>
+
                             <apiPath>${project.basedir}/src/api2/openapi.yaml</apiPath>
 
                             <options>
                                 <values>
-                                    <!-- if not set it will automatically use:
+                                    <!-- if not set, it will automatically add the configuration id:
                                     <targetDir>${project.basedir}/target/generated-sources/api2</targetDir>
                                     -->
                                     <mapping>${project.basedir}/src/api2/mapping.yaml</mapping>
@@ -124,7 +140,35 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin}</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <dependencyManagement>
+      <dependencies>
+          <!-- spring -->
+          <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-dependencies</artifactId>
+              <version>${spring.version}</version>
+              <type>pom</type>
+              <scope>import</scope>
+          </dependency>
+      </dependencies>
+    </dependencyManagement>
 
 </project>
