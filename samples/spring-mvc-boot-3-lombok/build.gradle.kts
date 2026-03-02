@@ -23,7 +23,7 @@ dependencies {
 // ... using 'spring'.
 openapiProcessor {
 
-    // the path to the open api yaml file. Usually the same for all processors.
+    // the path to the open api YAML file. Usually the same for all processors.
     apiPath("$projectDir/src/api/openapi.yaml")
 
     // based on the name of the processor configuration, the plugin creates a Gradle task with the name
