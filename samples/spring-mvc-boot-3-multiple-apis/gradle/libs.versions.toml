@@ -1,5 +1,5 @@
 [versions]
-spring-boot = "3.1.1"
+spring-boot = "3.5.8"
 spring-deps = "1.1.7"
 versions = "0.52.0"
 lombok = "8.12"
