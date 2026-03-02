@@ -9,20 +9,11 @@ plugins {
     alias(libs.plugins.versions)
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle.current)
 }
 
 group = 'io.openapiprocessor.samples'
 version = '1.0.0-SNAPSHOT'
-
-micronaut {
-    runtime("netty")
-    testRuntime("spock2")
-    processing {
-        incremental(true)
-        annotations("mn.*")
-    }
-}
 
 dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
@@ -87,7 +78,6 @@ openapiProcessor {
     }
 }
 
-// "modern" configuration
 sourceSets {
     create("api") {
         resources {
@@ -95,15 +85,12 @@ sourceSets {
             srcDir(layout.projectDirectory.dir("src/api"))
         }
     }
-}
 
-afterEvaluate {
-    sourceSets {
-        main {
-            java {
-                // add generated files
-                srcDir tasks.named("processMicronaut")
-            }
+    main {
+        java {
+            // add generated files
+            srcDir tasks.named("processMicronaut")
         }
     }
 }
+
