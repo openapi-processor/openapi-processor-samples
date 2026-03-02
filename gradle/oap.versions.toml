@@ -1,6 +1,6 @@
 [versions]
-processor-gradle-current = "2025.1.1"
-processor-gradle-next = "2026.1-SNAPSHOT"
+processor-gradle-current = "2026.1"
+processor-gradle-next = "2026.2-SNAPSHOT"
 processor-base = "2026.2-SNAPSHOT"
 processor-json = "2026.1-SNAPSHOT"
 processor-spring = "2026.2-SNAPSHOT"
