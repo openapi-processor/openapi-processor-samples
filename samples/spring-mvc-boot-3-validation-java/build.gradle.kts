@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.spring.deps)
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle.current)
 }
 
 group = "io.openapiprocessor"
@@ -26,7 +26,7 @@ openapiProcessor {
     setApiPath(layout.projectDirectory.file("src/api/openapi.yaml"))
 
     // based on the name of the processor configuration, the plugin creates a Gradle task with name
-    // "process${name of processor}"  (in this case "processSpring") to run the processor.
+    // "process${name of processor}" (in this case "processSpring") to run the processor.
     process("spring") {
         // the spring processor dependency
         //processor("${oap.processor.core.get()}")
@@ -67,12 +67,10 @@ sourceSets {
         }
     }
 
-    afterEvaluate {
-        main {
-            java {
-                // add the targetDir of the processor as an additional source folder to java.
-                srcDir(tasks.named("processSpring"))
-            }
+    main {
+        java {
+            // add the targetDir of the processor as an additional source folder to java.
+            srcDir(tasks.named("processSpring"))
         }
     }
 }
