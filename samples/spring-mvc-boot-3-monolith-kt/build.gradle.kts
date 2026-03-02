@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.lang)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.deps)
@@ -17,7 +17,6 @@ java {
 }
 
 dependencies {
-    kapt(libs.mapstruct.annotation)
     implementation(libs.spring.web)
     implementation(libs.spring.modulith.core)
     implementation(libs.kotlin.jackson)
@@ -39,15 +38,6 @@ kotlin {
         freeCompilerArgs.addAll("-Xjsr305=strict")
     }
 }
-
-
-kapt {
-    arguments {
-        arg("mapstruct.defaultComponentModel", "spring")
-        arg("mapstruct.defaultInjectionStrategy", "constructor")
-    }
-}
-
 
 tasks.withType<Test> {
     useJUnitPlatform()
