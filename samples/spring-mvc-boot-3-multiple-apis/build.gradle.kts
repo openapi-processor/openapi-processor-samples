@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.lombok)
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle.current)
 }
 
 group = "io.openapiprocessor"
@@ -19,6 +19,15 @@ dependencies {
     testImplementation(libs.spring.test)
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
 // configure multiple openapi-processors inside the 'openapiProcessor' configuration by adding a nested
 // configuration with different names of the openapi-processor and its options inside it.
 openapiProcessor {
@@ -26,7 +35,7 @@ openapiProcessor {
 
     // processor setup for the first api
     process("spring1") {
-        // by using a different name than the processor we have to say which processor we want
+        // by using a different name than the processor, we have to say which processor we want
         processorName("spring")
         processor("${oap.processor.spring.get()}")
 
@@ -37,7 +46,7 @@ openapiProcessor {
     }
 
     process("spring2") {
-        // by using a different name than the processor we have to say which processor we want
+        // by using a different name than the processor, we have to say which processor we want
         processorName("spring")
         processor("${oap.processor.spring.get()}")
 
@@ -62,13 +71,11 @@ sourceSets {
         }
     }
 
-    afterEvaluate {
-        main {
-            java {
-                // add generated files
-                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processSpring1"))
-                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processSpring2"))
-            }
+    main {
+        java {
+            // add generated files
+            srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processSpring1"))
+            srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processSpring2"))
         }
     }
 }
