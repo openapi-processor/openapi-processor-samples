@@ -8,7 +8,7 @@ plugins {
     //id("updates")
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradlex)
+    alias(oap.plugins.processor.gradle.current)
 }
 
 group = "io.openapiprocessor.sample"
