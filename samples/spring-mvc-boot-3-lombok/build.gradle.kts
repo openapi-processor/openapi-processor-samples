@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.lombok)
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle.current)
 }
 
 group = "io.openapiprocessor"
@@ -67,12 +67,10 @@ sourceSets {
         }
     }
 
-    afterEvaluate {
-        main {
-            java {
-                // add generated files
-                srcDir(tasks.named("processSpring"))
-            }
+    main {
+        java {
+            // add generated files
+            srcDir(tasks.named("processSpring"))
         }
     }
 }
