@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.deps)
-    alias(oap.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle.current)
 }
 
 group = "io.openapiprocessor.samples"
@@ -85,22 +85,20 @@ sourceSets {
         }
     }
 
-    afterEvaluate {
-        main {
-            java {
-                // add generated files
-                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processFoo")
-                    .map { it.getTargetDir().dir("java") })
-                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processBar")
-                    .map { it.getTargetDir().dir("java") })
-            }
+    main {
+        java {
+            // add generated files
+            srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processFoo")
+                .map { it.getTargetDir().dir("java") })
+            srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processBar")
+                .map { it.getTargetDir().dir("java") })
+        }
 
-            resources {
-                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processFoo")
-                    .map { it.getTargetDir().dir("resources") })
-                srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processBar")
-                    .map { it.getTargetDir().dir("resources") })
-            }
+        resources {
+            srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processFoo")
+                .map { it.getTargetDir().dir("resources") })
+            srcDir(tasks.named<io.openapiprocessor.gradle.OpenApiProcessorTask>("processBar")
+                .map { it.getTargetDir().dir("resources") })
         }
     }
 }
