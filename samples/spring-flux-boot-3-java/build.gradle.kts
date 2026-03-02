@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.versions)
 
     // add processor-gradle plugin
-    alias(oap.plugins.processor.gradle.next)
+    alias(oap.plugins.processor.gradle.current)
 }
 
 group = "io.openapiprocessor.samples"
