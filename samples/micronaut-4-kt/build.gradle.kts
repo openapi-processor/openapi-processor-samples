@@ -4,12 +4,13 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.9.25"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.9.25"
     id("com.google.devtools.ksp") version "1.9.25-1.0.20"
-    id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("io.micronaut.application") version "4.4.2"
-    id("io.micronaut.aot") version "4.4.2"
+
+    id("io.micronaut.application") version "4.6.2"
+    id("com.gradleup.shadow") version "8.3.9"
+    id("io.micronaut.aot") version "4.6.2"
 
     // add openapi-processor-gradle plugin
-    alias(oap.plugins.processor.gradle)
+    alias(oap.plugins.processor.gradle.current)
 }
 
 version = "1.0"
@@ -36,11 +37,10 @@ dependencies {
 application {
     mainClass = "io.openapiprocessor.samples.ApplicationKt"
 }
+
 java {
-    sourceCompatibility = JavaVersion.toVersion("21")
-//    toolchain {
-//        languageVersion.set(JavaLanguageVersion.of(21))
-//    }
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
 }
 //kotlin {
 ////    jvmToolchain(21)
@@ -67,10 +67,6 @@ micronaut {
         optimizeNetty = true
         replaceLogbackXml = true
     }
-}
-
-tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
-    jdkVersion = "21"
 }
 
 // configure an openapi-processor inside the 'openapiProcessor' configuration by adding a nested
@@ -113,19 +109,15 @@ sourceSets {
             srcDir(layout.projectDirectory.dir("src/api"))
         }
     }
-}
 
-afterEvaluate {
-    sourceSets {
-        main {
-            java {
-                // add generated files
-                srcDir(tasks.named<OpenApiProcessorTask>("processMicronaut").map { it.getTargetDir().dir("java") })
-            }
-            resources {
-                // add generated resources
-                srcDir(tasks.named<OpenApiProcessorTask>("processMicronaut").map { it.getTargetDir().dir("resources") })
-            }
+    main {
+        java {
+            // add generated files
+            srcDir(tasks.named<OpenApiProcessorTask>("processMicronaut").map { it.getTargetDir().dir("java") })
+        }
+        resources {
+            // add generated resources
+            srcDir(tasks.named<OpenApiProcessorTask>("processMicronaut").map { it.getTargetDir().dir("resources") })
         }
     }
 }
