@@ -1,0 +1,14 @@
+openapi: 3.2.0
+info:
+  title: openapi-processor-spring sample api
+  version: 1.0.0
+
+servers:
+  - url: "https://openapiprocessor.io/{path}"
+    variables:
+      path:
+        default: api
+
+paths:
+  /echo:
+    $ref: 'echo.yaml'

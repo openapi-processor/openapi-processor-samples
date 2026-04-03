@@ -1,0 +1,22 @@
+### echo
+GET http://localhost:8080/api/echo?source=OpenAPI
+Accept: text/plain
+
+### ping
+GET http://localhost:8080/api/ping
+Accept: text/plain
+
+### nop => 204
+GET http://localhost:8080/api/nop
+
+
+### echo or create foo
+POST http://localhost:8080/api/foo
+Content-Type: application/json
+
+{
+  "foo": "bar",
+  "id": "a1694729-a01d-4d24-99dd-8537b4b46f31"
+}
+
+

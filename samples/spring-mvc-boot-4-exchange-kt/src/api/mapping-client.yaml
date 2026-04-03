@@ -1,0 +1,32 @@
+openapi-processor-mapping: v17
+
+options:
+  package-names:
+    # same as package-name
+    base: io.openapiprocessor.openapi.client
+    # this enables package generation from the endpoint $ref file location
+#    location: io.openapiprocessor.samples
+
+  # target-dir options
+  target-dir:
+    # add src/resource directories to target-dir
+    layout: standard
+
+  # create a property file with server/url path (requires standard target-dir layout)
+  base-path:
+    server-url: 0
+    properties-name: api-client.properties
+
+  # generate Javadoc from OpenAPI description properties
+  javadoc: true
+
+  # enable code/javadoc formatting
+  format-code: true
+
+  # generate java records
+  model-type: record
+  #model-unreferenced: true
+
+map:
+  types:
+    - type: Echo => io.openapiprocessor.samples.echo.client.Echo

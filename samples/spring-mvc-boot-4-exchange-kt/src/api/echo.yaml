@@ -1,0 +1,26 @@
+post:
+  tags:
+    - echo
+  summary: echos the given object.
+  description: sample endpoint with parameter
+  parameters:
+    - name: reverse
+      description: if true, the source parameter is echoed back reversed, else as-is
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: true
+  requestBody:
+    description: echo request
+    content:
+      application/json:
+        schema:
+          $ref: 'resources.yaml#Echo'
+  responses:
+    '200':
+      description: echo of the source parameter
+      content:
+        application/json:
+          schema:
+            $ref: 'resources.yaml#Echo'

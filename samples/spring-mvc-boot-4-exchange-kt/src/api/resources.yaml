@@ -1,0 +1,5 @@
+Echo:
+  type: object
+  properties:
+    echo:
+      type: string
