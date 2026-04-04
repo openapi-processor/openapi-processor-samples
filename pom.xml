@@ -52,7 +52,8 @@
     <modules>
 <!--        <module>samples/spring-flux-boot-3-java</module>-->
 <!--        <module>samples/spring-mvc-boot-3-java</module>-->
-        <module>samples/spring-mvc-boot-3-multiple-apis</module>
+<!--        <module>samples/spring-mvc-boot-3-multiple-apis</module>-->
+        <module>samples/spring-mvc-boot-4-exchange-kt</module>
     </modules>
 
 </project>
