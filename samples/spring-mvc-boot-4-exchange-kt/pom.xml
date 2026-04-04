@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.openapiprocessor</groupId>
+        <artifactId>openapi-processor-samples</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <groupId>io.openapiprocessor.samples</groupId>
+    <artifactId>spring-mvc-boot-4-exchange-kt</artifactId>
+    <name>spring-mvc-boot-4-exchange-kt</name>
+    <description>openapi-processor demo project using Spring Boot 4. Exchange annotations, Kotlin</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <kotlin.version>2.2.21</kotlin.version>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+
+        <spring.version>4.0.5</spring.version>
+
+        <maven-compiler-plugin>3.8.1</maven-compiler-plugin>
+        <maven-surefire-plugin>3.5.2</maven-surefire-plugin>
+        <maven-build-helper-plugin>3.1.0</maven-build-helper-plugin>
+        <gmavenplus-plugin>3.0.2</gmavenplus-plugin>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-reflect</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-stdlib</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>tools.jackson.module</groupId>
+          <artifactId>jackson-module-kotlin</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>io.openapiprocessor</groupId>
+                <artifactId>openapi-processor-maven-plugin</artifactId>
+                <version>${openapiprocessor.maven}</version>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>io.openapiprocessor</groupId>
+                        <artifactId>openapi-processor-spring</artifactId>
+                        <version>${openapiprocessor.spring}</version>
+                    </dependency>
+                </dependencies>
+
+                <configuration>
+                    <id>processor-api</id>
+                    <apiPath>${project.basedir}/src/api/openapi.yaml</apiPath>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>server</id>
+                        <phase>generate-sources</phase>
+
+                        <configuration>
+                            <id>server</id>
+                            <processor>spring</processor>
+                            <addSourceRoot>true</addSourceRoot>
+
+                            <options>
+                                <values>
+                                    <targetDir>${project.basedir}/target/generated-sources/openapi/server</targetDir>
+                                    <mapping>${project.basedir}/src/api/mapping-server.yaml</mapping>
+                                    <annotations>exchange</annotations>
+                                </values>
+                            </options>
+                        </configuration>
+
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>client</id>
+                        <phase>generate-sources</phase>
+
+                        <configuration>
+                            <id>client</id>
+                            <processor>spring</processor>
+                            <addSourceRoot>true</addSourceRoot>
+
+                            <options>
+                                <values>
+                                    <targetDir>${project.basedir}/target/generated-sources/openapi/client</targetDir>
+                                    <mapping>${project.basedir}/src/api/mapping-client.yaml</mapping>
+                                    <annotations>exchange</annotations>
+                                </values>
+                            </options>
+                        </configuration>
+
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin}</version>
+            </plugin>
+
+            <plugin>
+              <groupId>org.jetbrains.kotlin</groupId>
+              <artifactId>kotlin-maven-plugin</artifactId>
+              <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>src/main/kotlin</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jvmTarget>${java.version}</jvmTarget>
+                    <args>
+                      <arg>-Xjsr305=strict</arg>
+                      <arg>-Xannotation-default-target=param-property</arg>
+                    </args>
+                    <compilerPlugins>
+                    <plugin>spring</plugin>
+                    </compilerPlugins>
+              </configuration>
+              <dependencies>
+                <dependency>
+                  <groupId>org.jetbrains.kotlin</groupId>
+                  <artifactId>kotlin-maven-allopen</artifactId>
+                  <version>${kotlin.version}</version>
+                </dependency>
+              </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+      <dependencies>
+          <!-- spring -->
+          <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-dependencies</artifactId>
+              <version>${spring.version}</version>
+              <type>pom</type>
+              <scope>import</scope>
+          </dependency>
+      </dependencies>
+    </dependencyManagement>
+
+</project>
