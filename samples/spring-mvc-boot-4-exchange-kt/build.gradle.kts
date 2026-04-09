@@ -74,17 +74,8 @@ openapiProcessor {
 
         // file name of the mapping YAML configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
-        prop("annotations", "exchange")
         prop("mapping", layout.projectDirectory.file("src/api/mapping-server.yaml"))
         prop("logging", "stdout")
-
-        // alternative way of setting processor-specific properties
-        /*
-        prop(mapOf(
-            "mapping" to "$projectDir/src/api/mapping.yaml",
-            "parser" to "INTERNAL"
-        ))
-         */
     }
 
     process("client") {
@@ -110,17 +101,8 @@ openapiProcessor {
 
         // file name of the mapping YAML configuration file. Note that the YAML file name must end
         // with either {@code .yaml} or {@code .yml}.
-        prop("annotations", "exchange")
         prop("mapping", layout.projectDirectory.file("src/api/mapping-client.yaml"))
         prop("logging", "stdout")
-
-        // alternative way of setting processor-specific properties
-        /*
-        prop(mapOf(
-            "mapping" to "$projectDir/src/api/mapping.yaml",
-            "parser" to "INTERNAL"
-        ))
-         */
     }
 
 }

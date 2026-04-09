@@ -91,7 +91,6 @@
                                 <values>
                                     <targetDir>${project.basedir}/target/generated-sources/openapi/server</targetDir>
                                     <mapping>${project.basedir}/src/api/mapping-server.yaml</mapping>
-                                    <annotations>exchange</annotations>
                                 </values>
                             </options>
                         </configuration>
@@ -114,7 +113,6 @@
                                 <values>
                                     <targetDir>${project.basedir}/target/generated-sources/openapi/client</targetDir>
                                     <mapping>${project.basedir}/src/api/mapping-client.yaml</mapping>
-                                    <annotations>exchange</annotations>
                                 </values>
                             </options>
                         </configuration>

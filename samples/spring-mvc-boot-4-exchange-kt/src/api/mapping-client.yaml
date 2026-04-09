@@ -1,4 +1,4 @@
-openapi-processor-mapping: v17
+openapi-processor-spring: v1
 
 options:
   package-names:
@@ -26,6 +26,9 @@ options:
   # generate java records
   model-type: record
   #model-unreferenced: true
+
+  spring:
+    annotations: exchange
 
 map:
   types:
