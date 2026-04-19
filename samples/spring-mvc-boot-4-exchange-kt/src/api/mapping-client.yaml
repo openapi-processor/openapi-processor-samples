@@ -21,7 +21,7 @@ options:
   javadoc: true
 
   # enable code/javadoc formatting
-  format-code: true
+  format-code: google
 
   # generate java records
   model-type: record
