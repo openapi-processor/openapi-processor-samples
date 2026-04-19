@@ -1,6 +1,11 @@
 rootProject.name = "openapi-processor-samples"
 
-includeBuild("samples/spring-mvc-boot-4-packages-kt")
+//includeBuild("../openapi-processor-gradle")
+//includeBuild("../openapi-processor-base")
+//includeBuild("../openapi-processor-spring")
+
+includeBuild("samples/spring-mvc-boot-4-exchange-kt")
+//includeBuild("samples/spring-mvc-boot-4-packages-kt")
 //includeBuild("samples/spring-mvc-boot-4-stream-kt")
 //includeBuild("samples/spring-flux-boot-3-java")
 //includeBuild("samples/spring-mvc-boot-3-java")
