@@ -4,7 +4,7 @@ processor-gradle-next = "2026.2-SNAPSHOT"
 processor-base = "2026.3"
 processor-json = "2026.1-SNAPSHOT"
 processor-spring = "2026.3c-SNAPSHOT"
-processor-micronaut = "2026.3-SNAPSHOT"
+processor-micronaut = "2026.3a-SNAPSHOT"
 
 [libraries]
 processor-core = { group = "io.openapiprocessor", name = "openapi-processor-core", version.ref = "processor-base" }
