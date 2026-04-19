@@ -56,9 +56,8 @@ openapiProcessor {
 
         // the spring processor dependency
         dependencies {
-            process("${oap.processor.core.get()}")
+           //process("${oap.processor.core.get()}")
             process("${oap.processor.spring.get()}")
-            process("com.google.googlejavaformat:google-java-format:1.25.0")
         }
 
         // setting api path inside a processor configuration overrides the one at the top.
@@ -83,9 +82,8 @@ openapiProcessor {
 
         // the spring processor dependencies
         dependencies {
-            process("${oap.processor.core.get()}")
+            //process("${oap.processor.core.get()}")
             process("${oap.processor.spring.get()}")
-            process("com.google.googlejavaformat:google-java-format:1.25.0")
         }
 
         // setting api path inside a processor configuration overrides the one at the top.
