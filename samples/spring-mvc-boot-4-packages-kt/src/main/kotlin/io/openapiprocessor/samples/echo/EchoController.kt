@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 https://github.com/openapi-processor/openapi-processor-samples
+ * Copyright 2026 https://github.com/openapi-processor/openapi-processor-samples
  * PDX-License-Identifier: Apache-2.0
  */
 

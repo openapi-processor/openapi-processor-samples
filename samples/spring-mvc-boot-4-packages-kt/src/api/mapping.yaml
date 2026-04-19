@@ -1,11 +1,8 @@
 openapi-processor-mapping: v17
 
 options:
-  # shortcut to package-names.base
-  # package-name: io.openapiprocessor.samples
-
   package-names:
-    # same as package-name
+    # same as options.package-name
     base: io.openapiprocessor.openapi
     # this enables package generation from the endpoint $ref file location
     location: io.openapiprocessor.samples
@@ -20,7 +17,7 @@ options:
     server-url: 0
     properties-name: api.properties
 
-  # generate javadoc from OpenAPI description properties
+  # generate Javadoc from OpenAPI description properties
   javadoc: true
 
   # enable code/javadoc formatting
