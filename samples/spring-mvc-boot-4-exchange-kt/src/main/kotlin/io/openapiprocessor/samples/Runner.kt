@@ -12,6 +12,7 @@ class SampleRunner(val echoService: EchoService) : CommandLineRunner {
     private val log: Logger = LoggerFactory.getLogger(this.javaClass.name)
 
     override fun run(vararg args: String) {
-        log.info("{}", echoService.echo(Echo("openapi-processor!")))
+        log.info("RestClient: {}", echoService.echoRest(Echo("openapi-processor!")))
+        log.info("WebClient: {}", echoService.echoWeb(Echo("openapi-processor!")))
     }
 }
